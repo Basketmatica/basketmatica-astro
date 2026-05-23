@@ -23,7 +23,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Build con Astro
         uses: withastro/action@v3
-        # node-version y package-manager se autodetectan
+        with:
+          node-version: 22
 
   deploy:
     needs: build
