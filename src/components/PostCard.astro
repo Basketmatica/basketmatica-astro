@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { postPath, formatDate, categorySlug } from '../lib/urls';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+const { post } = Astro.props;
+const { title, description, pubDate, category, heroImage, heroAlt } = post.data;
+const href = postPath(post);
+---
+<li class="post-card">
+  {heroImage && (
+    <a href={href} aria-hidden="true" tabindex="-1">
+      <Image class="thumb" src={heroImage} alt={heroAlt || title} widths={[200, 400]} sizes="200px" />
+    </a>
+  )}
+  <div>
+    <p class="post-meta">
+      <a class="badge" href={`/categoria/${categorySlug(category)}/`}>{category}</a>
+      <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+    </p>
+    <h2><a href={href}>{title}</a></h2>
+    <p>{description}</p>
+  </div>
+</li>

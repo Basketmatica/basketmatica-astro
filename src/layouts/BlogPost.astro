@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import { formatDate, categorySlug } from '../lib/urls';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+const { post } = Astro.props;
+const { title, description, pubDate, category, heroImage, heroAlt } = post.data;
+---
+<BaseLayout title={title} description={description} image={heroImage?.src} type="article">
+  <article>
+    <header>
+      <p class="post-meta">
+        <a class="badge" href={`/categoria/${categorySlug(category)}/`}>{category}</a>
+        <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+      </p>
+      <h1>{title}</h1>
+    </header>
+    {heroImage && (
+      <Image class="hero-img" src={heroImage} alt={heroAlt || title} widths={[480, 760, 1080]} sizes="(max-width: 760px) 100vw, 760px" />
+    )}
+    <div class="prose">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

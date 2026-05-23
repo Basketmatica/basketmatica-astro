@@ -1,0 +1,26 @@
+{
+  "name": "basketmatica-astro",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "migrate": "node scripts/migrate.mjs"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^5.0.6",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.2",
+    "astro": "^6.3.7",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "fast-xml-parser": "^5.8.0",
+    "turndown": "^7.2.4",
+    "turndown-plugin-gfm": "^1.0.2"
+  }
+}

@@ -1,0 +1,24 @@
+---
+import { SITE_TITLE } from '../consts';
+const { pathname } = Astro.url;
+const links = [
+  { href: '/', label: 'Inicio' },
+  { href: '/categoria/analisis/', label: 'Análisis' },
+  { href: '/categoria/jugadores/', label: 'Jugadores' },
+  { href: '/categoria/equipos/', label: 'Equipos' },
+  { href: '/categoria/herramientas/', label: 'Herramientas' },
+  { href: '/generador-reportes-nba/', label: 'Generador' },
+  { href: '/archivo-basketmatica/', label: 'Archivo' },
+  { href: '/sobre-mi/', label: 'Sobre mí' },
+];
+---
+<header class="site-header">
+  <div class="container container-wide inner">
+    <a class="brand" href="/">Basket<span>mática</span></a>
+    <nav class="nav" aria-label="Principal">
+      {links.map((l) => (
+        <a href={l.href} aria-current={pathname === l.href ? 'page' : undefined}>{l.label}</a>
+      ))}
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,14 @@
+---
+import { SITE_TITLE, CONTACT_EMAIL } from '../consts';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container container-wide inner">
+    <span>© {year} {SITE_TITLE} · Análisis de datos aplicado al baloncesto.</span>
+    <span>
+      <a href="/rss.xml">RSS</a> ·
+      <a href={`mailto:${CONTACT_EMAIL}`}>Contacto</a> ·
+      <a href="https://x.com/basketmatica">X</a>
+    </span>
+  </div>
+</footer>

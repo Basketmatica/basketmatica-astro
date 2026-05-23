@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { SITE_DESCRIPTION } from '../consts';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+<BaseLayout wide>
+  <section style="padding-block: 2rem 1rem;">
+    <h1>Basketmática</h1>
+    <p class="intro">{SITE_DESCRIPTION} Código, modelos y estadística avanzada aplicados al baloncesto que te gusta.</p>
+  </section>
+  <ul class="post-list">
+    {posts.map((post) => <PostCard post={post} />)}
+  </ul>
+</BaseLayout>
