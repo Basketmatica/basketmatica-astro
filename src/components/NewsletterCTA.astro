@@ -1,5 +1,4 @@
 ---
-import { NEWSLETTER_URL } from '../consts';
 ---
 <section class="newsletter-cta">
   <p class="newsletter-label">Newsletter · Basketmática</p>
@@ -8,9 +7,10 @@ import { NEWSLETTER_URL } from '../consts';
     Cada mes, un análisis de datos que no encontrarás en ningún otro sitio.
     Para aficionados, entrenadores y periodistas que quieren entender el juego con datos.
   </p>
-  <a class="newsletter-btn" href={NEWSLETTER_URL} target="_blank" rel="noopener">
-    Suscribirme gratis →
-  </a>
+  <div class="beehiiv-embed">
+    <script is:inline async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="5343eb1f-ae99-4ffd-86de-e70d2637e11f"></script>
+    <script is:inline type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>
+  </div>
   <p class="newsletter-note">Gratis. Cancela cuando quieras.</p>
 </section>
 
@@ -49,25 +49,14 @@ import { NEWSLETTER_URL } from '../consts';
     margin: 0 auto 1.8rem;
   }
 
-  .newsletter-btn {
-    display: inline-block;
-    padding: .75rem 1.8rem;
+  .beehiiv-embed {
+    max-width: 480px;
     margin: 0 auto 1rem;
-    background: var(--accent);
-    color: #fff;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1rem;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background .2s, transform .15s;
   }
-  .newsletter-btn:hover { background: var(--accent-600); color: #fff; transform: translateY(-1px); }
 
   .newsletter-note { font-size: .84rem; color: var(--ink-soft); margin: 0; }
 
   @media (max-width: 500px) {
-    .newsletter-btn { display: block; width: 100%; box-sizing: border-box; text-align: center; }
     .newsletter-cta { padding: 2rem 1.25rem; }
   }
 </style>
