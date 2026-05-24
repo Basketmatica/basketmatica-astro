@@ -1,19 +1,273 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PostCard from '../components/PostCard.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import MetricOfWeek from '../components/MetricOfWeek.astro';
+import NewsletterCTA from '../components/NewsletterCTA.astro';
+import HexDivider from '../components/HexDivider.astro';
 import { SITE_DESCRIPTION } from '../consts';
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = (await getCollection('articulos', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const heroDesc = 'Estadística avanzada, modelos predictivos y análisis de IA aplicados al baloncesto que te gusta. Código y números detrás del juego.';
 ---
-<BaseLayout wide>
-  <section style="padding-block: 2rem 1rem;">
-    <h1>Basketmática</h1>
-    <p class="intro">{SITE_DESCRIPTION} Código, modelos y estadística avanzada aplicados al baloncesto que te gusta.</p>
+<BaseLayout wide description={heroDesc}>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="hero-hex" aria-hidden="true">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="hero-hex-p" width="42" height="48" patternUnits="userSpaceOnUse" patternTransform="rotate(8)">
+            <path d="M21 2.5 L40 13 L40 35 L21 45.5 L2 35 L2 13 Z" fill="none" stroke="#583C14" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#hero-hex-p)"/>
+      </svg>
+    </div>
+    <div class="hero-content">
+      <p class="eyebrow">Análisis de datos · Baloncesto</p>
+      <h1 class="hero-title">El dato detrás<br>del juego</h1>
+      <p class="hero-sub">{heroDesc}</p>
+      <div class="hero-actions">
+        <a href="/articulos/" class="btn-primary">Explorar artículos</a>
+        <a href="/herramientas/" class="btn-outline">Herramientas gratuitas</a>
+      </div>
+    </div>
   </section>
-  <ul class="post-list">
-    {posts.map((post) => <PostCard post={post} />)}
-  </ul>
+
+  <!-- ===== Cadencia editorial ===== -->
+  <section class="cadence" aria-label="Cadencia de publicación">
+    <div class="cadence-item">
+      <span class="cadence-freq">Cada semana</span>
+      <span class="cadence-what">Artículo de análisis</span>
+    </div>
+    <span class="cadence-sep" aria-hidden="true">·</span>
+    <div class="cadence-item">
+      <span class="cadence-freq">Cada mes</span>
+      <span class="cadence-what">Ranking o modelo</span>
+    </div>
+    <span class="cadence-sep" aria-hidden="true">·</span>
+    <div class="cadence-item">
+      <span class="cadence-freq">Cada trimestre</span>
+      <span class="cadence-what">Herramienta gratuita</span>
+    </div>
+  </section>
+
+  <HexDivider />
+
+  <!-- ===== Herramienta destacada ===== -->
+  <section class="featured-tool">
+    <p class="eyebrow">Herramienta destacada</p>
+    <div class="tool-spotlight">
+      <div class="tool-spotlight-text">
+        <h2 class="tool-title">Generador de Reportes NBA</h2>
+        <p>
+          Introduce el nombre de cualquier jugador de la NBA y obtén un scouting report en PDF
+          con estadísticas avanzadas, análisis FODA y comparativa con jugadores similares —
+          en menos de un minuto.
+        </p>
+        <a href="/herramientas/generador-reportes-nba/" class="btn-primary">Generar reporte gratis →</a>
+      </div>
+      <div class="tool-spotlight-icon" aria-hidden="true">📊</div>
+    </div>
+  </section>
+
+  <HexDivider />
+
+  <!-- ===== Últimos artículos ===== -->
+  <section class="latest-articles">
+    <div class="section-header">
+      <p class="eyebrow" style="margin:0">Últimas publicaciones</p>
+      <a href="/articulos/" class="section-more">Ver todos →</a>
+    </div>
+    <div class="articles-grid">
+      {posts.map((post) => <ArticleCard post={post} />)}
+    </div>
+  </section>
+
+  <!-- ===== Métrica de la semana ===== -->
+  <MetricOfWeek
+    value="1.15"
+    unit="pts/pos"
+    label="El umbral ofensivo élite en la NBA"
+    context="Los ataques que superan 1.15 puntos por posesión se sitúan en el top-25% de la liga. Rotaciones, tiro de tres y transición rápida son las palancas que separan la mediocridad de los playoffs."
+    source="NBA Stats · Temporada 2023-24"
+  />
+
+  <!-- ===== Newsletter ===== -->
+  <NewsletterCTA />
+
 </BaseLayout>
+
+<style>
+  /* ---- Hero ---- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 4.5rem 0 3.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-hex {
+    position: absolute;
+    inset: 0;
+    opacity: .07;
+    pointer-events: none;
+  }
+
+  .hero-content { position: relative; max-width: 640px; }
+
+  .hero-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    margin: 0 0 1rem;
+  }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin: 0 0 2rem;
+    max-width: 520px;
+  }
+
+  .hero-actions { display: flex; gap: .8rem; flex-wrap: wrap; }
+
+  /* ---- Shared eyebrow label ---- */
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: .76rem;
+    font-weight: 700;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--accent-600);
+    margin: 0 0 1rem;
+  }
+
+  /* ---- Buttons ---- */
+  .btn-primary {
+    display: inline-block;
+    background: var(--brand);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: .95rem;
+    padding: .7rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+  }
+  .btn-primary:hover { background: var(--brand-600); transform: translateY(-1px); color: #fff; }
+
+  .btn-outline {
+    display: inline-block;
+    border: 1.5px solid var(--brand);
+    color: var(--brand);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: .95rem;
+    padding: .7rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background .2s, color .2s;
+  }
+  .btn-outline:hover { background: var(--brand); color: #fff; }
+
+  /* ---- Cadence strip ---- */
+  .cadence {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.4rem 2rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .cadence-item {
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+    flex: 1;
+    min-width: 130px;
+  }
+
+  .cadence-freq {
+    font-family: var(--font-display);
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--accent-600);
+  }
+
+  .cadence-what { font-size: .97rem; font-weight: 500; color: var(--ink); }
+  .cadence-sep { color: var(--line); font-size: 1.5rem; flex-shrink: 0; }
+
+  /* ---- Featured tool ---- */
+  .featured-tool { margin-bottom: 2rem; }
+
+  .tool-spotlight {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--brand);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+  }
+
+  .tool-spotlight-text { flex: 1; }
+  .tool-title { margin: 0 0 .7rem; font-size: 1.45rem; }
+  .tool-spotlight-text p { color: var(--ink-soft); margin: 0 0 1.3rem; font-size: 1rem; line-height: 1.6; }
+  .tool-spotlight-icon { font-size: 3.5rem; line-height: 1; flex-shrink: 0; }
+
+  /* ---- Latest articles ---- */
+  .latest-articles { margin-bottom: 0; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.3rem;
+  }
+
+  .section-more {
+    font-family: var(--font-display);
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--accent-600);
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .section-more:hover { color: var(--accent); }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 820px) {
+    .articles-grid { grid-template-columns: 1fr 1fr; }
+    .articles-grid > :last-child { display: none; }
+  }
+
+  @media (max-width: 580px) {
+    .hero { padding: 2.5rem 0 2rem; }
+    .articles-grid { grid-template-columns: 1fr; }
+    .articles-grid > :last-child { display: revert; }
+    .tool-spotlight { flex-direction: column; gap: 1rem; }
+    .tool-spotlight-icon { display: none; }
+    .cadence-sep { display: none; }
+    .cadence { gap: .8rem; padding: 1.2rem 1.25rem; }
+  }
+</style>

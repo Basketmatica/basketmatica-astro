@@ -24,15 +24,9 @@ Esto es para ti si eres aficionado curioso, periodista que necesita datos, entre
 
 ###### ¿Trabajas en un club o entidad?
 
-Más allá de la divulgación, ayudo a equipos y organizaciones a tomar decisiones objetivas basadas en datos. Ofrezco tres servicios:
+Más allá de la divulgación, ayudo a equipos y organizaciones a tomar decisiones objetivas basadas en datos: modelos predictivos, reportes de scouting automatizados y análisis de eficiencia y rotaciones.
 
--   **Modelos predictivos a medida:** Predicción de rendimiento, proyección de jugadores, simulación de escenarios. Mi especialidad como ingeniero de IA
--   **Reportes automatizados de scouting:** Scripts en Python que generan informes de rival o de jugador en segundos. Ahorro de horas a tu staff técnico.
--   **Análisis de eficiencia y rotaciones:** Lineup analysis, métricas de impacto real, evaluación de combinaciones de quintetos.
-
-Hablemos:
-
-[Escríbeme a yagoriudavets@gmail.com](mailto:yagoriudavets@gmail.com)
+[Ver servicios →](/servicios/)
 
 -   [X](https://x.com/basketmatica)
 -   [Instagram](https://www.instagram.com/basketmatica/?next=%2F)

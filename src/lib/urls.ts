@@ -21,7 +21,7 @@ export function categoryFromSlug(slug: string): string | undefined {
 const pad = (n: number) => String(n).padStart(2, '0');
 
 // Ruta de una entrada: /AAAA/MM/DD/slug/ (formato WordPress conservado).
-export function postPath(entry: CollectionEntry<'blog'>): string {
+export function postPath(entry: CollectionEntry<'articulos'>): string {
   const d = entry.data.pubDate;
   const y = d.getUTCFullYear();
   const m = pad(d.getUTCMonth() + 1);
@@ -30,7 +30,7 @@ export function postPath(entry: CollectionEntry<'blog'>): string {
 }
 
 // Partes para getStaticPaths del catch-all [...path].astro (sin barras inicial/final).
-export function postPathParam(entry: CollectionEntry<'blog'>): string {
+export function postPathParam(entry: CollectionEntry<'articulos'>): string {
   return postPath(entry).replace(/^\/|\/$/g, '');
 }
 

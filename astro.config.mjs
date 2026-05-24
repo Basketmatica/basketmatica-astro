@@ -8,6 +8,16 @@ export default defineConfig({
   // Restricción CLAUDE.md: estático, GitHub Pages, dominio apex, sin `base`.
   output: 'static',
   site: 'https://basketmatica.com',
+  redirects: {
+    '/categoria/analisis/':    '/articulos/analisis/',
+    '/categoria/casos-de-uso/': '/articulos/casos-de-uso/',
+    '/categoria/equipos/':     '/articulos/equipos/',
+    '/categoria/eventos/':     '/articulos/eventos/',
+    '/categoria/herramientas/': '/articulos/herramientas/',
+    '/categoria/jugadores/':   '/articulos/jugadores/',
+    '/generador-reportes-nba/': '/herramientas/generador-reportes-nba/',
+    '/2024/09/08/glosario-de-basketball-analytics/': '/glosario/',
+  },
   trailingSlash: 'always',
   integrations: [mdx(), sitemap()],
   markdown: {

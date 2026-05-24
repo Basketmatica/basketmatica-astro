@@ -4,7 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import { postPath, formatDate, categorySlug } from '../lib/urls';
 
 interface Props {
-  post: CollectionEntry<'blog'>;
+  post: CollectionEntry<'articulos'>;
 }
 const { post } = Astro.props;
 const { title, description, pubDate, category, heroImage, heroAlt } = post.data;
@@ -18,7 +18,7 @@ const href = postPath(post);
   )}
   <div>
     <p class="post-meta">
-      <a class="badge" href={`/categoria/${categorySlug(category)}/`}>{category}</a>
+      <a class="badge" href={`/articulos/${categorySlug(category)}/`}>{category}</a>
       <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
     </p>
     <h2><a href={href}>{title}</a></h2>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Basketmática">
+  <!-- Placeholder hexagonal (panal) hasta integrar la pelota real del logo -->
+  <polygon points="29,16 22.5,27.26 9.5,27.26 3,16 9.5,4.74 22.5,4.74" fill="#583C14" />
+  <g fill="#F4EFE5">
+    <polygon points="16,9 19.6,11.1 19.6,15.3 16,17.4 12.4,15.3 12.4,11.1" />
+    <polygon points="11.5,16.6 15.1,18.7 15.1,22.9 11.5,25 7.9,22.9 7.9,18.7" />
+    <polygon points="20.5,16.6 24.1,18.7 24.1,22.9 20.5,25 16.9,22.9 16.9,18.7" />
+  </g>
+</svg>

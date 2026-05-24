@@ -2,19 +2,32 @@
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
-import { formatDate, categorySlug } from '../lib/urls';
+import { formatDate, categorySlug, postPath } from '../lib/urls';
+import { SITE_TITLE, SITE_URL } from '../consts';
 
 interface Props {
-  post: CollectionEntry<'blog'>;
+  post: CollectionEntry<'articulos'>;
 }
 const { post } = Astro.props;
 const { title, description, pubDate, category, heroImage, heroAlt } = post.data;
+const articleUrl = SITE_URL + postPath(post);
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "datePublished": pubDate.toISOString(),
+  "url": articleUrl,
+  "author": { "@type": "Person", "name": "Yago Riudavets", "url": SITE_URL },
+  "publisher": { "@type": "Organization", "name": SITE_TITLE, "url": SITE_URL },
+  ...(heroImage ? { "image": SITE_URL + heroImage.src } : {}),
+};
 ---
 <BaseLayout title={title} description={description} image={heroImage?.src} type="article">
   <article>
     <header>
       <p class="post-meta">
-        <a class="badge" href={`/categoria/${categorySlug(category)}/`}>{category}</a>
+        <a class="badge" href={`/articulos/${categorySlug(category)}/`}>{category}</a>
         <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
       </p>
       <h1>{title}</h1>
@@ -26,4 +39,5 @@ const { title, description, pubDate, category, heroImage, heroAlt } = post.data;
       <slot />
     </div>
   </article>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 </BaseLayout>

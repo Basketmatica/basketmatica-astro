@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ToolCard from '../../components/ToolCard.astro';
+---
+<BaseLayout
+  title="Herramientas"
+  description="Herramientas de análisis de baloncesto desarrolladas en Basketmática: generadores de reportes, modelos y más."
+>
+  <section class="tools-header">
+    <h1>Herramientas</h1>
+    <p class="intro">
+      Aplicaciones y utilidades de análisis construidas sobre datos reales de la NBA y
+      otras ligas. Cada trimestre se añade una nueva.
+    </p>
+  </section>
+
+  <div class="tools-grid">
+    <ToolCard
+      title="Generador de Reportes NBA"
+      description="Introduce el nombre de cualquier jugador activo y obtén un scouting report en PDF con estadísticas avanzadas y análisis de IA en menos de un minuto."
+      status="Disponible"
+      href="/herramientas/generador-reportes-nba/"
+      icon="📊"
+    />
+  </div>
+</BaseLayout>
+
+<style>
+  .tools-header { padding-block: 2rem 1.5rem; }
+
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+</style>

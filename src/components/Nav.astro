@@ -1,0 +1,122 @@
+---
+import { Image } from 'astro:assets';
+import logoImg from '../assets/brand/logo_basketmatica-sin-fondo.png';
+
+const { pathname } = Astro.url;
+
+const links = [
+  { href: '/',                      label: 'Inicio' },
+  { href: '/articulos/',            label: 'Artículos' },
+  { href: '/herramientas/',         label: 'Herramientas' },
+  { href: '/glosario/',             label: 'Glosario' },
+  { href: '/archivo-basketmatica/', label: 'Archivo' },
+  { href: '/sobre-mi/',             label: 'Sobre mí' },
+];
+
+const isActive = (href: string) =>
+  href === '/' ? pathname === '/' : pathname.startsWith(href);
+---
+
+<header class="site-header">
+  <div class="container container-wide inner">
+    <a class="brand" href="/" aria-label="Basketmática — Inicio">
+      <Image src={logoImg} alt="Basketmática" width={40} height={40} loading="eager" />
+    </a>
+
+    <button
+      class="nav-toggle"
+      aria-expanded="false"
+      aria-controls="nav-menu"
+      aria-label="Abrir menú"
+    >
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="nav-menu" class="nav" aria-label="Principal">
+      {links.map((l) => (
+        <a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>
+          {l.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const menu = document.getElementById('nav-menu');
+
+  btn?.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    btn.setAttribute('aria-label', open ? 'Abrir menú' : 'Cerrar menú');
+    menu?.classList.toggle('open');
+  });
+
+  // Cierra el menú al navegar (click en un enlace)
+  menu?.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => {
+      btn?.setAttribute('aria-expanded', 'false');
+      btn?.setAttribute('aria-label', 'Abrir menú');
+      menu.classList.remove('open');
+    })
+  );
+</script>
+
+<style>
+  /* Hamburger button — oculto en desktop */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 2.2rem;
+    height: 2.2rem;
+    padding: .3rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--radius);
+  }
+  .nav-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .nav-toggle span {
+    display: block;
+    height: 2px;
+    background: var(--brand);
+    border-radius: 2px;
+    transition: transform .2s, opacity .2s;
+  }
+  /* Animación X al abrir */
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (max-width: 767px) {
+    .nav-toggle { display: flex; }
+
+    .nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      padding: .5rem 0;
+      box-shadow: var(--shadow);
+    }
+    .nav.open { display: flex; }
+
+    .nav a {
+      padding: .75rem 1.25rem;
+      border-radius: 0;
+      font-size: 1rem;
+    }
+    .nav a:hover,
+    .nav a[aria-current="page"] {
+      background: var(--bg);
+    }
+  }
+</style>

@@ -1,0 +1,39 @@
+/* Design tokens — identidad Basketmática (híbrido editorial-data).
+   Base clara y cálida; marrón espresso estructural; superficies "court" oscuras. */
+:root {
+  /* Neutros cálidos (base clara) */
+  --bg:          #F4EFE5;  /* fondo papel/crema */
+  --surface:     #FBF8F0;  /* tarjetas y superficies elevadas */
+  --line:        #E2D8C4;  /* bordes y separadores sutiles */
+  --ink:         #221A10;  /* texto principal (negro cálido, NO #000) */
+  --ink-soft:    #6E5E46;  /* texto secundario / metadatos */
+
+  /* Marca */
+  --brand:       #583C14;  /* espresso del logo: identidad, titulares */
+  --brand-600:   #6F4F22;  /* variante clara: hover sobre marrón */
+
+  /* Superficies oscuras "court" (paneles data) */
+  --court:       #1B140D;  /* fondo oscuro principal */
+  --court-soft:  #2A2018;  /* paneles oscuros secundarios */
+  --court-ink:   #EFE8DA;  /* texto sobre fondo oscuro */
+
+  /* Acento (datos, CTAs, enlaces) */
+  --accent:      #1F8A74;  /* teal: rellenos de botón, highlights de datos */
+  --accent-600:  #176B5A;  /* texto-enlace y hover (cumple AA sobre crema) */
+
+  /* Spot — uso MUY puntual: "nuevo", "en directo", energía */
+  --spot:        #E8772E;  /* naranja balón */
+
+  /* Tipografía */
+  --font-display: 'Space Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-body:    'Source Serif 4 Variable', Georgia, 'Times New Roman', serif;
+  --font-mono:    'IBM Plex Mono', ui-monospace, 'SFMono-Regular', 'Consolas', monospace;
+
+  /* Medidas */
+  --max:         760px;
+  --max-wide:    1080px;
+
+  /* Radios y sombra */
+  --radius:      10px;
+  --shadow:      0 1px 2px rgba(34,26,16,.06), 0 6px 24px rgba(34,26,16,.08);
+}

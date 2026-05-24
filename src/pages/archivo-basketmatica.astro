@@ -1,19 +1,257 @@
 ---
-import { getEntry, render } from 'astro:content';
-import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import { getEntry } from 'astro:content';
 
 const page = await getEntry('pages', 'archivo-basketmatica');
 if (!page) throw new Error('Falta src/content/pages/archivo-basketmatica.md');
-const { Content } = await render(page);
 const { title, description, heroImage, heroAlt } = page.data;
+
+const LEGEND = [
+  { emoji: '🏀', label: 'Tiro y Ofensiva' },
+  { emoji: '🛡️', label: 'Defensa e Intangibles' },
+  { emoji: '🧠', label: 'Táctica y Métricas' },
+  { emoji: '💻', label: 'Data, IA y Futuro' },
+  { emoji: '⚕️', label: 'Físico' },
+] as const;
+
+const threads = [
+  { fecha: 'Junio 2024',      tema: '🏀', titulo: 'La mentira de la Valoración (PIR)',                                   url: 'https://x.com/basketmatica/status/1804495718205247706' },
+  { fecha: 'Julio 2024',      tema: '🧠', titulo: 'Four Factors: El ADN de la victoria',                                  url: 'https://x.com/basketmatica/status/1809359535561216002' },
+  { fecha: 'Julio 2024',      tema: '🧠', titulo: 'Top-Down vs Bottom-Up: Dos filosofías',                                 url: 'https://x.com/basketmatica/status/1816082554312609954' },
+  { fecha: 'Agosto 2024',     tema: '🏀', titulo: 'Olvida el FG%: Usa eFG% y TS%',                                        url: 'https://x.com/basketmatica/status/1819680384830890253' },
+  { fecha: 'Agosto 2024',     tema: '🧠', titulo: 'La trampa del +/-: Cuándo miente',                                     url: 'https://x.com/basketmatica/status/1828039339936215291' },
+  { fecha: 'Septiembre 2024', tema: '🏀', titulo: 'USG% y PER: Volumen vs. Eficiencia',                                  url: 'https://x.com/basketmatica/status/1838153080010944917' },
+  { fecha: 'Octubre 2024',    tema: '🧠', titulo: '¿Existe la métrica perfecta?',                                         url: 'https://x.com/basketmatica/status/1842934860492742964' },
+  { fecha: 'Octubre 2024',    tema: '🧠', titulo: 'Posesiones: El motor del dato',                                        url: 'https://x.com/basketmatica/status/1848769578127806966' },
+  { fecha: 'Noviembre 2024',  tema: '🧠', titulo: 'Clutch Time: Análisis bajo presión',                                  url: 'https://x.com/basketmatica/status/1853389813015068685' },
+  { fecha: 'Noviembre 2024',  tema: '💻', titulo: 'Muestras Pequeñas: El peligro del dato',                              url: 'https://x.com/basketmatica/status/1858125119010312523' },
+  { fecha: 'Diciembre 2024',  tema: '🏀', titulo: 'Dunk Score: Midiendo la potencia aérea',                              url: 'https://x.com/basketmatica/status/1863192053871444032' },
+  { fecha: 'Diciembre 2024',  tema: '🧠', titulo: 'Sesgos: El enemigo de la objetividad',                                url: 'https://x.com/basketmatica/status/1868316339276050613' },
+  { fecha: 'Diciembre 2024',  tema: '🧠', titulo: 'Cómo leer un Boxscore como un profesional',                           url: 'https://x.com/basketmatica/status/1873306066857173274' },
+  { fecha: 'Enero 2025',      tema: '🏀', titulo: '¿Qué es un buen tiro según la estadística?',                          url: 'https://x.com/basketmatica/status/1880950947071062318' },
+  { fecha: 'Febrero 2025',    tema: '💻', titulo: 'Dentro de la NBA: Equipos de Data Analytics',                         url: 'https://x.com/basketmatica/status/1888524759593304212' },
+  { fecha: 'Marzo 2025',      tema: '🧠', titulo: 'RPM vs APM: Midiendo impacto real',                                   url: 'https://x.com/basketmatica/status/1895831369911357904' },
+  { fecha: 'Marzo 2025',      tema: '🛡️', titulo: 'STL% y BLK%: Más allá del Boxscore',                                 url: 'https://x.com/basketmatica/status/1903766115597078846' },
+  { fecha: 'Abril 2025',      tema: '⚕️', titulo: 'Load Management: Prevenir lesiones',                                  url: 'https://x.com/basketmatica/status/1911451593058172966' },
+  { fecha: 'Mayo 2025',       tema: '🧠', titulo: 'Contexto: La métrica invisible',                                       url: 'https://x.com/basketmatica/status/1918994267394941208' },
+  { fecha: 'Mayo 2025',       tema: '🧠', titulo: 'Scouting con Datos: Talento oculto',                                   url: 'https://x.com/basketmatica/status/1926655639939400029' },
+  { fecha: 'Junio 2025',      tema: '🏀', titulo: 'Self-Creation: %AST vs %UAST',                                        url: 'https://x.com/basketmatica/status/1934224789121499286' },
+  { fecha: 'Julio 2025',      tema: '🧠', titulo: 'Analítica en tiempo real: cómo no ahogarte en datos durante el partido', url: 'https://x.com/basketmatica/status/1945130419009073201' },
+  { fecha: 'Julio 2025',      tema: '🛡️', titulo: 'Marcus Smart a los Lakers: un fichaje que los datos explican',        url: 'https://x.com/basketmatica/status/1947333693439094799' },
+  { fecha: 'Julio 2025',      tema: '💻', titulo: 'El Factor 0.4: Matemáticas de los TL',                               url: 'https://x.com/basketmatica/status/1948051932029001903' },
+  { fecha: 'Julio 2025',      tema: '💻', titulo: 'Ampliación del 0.4: ¿Cuándo quedará obsoleto?',                       url: 'https://x.com/basketmatica/status/1950601060768252247' },
+  { fecha: 'Agosto 2025',     tema: '🏀', titulo: 'Triples: Arquetipos de Volumen/Eficacia',                             url: 'https://x.com/basketmatica/status/1954972940706947521' },
+  { fecha: 'Agosto 2025',     tema: '🏀', titulo: 'Hot Hand: ¿Mito o Realidad?',                                         url: 'https://x.com/basketmatica/status/1955694315448971528' },
+  { fecha: 'Septiembre 2025', tema: '🏀', titulo: 'Análisis ofensivo de Santi Aldama en el Eurobasket 2025',             url: 'https://x.com/basketmatica/status/1965112257278628273' },
+  { fecha: 'Septiembre 2025', tema: '🏀', titulo: 'Alperen Sengun: Explosión Estadística',                               url: 'https://x.com/basketmatica/status/1967661236457185524' },
+  { fecha: 'Septiembre 2025', tema: '🧠', titulo: 'Rotaciones Óptimas: Gestión de minutos',                              url: 'https://x.com/basketmatica/status/1970930758949695750' },
+  { fecha: 'Octubre 2025',    tema: '🧠', titulo: 'Win Shares: Aportando victorias',                                     url: 'https://x.com/basketmatica/status/1976006603427254294' },
+  { fecha: 'Octubre 2025',    tema: '🛡️', titulo: 'Glue Guys: Midiendo intangibles',                                    url: 'https://x.com/basketmatica/status/1981436265988857885' },
+  { fecha: 'Octubre 2025',    tema: '🧠', titulo: 'Modelo RAPTOR: Emparejamientos',                                      url: 'https://x.com/basketmatica/status/1983625603812118537' },
+  { fecha: 'Enero 2026',      tema: '💻', titulo: '¿Y si borramos el Boxscore? (Tracking)',                              url: 'https://x.com/i/status/2011688595292074447' },
+  { fecha: 'Enero 2026',      tema: '🏀', titulo: 'Box Creation: la métrica de los creadores',                           url: 'https://x.com/basketmatica/status/2014770253348110381' },
+];
 ---
 <BaseLayout wide title={title} description={description} image={heroImage?.src}>
-  <article>
+  <article class="archivo">
     <h1>{title}</h1>
+
     {heroImage && (
-      <Image class="hero-img" src={heroImage} alt={heroAlt || title} widths={[480, 760, 1080]} sizes="(max-width: 1080px) 100vw, 1080px" />
+      <Image
+        class="hero-img"
+        src={heroImage}
+        alt={heroAlt || title}
+        widths={[480, 760, 1080]}
+        sizes="(max-width: 1080px) 100vw, 1080px"
+      />
     )}
-    <div class="prose"><Content /></div>
+
+    <p class="intro">
+      Recopilación de todos los hilos publicados en <a href="https://x.com/basketmatica">X&nbsp;(@basketmatica)</a>,
+      organizados por tema. Guárdalo en favoritos y úsalo como referencia cuando necesites profundizar en una métrica.
+    </p>
+
+    <!-- Leyenda -->
+    <div class="legend">
+      {LEGEND.map(({ emoji, label }) => (
+        <span class="legend-item"><span aria-hidden="true">{emoji}</span> {label}</span>
+      ))}
+    </div>
+
+    <!-- Controles de filtro -->
+    <div class="arch-controls">
+      <input
+        id="arch-search"
+        type="search"
+        placeholder="Buscar hilo…"
+        aria-label="Buscar en el archivo"
+      />
+      <div class="arch-filters" role="group" aria-label="Filtrar por tema">
+        <button class="filter-btn active" data-filter="" aria-pressed="true">Todos</button>
+        {LEGEND.map(({ emoji }) => (
+          <button class="filter-btn" data-filter={emoji} aria-pressed="false">{emoji}</button>
+        ))}
+      </div>
+    </div>
+
+    <p id="arch-count" class="arch-count" aria-live="polite">{threads.length} hilos</p>
+
+    <!-- Grid de hilos -->
+    <div id="arch-grid" class="arch-grid">
+      {threads.map((t) => (
+        <a
+          class="thread-card"
+          href={t.url}
+          data-tema={t.tema}
+          data-titulo={t.titulo.toLowerCase()}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="thread-emoji" aria-hidden="true">{t.tema}</span>
+          <span class="thread-fecha">{t.fecha}</span>
+          <h2 class="thread-titulo">{t.titulo}</h2>
+          <span class="thread-cta">Ver hilo →</span>
+        </a>
+      ))}
+    </div>
+
+    <p id="arch-empty" class="arch-empty" hidden>No hay resultados para esa búsqueda.</p>
   </article>
 </BaseLayout>
+
+<style>
+  .archivo { padding-block: 1rem 3rem; }
+  .archivo h1 { margin-bottom: 1rem; }
+
+  .intro { color: var(--ink-soft); font-size: 1.05rem; margin: .5rem 0 1.5rem; max-width: 700px; }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem 1.2rem;
+    margin-bottom: 2rem;
+    padding: 1rem 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    font-size: .9rem;
+  }
+  .legend-item { display: flex; align-items: center; gap: .35rem; color: var(--ink-soft); }
+
+  /* Controls */
+  .arch-controls {
+    display: flex;
+    gap: .8rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: .8rem;
+  }
+  #arch-search {
+    flex: 1;
+    min-width: 200px;
+    padding: .55rem .9rem;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: var(--surface);
+    color: var(--ink);
+  }
+  #arch-search:focus { outline: 2px solid var(--accent); border-color: var(--accent); }
+
+  .arch-filters { display: flex; gap: .4rem; flex-wrap: wrap; }
+  .filter-btn {
+    padding: .35rem .8rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--ink-soft);
+    font-size: .88rem;
+    font-family: var(--font-display);
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color .15s, background .15s, color .15s;
+  }
+  .filter-btn:hover { border-color: var(--brand); color: var(--brand); }
+  .filter-btn.active { background: var(--brand); border-color: var(--brand); color: #fff; }
+
+  .arch-count { font-size: .85rem; color: var(--ink-soft); margin: 0 0 1rem; font-family: var(--font-mono); }
+
+  /* Thread grid */
+  .arch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .thread-card {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    padding: 1.1rem 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: border-color .18s, box-shadow .18s;
+  }
+  .thread-card:hover { border-color: var(--brand); box-shadow: var(--shadow); }
+  .thread-card[hidden] { display: none; }
+
+  .thread-emoji { font-size: 1.5rem; line-height: 1; }
+  .thread-fecha { font-family: var(--font-mono); font-size: .76rem; color: var(--ink-soft); margin-top: .15rem; }
+  .thread-titulo { font-family: var(--font-display); font-size: .98rem; font-weight: 600; color: var(--brand); margin: .2rem 0 .3rem; line-height: 1.35; }
+  .thread-cta { font-size: .82rem; font-family: var(--font-display); font-weight: 600; color: var(--accent-600); margin-top: auto; }
+  .thread-card:hover .thread-cta { color: var(--accent); }
+
+  .arch-empty { text-align: center; color: var(--ink-soft); padding: 3rem 0; font-size: 1.05rem; }
+
+  @media (max-width: 500px) {
+    .arch-controls { flex-direction: column; align-items: stretch; }
+    #arch-search { min-width: 0; }
+  }
+</style>
+
+<script>
+  const searchEl = document.getElementById('arch-search') as HTMLInputElement | null;
+  const countEl  = document.getElementById('arch-count') as HTMLParagraphElement | null;
+  const emptyEl  = document.getElementById('arch-empty') as HTMLParagraphElement | null;
+  const cards    = document.querySelectorAll<HTMLElement>('.thread-card');
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+
+  let activeFilter = '';
+
+  function applyFilters() {
+    const q = (searchEl?.value ?? '').toLowerCase().trim();
+    let visible = 0;
+
+    cards.forEach((card) => {
+      const tema   = card.dataset.tema ?? '';
+      const titulo = card.dataset.titulo ?? '';
+      const matchFilter = !activeFilter || tema === activeFilter;
+      const matchSearch = !q || titulo.includes(q);
+      const show = matchFilter && matchSearch;
+      card.hidden = !show;
+      if (show) visible++;
+    });
+
+    if (countEl) countEl.textContent = `${visible} hilo${visible !== 1 ? 's' : ''}`;
+    if (emptyEl) emptyEl.hidden = visible > 0;
+  }
+
+  searchEl?.addEventListener('input', applyFilters);
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+      activeFilter = btn.dataset.filter ?? '';
+      applyFilters();
+    });
+  });
+</script>

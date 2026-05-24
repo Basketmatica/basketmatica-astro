@@ -11,8 +11,8 @@ export const CATEGORIES = [
   'Jugadores',
 ] as const;
 
-const blog = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
+const articulos = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/articulos' }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -40,4 +40,4 @@ const pages = defineCollection({
     }),
 });
 
-export const collections = { blog, pages };
+export const collections = { articulos, pages };

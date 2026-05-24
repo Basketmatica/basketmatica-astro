@@ -18,7 +18,7 @@ En el link de debajo, podrás acceder al **Generador de Reportes de la NBA** de 
 
 Esta herramienta aún se encuentra en mejora continua. Gracias por tu comprensión.
 
-### **[ACCEDE AQUÍ](/generador-reportes-nba/)**
+### **[ACCEDE AQUÍ](/herramientas/generador-reportes-nba/)**
 
 *Ejemplo de reporte generado:*
 

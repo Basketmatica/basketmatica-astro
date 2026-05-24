@@ -1,0 +1,37 @@
+---
+import { getEntry, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const entry = await getEntry('articulos', 'glosario-de-basketball-analytics');
+if (!entry) throw new Error('Entrada del glosario no encontrada');
+
+const { Content } = await render(entry);
+const { title, description, heroImage, heroAlt } = entry.data;
+---
+<BaseLayout title={title} description={description} image={heroImage?.src}>
+  <article class="glosario">
+    <p class="post-meta"><a href="/articulos/">Artículos</a></p>
+
+    {heroImage && (
+      <Image
+        class="hero-img"
+        src={heroImage}
+        alt={heroAlt || title}
+        widths={[480, 760, 1080]}
+        sizes="(max-width: 760px) 100vw, 760px"
+      />
+    )}
+
+    <h1>{title}</h1>
+
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .glosario { max-width: 760px; margin-inline: auto; }
+  .glosario h1 { margin-top: 1.2rem; }
+</style>

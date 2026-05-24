@@ -1,0 +1,23 @@
+---
+interface Props {
+  value: string | number;
+  label?: string;
+  unit?: string;
+  class?: string;
+}
+const { value, label, unit, class: className } = Astro.props;
+---
+<span class:list={["stat-wrap", className]}>
+  <span class="stat">{value}{unit}</span>
+  {label && <span class="stat-label">{label}</span>}
+</span>
+
+<style>
+  .stat-wrap { display: inline-flex; flex-direction: column; line-height: 1.1; }
+  .stat { font-size: 1.4em; font-weight: 600; color: var(--brand); }
+  .stat-label {
+    font-family: var(--font-display);
+    font-size: .72em; color: var(--ink-soft);
+    text-transform: uppercase; letter-spacing: .04em;
+  }
+</style>

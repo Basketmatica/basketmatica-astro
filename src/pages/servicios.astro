@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT_EMAIL } from '../consts';
+
+const title = 'Servicios de análisis de datos';
+const description = 'Ayudo a clubes y entidades deportivas a tomar decisiones objetivas basadas en datos: modelos predictivos, scouting automatizado y análisis de eficiencia.';
+
+const services = [
+  {
+    icon: '🤖',
+    title: 'Modelos predictivos a medida',
+    desc: 'Predicción de rendimiento, proyección de jugadores y simulación de escenarios. Modelos entrenados sobre los datos reales de tu equipo, diseñados como Ingeniero de IA.',
+  },
+  {
+    icon: '📋',
+    title: 'Reportes automatizados de scouting',
+    desc: 'Scripts en Python que generan informes de rival o de jugador en segundos. Ahorra horas de trabajo a tu staff técnico con datos actualizados y listos para usar.',
+  },
+  {
+    icon: '📊',
+    title: 'Análisis de eficiencia y rotaciones',
+    desc: 'Lineup analysis, métricas de impacto real y evaluación de combinaciones de quintetos. Decisiones de rotación respaldadas por evidencia estadística.',
+  },
+];
+
+const forWho = [
+  { icon: '🏀', label: 'Clubes de baloncesto (ACB, LF, EBA, divisiones regionales)' },
+  { icon: '🎽', label: 'Cuerpos técnicos que quieren ir más allá del box score' },
+  { icon: '🏢', label: 'Organizaciones y federaciones deportivas' },
+  { icon: '📰', label: 'Medios y periodistas que necesitan datos rigurosos' },
+];
+---
+<BaseLayout title={title} description={description}>
+  <article class="servicios">
+
+    <!-- Header -->
+    <section class="srv-hero">
+      <p class="eyebrow">Análisis profesional · Basketmática</p>
+      <h1>Decisiones basadas en evidencia</h1>
+      <p class="srv-sub">
+        Más allá de la divulgación, ayudo a equipos y organizaciones a tomar decisiones
+        objetivas. Sin intuición de barra, sin hojas Excel interminables: datos reales,
+        modelos robustos y resultados accionables.
+      </p>
+    </section>
+
+    <!-- Servicios -->
+    <section class="srv-services">
+      <h2>Qué ofrezco</h2>
+      <div class="srv-grid">
+        {services.map((s) => (
+          <div class="srv-card">
+            <span class="srv-icon" aria-hidden="true">{s.icon}</span>
+            <h3 class="srv-title">{s.title}</h3>
+            <p class="srv-desc">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Para quién -->
+    <section class="srv-for">
+      <h2>¿Para quién?</h2>
+      <ul class="srv-for-list">
+        {forWho.map(({ icon, label }) => (
+          <li><span aria-hidden="true">{icon}</span> {label}</li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- CTA -->
+    <section class="srv-cta">
+      <h2>Hablemos</h2>
+      <p>
+        Si tienes un reto analítico concreto o simplemente quieres explorar qué es posible con
+        los datos de tu equipo, escríbeme. La primera conversación no tiene coste.
+      </p>
+      <div class="srv-cta-actions">
+        <a href={`mailto:${CONTACT_EMAIL}`} class="btn-primary">Escribirme un email</a>
+        <a href="https://x.com/basketmatica" class="btn-outline" target="_blank" rel="noopener">Contactar en X</a>
+      </div>
+      <p class="srv-cta-note">También puedes ver mi trabajo y metodología en <a href="/articulos/">los artículos del blog</a>.</p>
+    </section>
+
+  </article>
+</BaseLayout>
+
+<style>
+  .servicios { max-width: 760px; margin-inline: auto; padding-block: 1rem 3rem; }
+
+  /* Hero */
+  .srv-hero { margin-bottom: 3rem; }
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: .76rem;
+    font-weight: 700;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--accent-600);
+    margin: 0 0 .8rem;
+  }
+  .srv-hero h1 { margin: 0 0 .8rem; }
+  .srv-sub {
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin: 0;
+    max-width: 600px;
+  }
+
+  /* Services grid */
+  .srv-services { margin-bottom: 3rem; }
+  .srv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+  }
+  .srv-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.5rem 1.25rem;
+    box-shadow: var(--shadow);
+  }
+  .srv-icon { font-size: 2rem; display: block; margin-bottom: .8rem; line-height: 1; }
+  .srv-title { font-size: 1.05rem; margin: 0 0 .5rem; color: var(--brand); }
+  .srv-desc { font-size: .93rem; color: var(--ink-soft); line-height: 1.6; margin: 0; }
+
+  /* For whom */
+  .srv-for { margin-bottom: 3rem; }
+  .srv-for-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+  }
+  .srv-for-list li {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    font-size: 1rem;
+    color: var(--ink);
+    padding: .7rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  .srv-for-list li span { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* CTA */
+  .srv-cta {
+    background: var(--court);
+    border-radius: var(--radius);
+    padding: 2.5rem 2rem;
+    color: var(--court-ink);
+  }
+  .srv-cta h2 { color: #fff; margin-top: 0; }
+  .srv-cta p { color: var(--court-ink); opacity: .85; line-height: 1.65; margin: 0 0 1.5rem; }
+  .srv-cta-actions { display: flex; gap: .8rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: .95rem;
+    padding: .7rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background .2s;
+  }
+  .btn-primary:hover { background: var(--accent-600); color: #fff; }
+
+  .btn-outline {
+    display: inline-block;
+    border: 1.5px solid var(--court-ink);
+    color: var(--court-ink);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: .95rem;
+    padding: .7rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background .2s, color .2s;
+  }
+  .btn-outline:hover { background: var(--court-ink); color: var(--court); }
+
+  .srv-cta-note { font-size: .88rem; color: var(--court-ink); opacity: .7; margin: 0; }
+  .srv-cta-note a { color: var(--accent); }
+  .srv-cta-note a:hover { color: #fff; }
+</style>
