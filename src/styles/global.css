@@ -48,7 +48,7 @@ h3 { font-size: 1.25rem; margin: 1.8rem 0 .6rem; }
 }
 .site-header .inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .9rem; }
 .brand { text-decoration: none; display: inline-flex; align-items: center; line-height: 1; }
-.brand img { height: 40px; width: 40px; }
+.brand img { height: 40px; width: 40px; mix-blend-mode: multiply; }
 .nav { display: flex; flex-wrap: wrap; gap: 1rem; font-size: .95rem; }
 .nav a { color: var(--ink-soft); text-decoration: none; font-weight: 500; font-family: var(--font-display); }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--brand); }
