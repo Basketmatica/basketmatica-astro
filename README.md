@@ -24,10 +24,10 @@ npm run preview   # sirve dist/ localmente
 Análisis · Casos de Uso · Equipos · Eventos · Herramientas · Jugadores → `/categoria/<slug>/`.
 
 ### Generador de Reportes NBA
-Herramienta interactiva en `/generador-reportes-nba/` ([src/pages/generador-reportes-nba.astro](src/pages/generador-reportes-nba.astro)).
+Herramienta interactiva en `/herramientas/generador-reportes-nba/` ([src/pages/herramientas/generador-reportes-nba.astro](src/pages/herramientas/generador-reportes-nba.astro)).
 El formulario llama a un backend externo en Render (`https://reportgeneratornba.onrender.com`) que
-genera el PDF; el front es estático. La entrada del blog `/2025/06/20/generador-de-reportes-de-la-nba/`
-enlaza a esta página.
+genera el PDF; el front es estático. Esta es la URL canónica: las antiguas
+`/generador-reportes-nba/` y `/2025/06/20/generador-de-reportes-de-la-nba/` redirigen aquí.
 
 ## Migración (one-off)
 

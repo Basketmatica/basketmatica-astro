@@ -16,6 +16,7 @@ export default defineConfig({
     '/categoria/herramientas/': '/articulos/herramientas/',
     '/categoria/jugadores/':   '/articulos/jugadores/',
     '/generador-reportes-nba/': '/herramientas/generador-reportes-nba/',
+    '/2025/06/20/generador-de-reportes-de-la-nba/': '/herramientas/generador-reportes-nba/',
     '/2024/09/08/glosario-de-basketball-analytics/': '/glosario/',
   },
   trailingSlash: 'always',
