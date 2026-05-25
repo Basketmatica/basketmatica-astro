@@ -7,10 +7,9 @@
     Cada mes, un análisis de datos que no encontrarás en ningún otro sitio.
     Para aficionados, entrenadores y periodistas que quieren entender el juego con datos.
   </p>
-  <div class="beehiiv-embed">
-    <script is:inline async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="5343eb1f-ae99-4ffd-86de-e70d2637e11f"></script>
-    <script is:inline type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>
-  </div>
+  <!-- El form lo inyecta BaseLayout en cada astro:page-load (ver loadBeehiiv) para que
+       reaparezca tras navegar con View Transitions. -->
+  <div class="beehiiv-embed"></div>
   <p class="newsletter-note">Gratis. Cancela cuando quieras.</p>
 </section>
 
@@ -52,7 +51,11 @@
   .beehiiv-embed {
     max-width: 480px;
     margin: 0 auto 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
+  .beehiiv-embed :global(iframe) { max-width: 100%; }
 
   .newsletter-note { font-size: .84rem; color: var(--ink-soft); margin: 0; }
 

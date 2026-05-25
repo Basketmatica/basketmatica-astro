@@ -76,5 +76,25 @@ const ogImage = image ? new URL(image, Astro.site) : undefined;
       <slot />
     </main>
     <Footer />
+    <script>
+      // Inyecta el form de Beehiiv en cada carga de página. astro:page-load dispara en la
+      // carga inicial y tras cada navegación SPA (ClientRouter), y el listener vive en
+      // `document`, que persiste entre swaps. Crear el <script> vía createElement garantiza
+      // que se ejecute (los scripts insertados por el swap del DOM no se ejecutan solos).
+      function loadBeehiiv() {
+        const embed = document.querySelector('.beehiiv-embed');
+        if (!embed || embed.querySelector('iframe, script')) return;
+        const loader = document.createElement('script');
+        loader.src = 'https://subscribe-forms.beehiiv.com/v3/loader.js';
+        loader.async = true;
+        loader.setAttribute('data-beehiiv-form', '5343eb1f-ae99-4ffd-86de-e70d2637e11f');
+        embed.appendChild(loader);
+        const attribution = document.createElement('script');
+        attribution.src = 'https://subscribe-forms.beehiiv.com/attribution.js';
+        attribution.async = true;
+        embed.appendChild(attribution);
+      }
+      document.addEventListener('astro:page-load', loadBeehiiv);
+    </script>
   </body>
 </html>

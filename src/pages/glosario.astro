@@ -34,4 +34,15 @@ const { title, description, heroImage, heroAlt } = entry.data;
 <style>
   .glosario { max-width: 760px; margin-inline: auto; }
   .glosario h1 { margin-top: 1.2rem; }
+
+  /* Nombre de cada métrica: más grande y separado para diferenciarlo bien de
+     definición/fórmula/etc. Se usa :global porque el contenido viene de <Content />. */
+  .glosario :global(.prose h4) {
+    font-size: 1.45rem;
+    margin-top: 2.4rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--line);
+  }
+  /* Fórmulas: el blanco se funde con el fondo crema (mismo truco que el logo). */
+  .glosario :global(.prose img) { mix-blend-mode: multiply; }
 </style>

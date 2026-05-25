@@ -24,7 +24,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Evaluar el enfoque ofensivo de un jugador o equipo, especialmente en comparación con su tendencia a lanzar desde el perímetro.
 
-**Ampliación/Aplicación:** [https://basketmatica.com/2024/06/13/como-se-corono-lebron-james-como-maximo-anotador-de-la-historia/#:~:text=Ratios%3A,de%2010%20temporadas).](/2024/06/13/como-se-corono-lebron-james-como-maximo-anotador-de-la-historia/#:~:text=Ratios%3A,de%2010%20temporadas\).)
+[**Ampliación/Aplicación**](/2024/06/13/como-se-corono-lebron-james-como-maximo-anotador-de-la-historia/#:~:text=Ratios%3A,de%2010%20temporadas\).)
 
 #### **3 Point Rate (3PR)**
 
@@ -36,7 +36,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Analizar la dependencia de un jugador o equipo en los tiros de larga distancia y su estrategia ofensiva.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1818345457757688107](https://x.com/basketmatica/status/1818345457757688107)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1818345457757688107)
 
 #### **Adjusted Plus-Minus (APM)**
 
@@ -44,7 +44,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Medir el valor verdadero de un jugador más allá de su entorno, proporcionando una evaluación más justa de su impacto en el juego.
 
-**Ampliación/Aplicación:** [](https://x.com/basketmatica/status/1828039347926335824)[https://x.com/basketmatica/status/1828039347926335824](https://x.com/basketmatica/status/1828039347926335824)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1828039347926335824)
 
 #### **Assist Percentage (AST%)**
 
@@ -56,7 +56,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Evaluar la capacidad de un jugador para crear oportunidades de anotación para sus compañeros, reflejando su rol en la distribución del juego. También se puede calcular para el equipo.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1818345462295908558](https://x.com/basketmatica/status/1818345462295908558)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1818345462295908558)
 
 #### Block Percentage (BLK%)
 
@@ -68,7 +68,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para:** Evaluar la capacidad de un jugador como protector del aro más allá del número total de tapones. Permite comparar jugadores con diferentes roles y tiempos de juego, identificando a aquellos que realmente disuaden intentos de tiro cerca del aro.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1903766101458129336](https://x.com/basketmatica/status/1903766101458129336)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1903766101458129336)
 
 #### **Bottom Up Metrics**
 
@@ -76,7 +76,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Analizar el rendimiento individual de un jugador de manera aislada, sin considerar el contexto del equipo.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1816082554312609954](https://x.com/basketmatica/status/1816082554312609954)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1816082554312609954)
 
 #### **Defensive Plus-Minus (DBPM)**
 
@@ -94,7 +94,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Esta métrica es crucial para comprender la eficacia de un jugador o equipo para evitar que sus oponentes anoten, lo que la hace valiosa a la hora de analizar los enfrentamientos defensivos y la defensa general del equipo. Además, al medirse cada 100 posesiones, es ideal para comparar con otros equipos o jugadores.
 
-**Ampliación/Aplicación**: [https://x.com/basketmatica/status/1848769588194091220](https://x.com/basketmatica/status/1848769588194091220)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1848769588194091220)
 
 #### **Defensive Rebound Percentage (DRB%)**
 
@@ -106,7 +106,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Evaluar la capacidad de un jugador o equipo para asegurar posesiones después de que el oponente falle un tiro.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1809359563503857952](https://x.com/basketmatica/status/1809359563503857952)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1809359563503857952)
 
 #### **Defensive Turnover Percentage (DTOV%)**
 
@@ -118,7 +118,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Evaluar la efectividad defensiva de un jugador o equipo en términos de generar pérdidas de balón del rival.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1809359563503857952](https://x.com/basketmatica/status/1809359563503857952)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1809359563503857952)
 
 #### **Dunk Score**
 
@@ -126,7 +126,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Evaluar de manera objetiva la calidad de un mate, enriqueciendo las narrativas alrededor del juego y desglosando una acción tan compleja como es un mate en parámetros analizables (salto, estilo, potencia y contexto de los defensores).
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1863192053871444032](https://x.com/basketmatica/status/1863192053871444032)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1863192053871444032)
 
 #### **Effective Field Goal Percentage (eFG%)**
 
@@ -138,7 +138,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Comparar la eficiencia de tiro considerando el valor adicional de los triples, ofreciendo una evaluación más precisa que el porcentaje de tiro simple.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1809359544394420729](https://x.com/basketmatica/status/1809359544394420729)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1809359544394420729)
 
 #### **Eight Factors**
 
@@ -146,7 +146,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Evaluar de manera integral el rendimiento de un equipo, considerando tanto su ataque como su defensa.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1809359563503857952](https://x.com/basketmatica/status/1809359563503857952)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1809359563503857952)
 
 #### FGM %AST
 
@@ -158,7 +158,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para:** Medir cuánto del ataque de un jugador o equipo depende de la creación colectiva y del movimiento de balón. Un valor alto suele indicar buen juego en equipo y circulación de balón efectiva.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1934224789121499286](https://x.com/basketmatica/status/1934224789121499286)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1934224789121499286)
 
 #### FGM %UAST
 
@@ -170,7 +170,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para:** Evaluar la capacidad de creación individual de un jugador o equipo. Un valor alto refleja mayor volumen de jugadas de uno contra uno, creación propia o situaciones de aclarado (ISO).
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1934224789121499286](https://x.com/basketmatica/status/1934224789121499286)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1934224789121499286)
 
 #### **Four Factors**
 
@@ -178,7 +178,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Analizar las áreas críticas que determinan el éxito de un equipo en un partido. Entre paréntesis en la definición figuran los pesos aproximados que Dean Oliver asignaba a cada factor.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1809359535561216002](https://x.com/basketmatica/status/1809359535561216002)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1809359535561216002)
 
 #### **Free Throw Rate (FTR)**
 
@@ -190,7 +190,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Evaluar la capacidad de un jugador o equipo para generar oportunidades en la línea de tiros libres, lo que puede ser clave en partidos apretados.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1809359551227113715](https://x.com/basketmatica/status/1809359551227113715)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1809359551227113715)
 
 #### **Net Rating (NetRtg)**
 
@@ -202,7 +202,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Evaluar de forma integral el rendimiento de un equipo, combinando su eficiencia ofensiva y defensiva en una sola métrica. Al estar normalizada por 100 posesiones, permite comparar fácilmente equipos con diferentes ritmos de juego.
 
-**Ampliación/Aplicación**: [https://x.com/basketmatica/status/1918994269546656114](https://x.com/basketmatica/status/1918994269546656114)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1918994269546656114)
 
 #### **Offensive Plus-Minus (OBPM)**
 
@@ -220,7 +220,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Es particularmente útil para comparar el rendimiento ofensivo entre diferentes jugadores o equipos, ya que se ajusta el número de posesiones por fines comparativos. Se utilizan para identificar qué jugadores o alineaciones están contribuyendo más a la producción ofensiva del equipo.
 
-**Ampliación/Aplicación**: [https://x.com/basketmatica/status/1848769588194091220](https://x.com/basketmatica/status/1848769588194091220)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1848769588194091220)
 
 #### **Offensive Rebound Percentage (ORB%)**
 
@@ -232,7 +232,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Evaluar la capacidad de un equipo o jugador para extender posesiones y crear segundas oportunidades de anotación.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1809359551227113715](https://x.com/basketmatica/status/1809359551227113715)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1809359551227113715)
 
 #### **PACE**
 
@@ -244,7 +244,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Analizar la dinámica de un equipo en cuanto a su estilo de juego, ya sea que prefiera un ritmo más rápido o uno más controlado.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1818345459838067053](https://x.com/basketmatica/status/1818345459838067053)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1818345459838067053)
 
 #### **Player Efficiency Rating (PER)**
 
@@ -252,7 +252,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Evaluar de manera completa la contribución de un jugador, yendo más allá de las métricas de rendimiento tradicionales. Además, permite comparar jugadores de diferentes posiciones y roles, ya que ajusta por minutos jugados y las estadísticas promedio de la NBA.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1838153088521142778](https://x.com/basketmatica/status/1838153088521142778)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1838153088521142778)
 
 #### **Player Impact Estimate (PIE)**
 
@@ -260,7 +260,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Evaluar la influencia general de un jugador en el resultado de un partido, considerando tanto su producción ofensiva como defensiva.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1816082569412137264](https://x.com/basketmatica/status/1816082569412137264)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1816082569412137264)
 
 #### **Plus-Minus (+/-)**
 
@@ -272,7 +272,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 ![](../../assets/blog/glosario-de-basketball-analytics/image-13.png)
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1828039339936215291](https://x.com/basketmatica/status/1828039339936215291)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1828039339936215291)
 
 #### **Points Per Attempt (PPA)**
 
@@ -284,7 +284,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Medir la eficiencia en la anotación de un jugador, comparando cuántos puntos obtiene en relación a la cantidad de tiros que realiza.
 
-**Ampliación/Aplicación:** [https://basketmatica.com/2024/06/13/como-se-corono-lebron-james-como-maximo-anotador-de-la-historia/#:~:text=Ratios%3A,de%2010%20temporadas).](/2024/06/13/como-se-corono-lebron-james-como-maximo-anotador-de-la-historia/#:~:text=Ratios%3A,de%2010%20temporadas\).)
+[**Ampliación/Aplicación**](/2024/06/13/como-se-corono-lebron-james-como-maximo-anotador-de-la-historia/#:~:text=Ratios%3A,de%2010%20temporadas\).)
 
 #### **Posesiones (POS)**
 
@@ -296,7 +296,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Evaluar el rendimiento de un equipo o jugador en relación con las oportunidades que tienen para anotar. Permite comparar el ritmo, la eficiencia ofensiva y defensiva de los equipos, ya que la posesión determina las oportunidades disponibles para anotar puntos. Importante anotar que un rebote ofensivo no genera una nueva posesión, sencillamente extiende la actual (por ello se restan los rebotes ofensivos en la fórmula).
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1848769578127806966](https://x.com/basketmatica/status/1848769578127806966)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1848769578127806966)
 
 #### **RAPTOR**
 
@@ -304,7 +304,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Evaluar el impacto global o contextualizado de un jugador en ambos extremos de la cancha. Permite analizar ajustes de rotación, valoraciones comparativas históricas o proyectadas y detección de ventajas en emparejamientos ofensivos y defensivos.
 
-**Ampliación/Aplicación**: [https://x.com/basketmatica/status/1983625603812118537](https://x.com/basketmatica/status/1983625603812118537)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1983625603812118537)
 
 #### **Real Plus-Minus (RPM)**
 
@@ -312,7 +312,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Ofrecer una estimación más precisa del verdadero valor de un jugador, separando su impacto del de los demás en la cancha.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1828039350086463563](https://x.com/basketmatica/status/1828039350086463563)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1828039350086463563)
 
 #### **Shot Making Efficiency**
 
@@ -320,7 +320,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para:** Evaluar con precisión la efectividad de un jugador, ajustando los resultados según el promedio de intentos de la liga. Esto permite minimizar sesgos derivados de tamaños de muestra pequeños y tener en cuenta múltiples factores que influyen en la calidad del tiro.
 
-**Amplicación/Aplicación:** [https://x.com/basketmatica/status/1880950972861591804](https://x.com/basketmatica/status/1880950972861591804)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1880950972861591804)
 
 #### **Steal Percentage (STL%)**
 
@@ -332,7 +332,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para:** Determinar qué jugadores fuerzan más pérdidas en defensa de manera eficiente, sin depender únicamente del conteo total de robos. Es clave para identificar defensores disruptivos en el perímetro o en líneas de pase, ajustando las comparaciones según el contexto de juego.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1903766108357664824](https://x.com/basketmatica/status/1903766108357664824)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1903766108357664824)
 
 #### **Top Down Metrics**
 
@@ -340,7 +340,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Analizar cómo el rendimiento individual de un jugador se integra en el éxito global del equipo, proporcionando una visión global de su impacto.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1816082554312609954](https://x.com/basketmatica/status/1816082554312609954)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1816082554312609954)
 
 #### **True Shooting Percentage (TS%)**
 
@@ -352,7 +352,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Evaluar la eficiencia total en el tiro, integrando tiros de campo, triples y tiros libres, lo que permite comparar jugadores con diferentes estilos de anotación.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1819680396662984860](https://x.com/basketmatica/status/1819680396662984860)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1819680396662984860)
 
 #### **Turnover Percentage (TOV%)**
 
@@ -364,7 +364,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Evaluar la seguridad con la que un jugador o equipo maneja el balón y cómo influye en la eficiencia de las posesiones de su equipo.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1809359548433723871](https://x.com/basketmatica/status/1809359548433723871)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1809359548433723871)
 
 #### **Usage Percentage (USG%)**
 
@@ -376,7 +376,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Ver la cantidad de posesiones en la que un jugador es el "foco" y detectar qué jugadores tienen más protagonismo en términos de finalización de jugadas ofensivas.
 
-**Ampliación/Aplicación**: [https://x.com/basketmatica/status/1838153083026592179](https://x.com/basketmatica/status/1838153083026592179)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1838153083026592179)
 
 #### **Valoración (VAL)**
 
@@ -388,7 +388,7 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Proporcionar una visión rápida y comprensible del rendimiento total de un jugador en un partido, aunque no ajusta para el contexto o la calidad de la competición.
 
-**Ampliación/Aplicación:** [https://x.com/basketmatica/status/1804495718205247706](https://x.com/basketmatica/status/1804495718205247706)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1804495718205247706)
 
 #### **Win Shares (WS)**
 
@@ -396,4 +396,4 @@ Este glosario se actualiza regularmente con nuevos términos que vamos explorand
 
 **Es útil para**: Evaluar el impacto global de los jugadores más allá de las estadísticas tradicionales, identificar quienes contribuyen al éxito del equipo y orientar las decisiones de los entrenadores en la confección de la plantilla, las rotaciones y el desarrollo de los jugadores.
 
-**Ampliación/Aplicación**: [https://x.com/basketmatica/status/1976006603427254294](https://x.com/basketmatica/status/1976006603427254294)
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/1976006603427254294)
