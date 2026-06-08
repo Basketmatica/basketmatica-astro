@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Reconstruye cada lunes (06:00 UTC) para rotar la "Métrica de la semana".
+  # Los cron de GitHub Actions van en UTC y pueden retrasarse unos minutos.
+  schedule:
+    - cron: '0 6 * * 1'
 
 permissions:
   contents: read

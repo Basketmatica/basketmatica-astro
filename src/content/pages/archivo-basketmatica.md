@@ -50,3 +50,4 @@ Este archivo se actualiza con frecuencia, así que guárdalo en favoritos y vuel
 | Octubre 2025 | 🧠 | Modelo RAPTOR: Emparejamientos | \[[Ver Hilo](https://x.com/basketmatica/status/1983625603812118537)\] |
 | Enero 2026 | 💻 | ¿Y si borramos el Boxscore? (Tracking) | \[[Ver Hilo](https://x.com/i/status/2011688595292074447)\] |
 | Enero 2026 | 🏀 | Box Creation: la métrica de los creadores | \[[Ver Hilo](https://x.com/basketmatica/status/2014770253348110381)\] |
+| Junio 2026 | 🛡️ | DFG%: La defensa al tiro rival | \[[Ver Hilo](https://x.com/basketmatica/status/2062429183570239647)\] |

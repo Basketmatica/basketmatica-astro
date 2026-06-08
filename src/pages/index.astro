@@ -5,11 +5,20 @@ import ArticleCard from '../components/ArticleCard.astro';
 import MetricOfWeek from '../components/MetricOfWeek.astro';
 import NewsletterCTA from '../components/NewsletterCTA.astro';
 import HexDivider from '../components/HexDivider.astro';
+import { metricasSemana } from '../data/metricas-semana';
 import { SITE_DESCRIPTION } from '../consts';
 
 const posts = (await getCollection('articulos', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
+
+// Métrica de la semana: rota una por semana según la fecha del build.
+// ANCHOR es el lunes en el que el índice 0 (Free Throw Rate) está activo.
+const ANCHOR = Date.UTC(2026, 5, 8);
+const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+const semanas = Math.floor((Date.now() - ANCHOR) / WEEK_MS);
+const indiceMetrica = ((semanas % metricasSemana.length) + metricasSemana.length) % metricasSemana.length;
+const metrica = metricasSemana[indiceMetrica];
 
 const heroDesc = 'Estadística avanzada, modelos predictivos y análisis de IA aplicados al baloncesto que te gusta. Código y números detrás del juego.';
 ---
@@ -90,11 +99,9 @@ const heroDesc = 'Estadística avanzada, modelos predictivos y análisis de IA a
 
   <!-- ===== Métrica de la semana ===== -->
   <MetricOfWeek
-    value="1.15"
-    unit="pts/pos"
-    label="El umbral ofensivo élite en la NBA"
-    context="Los ataques que superan 1.15 puntos por posesión se sitúan en el top-25% de la liga. Rotaciones, tiro de tres y transición rápida son las palancas que separan la mediocridad de los playoffs."
-    source="NBA Stats · Temporada 2023-24"
+    name={metrica.name}
+    acronym={metrica.acronym}
+    definition={metrica.definition}
   />
 
   <!-- ===== Newsletter ===== -->
