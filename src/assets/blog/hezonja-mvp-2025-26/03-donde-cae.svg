@@ -1,0 +1,86 @@
+<svg viewBox="0 0 1000 680" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Posiciones de Hezonja en los rankings de la Liga Endesa: 3o en puntos, 8o en triples y rebote defensivo, 10o en tiros libres, 12o en mas-menos, 15o en tiros de dos, 18o en minutos y 31o en recuperaciones.">
+  <style>
+    .serif{font-family:Georgia,'Times New Roman',serif}
+    .mono{font-family:'Courier New',ui-monospace,monospace}
+    .sans{font-family:'Helvetica Neue',Arial,sans-serif}
+  </style>
+  <rect width="1000" height="680" fill="#F5F0E5"/>
+
+  <text class="mono" x="90" y="66" font-size="15" letter-spacing="3" fill="#7A7064">LIGA ENDESA 2025-26 · POSICIÓN EN LOS RANKINGS</text>
+  <text class="serif" x="90" y="116" font-size="40" fill="#2A2622">Dónde cae</text>
+  <rect x="92" y="134" width="64" height="3" fill="#C05A37"/>
+
+  <!-- legend -->
+  <circle cx="100" cy="160" r="7" fill="#3F6B4A"/>
+  <text class="sans" x="114" y="165" font-size="13" fill="#7A7064">Producción y eficiencia</text>
+  <circle cx="330" cy="160" r="7" fill="#C05A37"/>
+  <text class="sans" x="344" y="165" font-size="13" fill="#7A7064">Rol y uso</text>
+
+  <!-- guide + dots -->
+  <line x1="340" y1="205" x2="370" y2="205" stroke="#D8CFBC" stroke-width="1"/>
+  <text class="serif" x="90" y="210" font-size="19" fill="#2A2622">Puntos</text>
+  <text class="mono" x="300" y="210" font-size="14" text-anchor="end" fill="#7A7064">17,5</text>
+  <circle cx="370" cy="205" r="9" fill="#3F6B4A"/>
+  <text class="mono" x="388" y="210" font-size="15" fill="#3F6B4A">3º</text>
+
+  <line x1="340" y1="253" x2="444" y2="253" stroke="#D8CFBC" stroke-width="1"/>
+  <text class="serif" x="90" y="258" font-size="19" fill="#2A2622">Triple anotado</text>
+  <text class="mono" x="300" y="258" font-size="14" text-anchor="end" fill="#7A7064">2,1</text>
+  <circle cx="444" cy="253" r="9" fill="#3F6B4A"/>
+  <text class="mono" x="462" y="258" font-size="15" fill="#3F6B4A">8º</text>
+
+  <line x1="340" y1="301" x2="444" y2="301" stroke="#D8CFBC" stroke-width="1"/>
+  <text class="serif" x="90" y="306" font-size="19" fill="#2A2622">Rebote defensivo</text>
+  <text class="mono" x="300" y="306" font-size="14" text-anchor="end" fill="#7A7064">4,0</text>
+  <circle cx="444" cy="301" r="9" fill="#3F6B4A"/>
+  <text class="mono" x="462" y="306" font-size="15" fill="#3F6B4A">8º</text>
+
+  <line x1="340" y1="349" x2="474" y2="349" stroke="#D8CFBC" stroke-width="1"/>
+  <text class="serif" x="90" y="354" font-size="19" fill="#2A2622">Tiro libre (int.)</text>
+  <text class="mono" x="300" y="354" font-size="14" text-anchor="end" fill="#7A7064">4,0</text>
+  <circle cx="474" cy="349" r="9" fill="#3F6B4A"/>
+  <text class="mono" x="492" y="354" font-size="15" fill="#3F6B4A">10º</text>
+
+  <line x1="340" y1="397" x2="504" y2="397" stroke="#D8CFBC" stroke-width="1"/>
+  <text class="serif" x="90" y="402" font-size="19" fill="#2A2622">+/-</text>
+  <text class="mono" x="300" y="402" font-size="14" text-anchor="end" fill="#7A7064">+5,4</text>
+  <circle cx="504" cy="397" r="9" fill="#3F6B4A"/>
+  <text class="mono" x="522" y="402" font-size="15" fill="#3F6B4A">12º</text>
+
+  <line x1="340" y1="445" x2="548" y2="445" stroke="#D8CFBC" stroke-width="1"/>
+  <text class="serif" x="90" y="450" font-size="19" fill="#2A2622">Tiro de 2 anotado</text>
+  <text class="mono" x="300" y="450" font-size="14" text-anchor="end" fill="#7A7064">3,5</text>
+  <circle cx="548" cy="445" r="9" fill="#3F6B4A"/>
+  <text class="mono" x="566" y="450" font-size="15" fill="#3F6B4A">15º</text>
+
+  <line x1="340" y1="493" x2="593" y2="493" stroke="#D8CFBC" stroke-width="1"/>
+  <text class="serif" x="90" y="498" font-size="19" fill="#2A2622">Minutos</text>
+  <text class="mono" x="300" y="498" font-size="14" text-anchor="end" fill="#7A7064">23:32</text>
+  <circle cx="593" cy="493" r="9" fill="#C05A37"/>
+  <text class="mono" x="611" y="498" font-size="15" fill="#C05A37">18º</text>
+
+  <line x1="340" y1="541" x2="786" y2="541" stroke="#D8CFBC" stroke-width="1"/>
+  <text class="serif" x="90" y="546" font-size="19" fill="#2A2622">Recuperaciones</text>
+  <text class="mono" x="300" y="546" font-size="14" text-anchor="end" fill="#7A7064">1,0</text>
+  <circle cx="786" cy="541" r="9" fill="#C05A37"/>
+  <text class="mono" x="804" y="546" font-size="15" fill="#C05A37">31º</text>
+
+  <!-- axis -->
+  <line x1="340" y1="585" x2="920" y2="585" stroke="#C9BFAC" stroke-width="1.5"/>
+  <line x1="340" y1="582" x2="340" y2="590" stroke="#C9BFAC"/>
+  <line x1="474" y1="582" x2="474" y2="590" stroke="#C9BFAC"/>
+  <line x1="623" y1="582" x2="623" y2="590" stroke="#C9BFAC"/>
+  <line x1="771" y1="582" x2="771" y2="590" stroke="#C9BFAC"/>
+  <line x1="920" y1="582" x2="920" y2="590" stroke="#C9BFAC"/>
+  <text class="mono" x="340" y="606" font-size="12" text-anchor="middle" fill="#9A8F7E">1</text>
+  <text class="mono" x="474" y="606" font-size="12" text-anchor="middle" fill="#9A8F7E">10</text>
+  <text class="mono" x="623" y="606" font-size="12" text-anchor="middle" fill="#9A8F7E">20</text>
+  <text class="mono" x="771" y="606" font-size="12" text-anchor="middle" fill="#9A8F7E">30</text>
+  <text class="mono" x="920" y="606" font-size="12" text-anchor="middle" fill="#9A8F7E">40</text>
+  <text class="sans" x="340" y="624" font-size="12" fill="#9A8F7E">← mejor puesto</text>
+  <text class="sans" x="920" y="624" font-size="12" text-anchor="end" fill="#9A8F7E">peor puesto →</text>
+
+  <line x1="90" y1="644" x2="920" y2="644" stroke="#DCD3C2" stroke-width="1"/>
+  <text class="serif" x="90" y="668" font-size="15" font-style="italic" fill="#7A7064">Arriba en producción y eficiencia; abajo en minutos y robos.</text>
+  <text class="mono" x="920" y="668" font-size="14" text-anchor="end" fill="#C05A37">@basketmatica</text>
+</svg>

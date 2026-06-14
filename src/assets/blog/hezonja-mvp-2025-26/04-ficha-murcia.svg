@@ -1,0 +1,45 @@
+<svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ficha del partido record de Hezonja contra UCAM Murcia: 53 de valoracion, 40 puntos, 8 triples, 11 rebotes, 6 asistencias en 29 minutos y 40 segundos.">
+  <style>
+    .serif{font-family:Georgia,'Times New Roman',serif}
+    .mono{font-family:'Courier New',ui-monospace,monospace}
+    .sans{font-family:'Helvetica Neue',Arial,sans-serif}
+  </style>
+  <rect width="1000" height="600" fill="#F5F0E5"/>
+
+  <text class="mono" x="90" y="66" font-size="15" letter-spacing="3" fill="#7A7064">JORNADA 29 · PARTIDO RÉCORD</text>
+  <text class="serif" x="90" y="116" font-size="40" fill="#2A2622">vs UCAM Murcia</text>
+  <rect x="92" y="134" width="64" height="3" fill="#C05A37"/>
+
+  <!-- card -->
+  <rect x="90" y="170" width="820" height="320" rx="6" fill="#FBF7EE" stroke="#C9BFAC" stroke-width="1.5"/>
+  <rect x="90" y="170" width="7" height="320" fill="#C05A37"/>
+
+  <!-- headline valoracion -->
+  <text class="mono" x="150" y="345" font-size="130" fill="#C05A37">53</text>
+  <text class="mono" x="158" y="385" font-size="16" letter-spacing="3" fill="#7A7064">VALORACIÓN (PIR)</text>
+
+  <line x1="440" y1="205" x2="440" y2="455" stroke="#D8CFBC" stroke-width="1"/>
+
+  <!-- stat list -->
+  <text class="mono" x="610" y="240" font-size="34" text-anchor="end" fill="#3F6B4A">40</text>
+  <text class="sans" x="630" y="240" font-size="18" fill="#2A2622">puntos</text>
+
+  <text class="mono" x="610" y="293" font-size="34" text-anchor="end" fill="#3F6B4A">8</text>
+  <text class="sans" x="630" y="293" font-size="18" fill="#2A2622">triples</text>
+
+  <text class="mono" x="610" y="346" font-size="34" text-anchor="end" fill="#3F6B4A">11</text>
+  <text class="sans" x="630" y="346" font-size="18" fill="#2A2622">rebotes</text>
+
+  <text class="mono" x="610" y="399" font-size="34" text-anchor="end" fill="#3F6B4A">6</text>
+  <text class="sans" x="630" y="399" font-size="18" fill="#2A2622">asistencias</text>
+
+  <text class="mono" x="610" y="452" font-size="34" text-anchor="end" fill="#3F6B4A">29:40</text>
+  <text class="sans" x="630" y="452" font-size="18" fill="#2A2622">minutos</text>
+
+  <!-- footnote -->
+  <text class="serif" x="90" y="528" font-size="16" fill="#2A2622">5ª mejor valoración de un jugador del Real Madrid en la historia ACB · la más alta de toda la temporada.</text>
+
+  <line x1="90" y1="558" x2="910" y2="558" stroke="#DCD3C2" stroke-width="1"/>
+  <text class="serif" x="90" y="582" font-size="15" font-style="italic" fill="#7A7064">El techo, no la base: un caso extremo, separado de la media.</text>
+  <text class="mono" x="910" y="582" font-size="14" text-anchor="end" fill="#C05A37">@basketmatica</text>
+</svg>
