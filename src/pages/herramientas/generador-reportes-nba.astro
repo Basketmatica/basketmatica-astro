@@ -242,8 +242,15 @@ const description =
 
     try {
       setStatus('Activando servidor… (primera vez puede tardar ~15 s)');
-      await fetch(`${API}/`).catch(() => {});
-      await new Promise((r) => setTimeout(r, 5000));
+      let despierto = false;
+      for (let i = 0; i < 10 && !despierto; i++) {
+        try {
+          const h = await fetch(`${API}/health`);
+          if (h.ok) despierto = true;
+        } catch { /* aún dormido */ }
+        if (!despierto) await new Promise((r) => setTimeout(r, 2000));
+      }
+      if (!despierto) throw new Error('El servidor no responde. Inténtalo de nuevo en un minuto.');
 
       setStatus('Servidor activo. Generando informe…');
       const response = await fetch(
