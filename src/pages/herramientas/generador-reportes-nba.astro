@@ -1,154 +1,46 @@
 ---
-import { Image } from 'astro:assets';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import ToolLayout from '../../layouts/ToolLayout.astro';
 import heroImg from '../../assets/blog/generador-de-reportes-de-la-nba/dfb0583a-a603-47b4-b8f9-5f7c319cbdb6.webp';
 
-const title = 'Generador de Reportes de la NBA';
+const title = 'Generador de Reportes NBA';
 const description =
   'Herramienta gratuita: introduce el nombre de un jugador de la NBA y obtén un scouting report en PDF con datos avanzados y análisis de IA.';
 
-// OJO: sin barra final. En la versión actual hay una barra de más
-// (…streamlit.app//?embed=true) que produce una URL con doble slash.
 const APP_URL = 'https://basketmatica-reportgeneratornba.streamlit.app';
-
-// embed=true      → quita el chrome de Streamlit
-// embed_options   → fuerza tema claro y oculta la barra de estado "Running…"
-const EMBED_URL = `${APP_URL}/?embed=true&embed_options=light_theme&embed_options=hide_loading_screen`;
 ---
-<BaseLayout title={title} description={description} image={heroImg.src}>
-  <article class="generador">
-    <p class="post-meta"><a href="/herramientas/">Herramientas</a> / {title}</p>
+<ToolLayout
+  title={title}
+  description={description}
+  appUrl={APP_URL}
+  heroImg={heroImg}
+  heroAlt="Generador de Reportes NBA"
+  exampleReport={{ href: '/files/pau-gasol-report-1.pdf', label: 'Descarga el ejemplo real de Pau Gasol' }}
+>
+  <p>
+    <strong>Generador de Reportes NBA</strong>: una herramienta gratuita para analistas, entrenadores y
+    aficionados. Introduce el nombre de cualquier jugador de la NBA, activo o histórico, y obtendrás un
+    informe detallado en PDF con:
+  </p>
+  <ul>
+    <li><strong>Datos básicos y perfil del jugador.</strong></li>
+    <li><strong>Estadísticas actuales e históricas:</strong> métricas simples y compuestas.</li>
+    <li><strong>Promedios per-36 minutos</strong> para comparar jugadores con minutajes distintos.</li>
+    <li><strong>Análisis FODA</strong> (Fortalezas, Oportunidades, Debilidades y Amenazas) respaldado por métricas avanzadas.</li>
+    <li><strong>Comparación</strong> con jugadores de perfil y trayectorias similares.</li>
+  </ul>
 
-    <Image
-      class="hero-img"
-      src={heroImg}
-      alt="Generador de Reportes de la NBA"
-      widths={[480, 760, 1080]}
-      sizes="(max-width: 760px) 100vw, 760px"
-    />
+  <div class="tips" slot="tips">
+    <p class="tips-title">Consejos de uso</p>
+    <ul>
+      <li>Escribe el nombre completo del jugador: <em>LeBron James</em>, <em>Nikola Jokić</em>, <em>Marc Gasol</em>.</li>
+      <li>Nombres con caracteres especiales (<em>Luka Dončić</em>, <em>Dražen Petrović</em>) deben incluirlos.</li>
+      <li>Si la herramienta llevaba días sin usarse, el primer arranque puede tardar unos segundos.</li>
+    </ul>
+  </div>
 
-    <h1>{title}</h1>
-
-    <div class="prose">
-      <p>
-        <strong>Generador de Reportes NBA</strong>: una herramienta gratuita para analistas, entrenadores y
-        aficionados. Introduce el nombre de cualquier jugador de la NBA y obtendrás un informe detallado en PDF con:
-      </p>
-      <ul>
-        <li><strong>Datos básicos y perfil del jugador.</strong></li>
-        <li><strong>Estadísticas actuales e históricas</strong>, métricas simples y compuestas.</li>
-        <li><strong>Promedios per-36 minutos</strong> para comparar jugadores con minutajes distintos.</li>
-        <li><strong>Análisis FODA</strong> (Fortalezas, Oportunidades, Debilidades y Amenazas) respaldado por métricas avanzadas.</li>
-        <li><strong>Comparación con jugadores de perfil y trayectorias similares.</strong></li>
-      </ul>
-    </div>
-
-    <!-- Módulo embebido -->
-    <section class="app-embed">
-      <p class="embed-kicker">Genera tu reporte</p>
-      <iframe
-        src={EMBED_URL}
-        title="Generador de Reportes NBA"
-        loading="lazy"
-        allow="clipboard-write"
-      ></iframe>
-      <p class="embed-fallback">
-        ¿No carga el módulo? <a href={APP_URL} target="_blank" rel="noopener">Ábrelo en una pestaña nueva</a>.
-      </p>
-    </section>
-
-    <p class="example-report">
-      ¿Quieres ver cómo queda antes de generarlo?
-      <a href="/files/pau-gasol-report-1.pdf" download>Descarga el ejemplo real de Pau Gasol</a>.
-    </p>
-
-    <div class="tips">
-      <p class="tips-title">Consejos de uso</p>
-      <ul>
-        <li>Escribe el nombre completo del jugador: <em>LeBron James</em>, <em>Nikola Jokić</em>, <em>Marc Gasol</em>.</li>
-        <li>Nombres con caracteres especiales (<em>Luka Dončić</em>, <em>Dražen Petrović</em>) deben incluirlos.</li>
-        <li>Si la herramienta llevaba días sin usarse, el primer arranque puede tardar unos segundos.</li>
-      </ul>
-    </div>
-
-    <p class="note">
-      <strong>Nota sobre la IA:</strong> las tablas del informe se construyen directamente a partir de los datos
-      (balldontlie y ESPN); el modelo de IA solo redacta el texto analítico a partir de esos mismos datos, sin
-      intervenir en las cifras.
-    </p>
-  </article>
-</BaseLayout>
-
-<style>
-  .generador { max-width: 760px; margin-inline: auto; }
-  .generador h1 { margin-top: 1.2rem; }
-
-  /* El módulo se presenta como una card de la marca: mismo borde, mismo radio
-     y mismo shadow que el resto de bloques del sitio. El iframe va a sangre
-     dentro de la card para que no se vea "una web dentro de otra". */
-  .app-embed {
-    max-width: 560px;
-    margin: 2.5rem auto;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    background: var(--surface);
-  }
-  .embed-kicker {
-    margin: 0;
-    padding: .7rem 1.1rem;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: .78rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--accent);
-    border-bottom: 1px solid var(--line);
-    background: var(--bg);
-  }
-  .app-embed iframe {
-    display: block;
-    width: 100%;
-    /* Alto fijo: un iframe cross-origin no puede auto-ajustarse.
-       540px cubre formulario + estado + botón de descarga sin scroll interno. */
-    height: 540px;
-    border: none;
-    color-scheme: light;   /* evita que el modo oscuro del SO invierta la app */
-  }
-  .embed-fallback {
-    margin: 0;
-    padding: .55rem 1rem;
-    font-size: .82rem;
-    color: var(--ink-soft);
-    border-top: 1px solid var(--line);
-    text-align: center;
-    background: var(--bg);
-  }
-
-  @media (max-width: 560px) {
-    .app-embed iframe { height: 600px; }
-  }
-
-  .example-report { font-size: .93rem; text-align: center; margin-top: -.5rem; }
-
-  .tips {
-    margin: 2rem 0;
-    padding: 1rem 1.25rem;
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    font-size: .91rem;
-  }
-  .tips-title { font-family: var(--font-display); font-weight: 700; margin: 0 0 .5rem; color: var(--brand); font-size: .9rem; }
-  .tips ul { margin: 0; padding-left: 1.3rem; color: var(--ink-soft); line-height: 1.7; }
-
-  .note {
-    font-size: .91rem;
-    background: var(--surface);
-    padding: 1rem;
-    border-left: 4px solid var(--brand);
-    border-radius: 6px;
-    color: var(--ink-soft);
-  }
-</style>
+  <p class="note" slot="note">
+    <strong>Nota sobre la IA:</strong> las tablas del informe se construyen directamente a partir de los datos
+    (balldontlie y ESPN); el modelo de IA solo redacta el texto analítico a partir de esos mismos datos, sin
+    intervenir en las cifras.
+  </p>
+</ToolLayout>

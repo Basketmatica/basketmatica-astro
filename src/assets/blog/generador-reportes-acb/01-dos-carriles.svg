@@ -1,0 +1,71 @@
+<svg viewBox="0 0 1000 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama en dos carriles: los datos de acb.com van directos a las tablas del PDF mediante código; la IA solo recibe esos datos y devuelve el texto del análisis bajo reglas de rigor.">
+  <style>
+    .serif{font-family:Georgia,'Times New Roman',serif}
+    .mono{font-family:'Courier New',ui-monospace,monospace}
+    .sans{font-family:'Helvetica Neue',Arial,sans-serif}
+  </style>
+  <defs>
+    <marker id="ah-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#3F6B4A"/>
+    </marker>
+    <marker id="ah-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#C05A37"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="640" fill="#F5F0E5"/>
+
+  <text class="mono" x="60" y="66" font-size="15" letter-spacing="3" fill="#7A7064">GENERADOR DE REPORTES ACB · ARQUITECTURA</text>
+  <text class="serif" x="60" y="116" font-size="40" fill="#2A2622">El dato por un carril, el relato por otro</text>
+  <rect x="62" y="134" width="64" height="3" fill="#C05A37"/>
+
+  <!-- Fuente -->
+  <rect x="60" y="255" width="170" height="130" rx="6" fill="#FBF8F1" stroke="#2A2622" stroke-width="1.5"/>
+  <text class="serif" x="145" y="305" font-size="26" text-anchor="middle" fill="#2A2622">acb.com</text>
+  <text class="sans" x="145" y="334" font-size="14" text-anchor="middle" fill="#7A7064">ficha oficial</text>
+  <text class="sans" x="145" y="354" font-size="14" text-anchor="middle" fill="#7A7064">del jugador</text>
+
+  <!-- Carril del dato -->
+  <text class="mono" x="290" y="182" font-size="13" letter-spacing="2" fill="#3F6B4A">CARRIL DEL DATO</text>
+  <rect x="290" y="195" width="250" height="90" rx="6" fill="#FBF8F1" stroke="#3F6B4A" stroke-width="1.8"/>
+  <text class="serif" x="415" y="234" font-size="22" text-anchor="middle" fill="#2A2622">Código</text>
+  <text class="sans" x="415" y="262" font-size="14" text-anchor="middle" fill="#7A7064">extracción directa, sin IA</text>
+
+  <rect x="600" y="195" width="200" height="90" rx="6" fill="#3F6B4A"/>
+  <text class="serif" x="700" y="234" font-size="22" text-anchor="middle" fill="#F5F0E5">Tablas del PDF</text>
+  <text class="sans" x="700" y="262" font-size="14" text-anchor="middle" fill="#E3EBDF">cifra a cifra</text>
+
+  <line x1="290" y1="330" x2="800" y2="330" stroke="#DCD3C2" stroke-width="1" stroke-dasharray="6 6"/>
+
+  <!-- Carril del relato -->
+  <text class="mono" x="290" y="362" font-size="13" letter-spacing="2" fill="#C05A37">CARRIL DEL RELATO</text>
+  <rect x="290" y="375" width="250" height="140" rx="6" fill="#FBF8F1" stroke="#C05A37" stroke-width="1.8"/>
+  <text class="serif" x="415" y="410" font-size="22" text-anchor="middle" fill="#2A2622">Modelo de IA</text>
+  <text class="sans" x="310" y="442" font-size="13" fill="#5A5249">· no cita cifras ajenas</text>
+  <text class="sans" x="310" y="466" font-size="13" fill="#5A5249">· no inventa comparaciones</text>
+  <text class="sans" x="310" y="490" font-size="13" fill="#5A5249">· señala las muestras cortas</text>
+
+  <rect x="600" y="375" width="200" height="140" rx="6" fill="#C05A37"/>
+  <text class="serif" x="700" y="418" font-size="21" text-anchor="middle" fill="#F5F0E5">Texto del análisis</text>
+  <text class="sans" x="700" y="452" font-size="14" text-anchor="middle" fill="#F7E3DA">desempeño · FODA</text>
+  <text class="sans" x="700" y="476" font-size="14" text-anchor="middle" fill="#F7E3DA">proyección · perfiles</text>
+
+  <!-- Salida -->
+  <rect x="850" y="255" width="100" height="130" rx="6" fill="#2A2622"/>
+  <text class="serif" x="900" y="312" font-size="20" text-anchor="middle" fill="#F5F0E5">Informe</text>
+  <text class="mono" x="900" y="342" font-size="18" letter-spacing="2" text-anchor="middle" fill="#F5F0E5">PDF</text>
+
+  <!-- Flechas -->
+  <path d="M230 300 C260 300 260 240 286 240" fill="none" stroke="#3F6B4A" stroke-width="2" marker-end="url(#ah-g)"/>
+  <line x1="540" y1="240" x2="596" y2="240" stroke="#3F6B4A" stroke-width="2" marker-end="url(#ah-g)"/>
+  <path d="M800 240 C826 240 826 300 846 300" fill="none" stroke="#3F6B4A" stroke-width="2" marker-end="url(#ah-g)"/>
+
+  <path d="M230 340 C260 340 260 445 286 445" fill="none" stroke="#C05A37" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#ah-a)"/>
+  <text class="mono" x="60" y="414" font-size="12" fill="#C05A37">mismos datos,</text>
+  <text class="mono" x="60" y="432" font-size="12" fill="#C05A37">solo lectura</text>
+  <line x1="540" y1="445" x2="596" y2="445" stroke="#C05A37" stroke-width="2" marker-end="url(#ah-a)"/>
+  <path d="M800 445 C826 445 826 340 846 340" fill="none" stroke="#C05A37" stroke-width="2" marker-end="url(#ah-a)"/>
+
+  <line x1="60" y1="598" x2="950" y2="598" stroke="#DCD3C2" stroke-width="1"/>
+  <text class="serif" x="60" y="622" font-size="15" font-style="italic" fill="#7A7064">Ningún número del informe pasa por el modelo de IA.</text>
+  <text class="mono" x="950" y="622" font-size="14" text-anchor="end" fill="#C05A37">@basketmatica</text>
+</svg>

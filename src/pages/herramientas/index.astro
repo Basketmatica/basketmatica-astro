@@ -9,15 +9,22 @@ import ToolCard from '../../components/ToolCard.astro';
   <section class="tools-header">
     <h1>Herramientas</h1>
     <p class="intro">
-      Aplicaciones y utilidades de análisis construidas sobre datos reales de la NBA y
-      otras ligas. Cada trimestre se añade una nueva.
+      Aplicaciones y utilidades de análisis construidas sobre datos reales de la NBA y la ACB.
+      Cada trimestre se añade una nueva.
     </p>
   </section>
 
   <div class="tools-grid">
     <ToolCard
+      title="Generador de Reportes ACB"
+      description="Introduce el nombre de cualquier jugador de la Liga Endesa y obtén un scouting report en PDF con estadísticas avanzadas y análisis de IA en menos de un minuto."
+      status="Disponible"
+      href="/herramientas/generador-reportes-acb/"
+      icon="🏀"
+    />
+    <ToolCard
       title="Generador de Reportes NBA"
-      description="Introduce el nombre de cualquier jugador activo y obtén un scouting report en PDF con estadísticas avanzadas y análisis de IA en menos de un minuto."
+      description="Introduce el nombre de cualquier jugador de la NBA y obtén un scouting report en PDF con estadísticas avanzadas y análisis de IA en menos de un minuto."
       status="Disponible"
       href="/herramientas/generador-reportes-nba/"
       icon="📊"

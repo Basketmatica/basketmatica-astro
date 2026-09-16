@@ -19,4 +19,3 @@ desplegable en GitHub Pages con dominio propio basketmatica.com.
 
 ## Fuera de alcance por ahora
 - La newsletter (se resolverá con un servicio externo, no tocar todavía).
-- El "Generador de Reportes NBA" (decidir aparte).

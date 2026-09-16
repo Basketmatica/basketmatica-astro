@@ -1,0 +1,47 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import heroImg from '../../assets/blog/generador-reportes-acb/generador-reportes-acb-hero.png';
+
+const title = 'Generador de Reportes ACB';
+const description =
+  'Herramienta gratuita: introduce el nombre de un jugador de la Liga Endesa y obtén un scouting report en PDF con datos avanzados y análisis de IA.';
+
+const APP_URL = 'https://reportgeneratoracb.streamlit.app';
+---
+<ToolLayout
+  title={title}
+  description={description}
+  appUrl={APP_URL}
+  heroImg={heroImg}
+  heroAlt="Generador de Reportes ACB"
+  exampleReport={{ href: '/files/campazzo-report-acb-1.pdf', label: 'Descarga el ejemplo real de Facundo Campazzo' }}
+>
+  <p>
+    <strong>Generador de Reportes ACB</strong>: el primo hermano del <a href="/herramientas/generador-reportes-nba/">Generador de Reportes NBA</a>,
+    adaptado a la Liga Endesa. Introduce el nombre de cualquier jugador en activo de la ACB y obtendrás un
+    informe detallado en PDF con:
+  </p>
+  <ul>
+    <li><strong>Perfil del jugador</strong> y récords en un partido.</li>
+    <li><strong>Promedios de la temporada y de carrera</strong>, con la trayectoria temporada a temporada y el club de cada año.</li>
+    <li><strong>Estadísticas avanzadas oficiales</strong> de acb.com: Cuatro Factores, TS%, AST% y más.</li>
+    <li><strong>Promedios per-40 minutos</strong> para comparar jugadores con minutajes distintos.</li>
+    <li><strong>Análisis FODA</strong> (Fortalezas, Oportunidades, Debilidades y Amenazas) con proyección y perfiles similares.</li>
+  </ul>
+
+  <div class="tips" slot="tips">
+    <p class="tips-title">Consejos de uso</p>
+    <ul>
+      <li>Escribe el nombre completo del jugador: <em>Facundo Campazzo</em>, <em>Mario Hezonja</em>, <em>Edy Tavares</em>.</li>
+      <li>Nombres con tildes (<em>Willy Hernangómez</em>, <em>Alberto Díaz</em>) deben incluirlas.</li>
+      <li>Solo cubre jugadores en activo: si buscas a un retirado, puede devolverte a otro jugador con un apellido parecido. Comprueba el nombre en la cabecera del informe.</li>
+      <li>Si la herramienta llevaba días sin usarse, el primer arranque puede tardar unos segundos.</li>
+    </ul>
+  </div>
+
+  <p class="note" slot="note">
+    <strong>Nota sobre la IA:</strong> las tablas del informe se construyen directamente a partir de los datos
+    (acb.com); el modelo de IA solo redacta el texto analítico a partir de esos mismos datos, sin
+    intervenir en las cifras.
+  </p>
+</ToolLayout>
