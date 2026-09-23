@@ -1,10 +1,10 @@
 ---
 title: "¿Cómo se coronó LeBron James como máximo anotador de la historia?"
-description: "38 389 puntos en temporada regular. Y sumando. El 8 de febrero de 2023, LeBron James se convirtió en el máximo anotador de la historia de la NBA, superand…"
+description: "Análisis de los 27 825 tiros de campo con los que LeBron James superó a Kareem como máximo anotador de la NBA: zonas, acciones y mapa de tiro."
 pubDate: "2024-06-13T21:01:41.000Z"
 category: "Jugadores"
 heroImage: "../../assets/blog/como-se-corono-lebron-james-como-maximo-anotador-de-la-historia/imagenlebrongancho.jpg"
-heroAlt: "¿Cómo se coronó LeBron James como máximo anotador de la historia?"
+heroAlt: "LeBron James con la camiseta de los Cavaliers y dos imágenes de sus mates, en un póster en blanco y negro con el texto «King»"
 originalSlug: "como-se-corono-lebron-james-como-maximo-anotador-de-la-historia"
 ---
 
@@ -33,7 +33,7 @@ LeBron se abre camino hacia el trono como mejor sabe: dominando la zona. Más de
 
 ## 2\. Distribuciones
 
-![](../../assets/blog/como-se-corono-lebron-james-como-maximo-anotador-de-la-historia/dashboard-distribuciones.png)
+![Dashboard con las distribuciones de los tiros de campo de LeBron James por equipo, tipo de acción y zona de la pista](../../assets/blog/como-se-corono-lebron-james-como-maximo-anotador-de-la-historia/dashboard-distribuciones.png)
 
 Hasta en tres equipos ha impuesto su mandato nuestro Rey, destacando Cleveland Cavaliers, donde ha pasado 11 de sus 20 temporadas. Naturalmente, ha metido muchos más tiros de campo ya que es donde más tiempo ha pasado. Pero también ha coincidido con su *prime* anotador, ya que en Cleveland tiene su mayor ratio canastas/temporada, superando su ratio en Miami Heat y, por debajo, Los Ángeles Lakers (sin considerar posibles periodos lesivos con alguno de los tres equipos ni el periodo de pandemia mientras militaba en el equipo angelino).
 
@@ -53,7 +53,7 @@ A simple vista, llama la atención el asombroso acierto desde las esquinas (más
 
 ## 3\. Mapa de Tiro
 
-![](../../assets/blog/como-se-corono-lebron-james-como-maximo-anotador-de-la-historia/dashboard-tiros.png)
+![Mapa de tiro con los 27 825 tiros de campo de LeBron James hasta batir el récord de anotación de la NBA](../../assets/blog/como-se-corono-lebron-james-como-maximo-anotador-de-la-historia/dashboard-tiros.png)
 
 Para concluir el análisis, aquí se puede apreciar el mapa de los 27825 tiros de campo que LeBron James necesitó para romper el récord de anotación de la NBA. Con esta visualización solo quiero aportar una única cosa: para coronarse como el mejor, hay que fallar 13773 veces. No lo digo yo. Lo dicen los datos.
 

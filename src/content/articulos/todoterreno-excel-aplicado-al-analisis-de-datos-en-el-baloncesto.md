@@ -1,10 +1,10 @@
 ---
 title: "Explorando el poder de Excel en el Análisis de Datos de Baloncesto"
-description: "Microsoft Excel es una herramienta esencial en el ámbito del análisis de datos, conocida por su versatilidad en la visualización y procesamiento de inform…"
+description: "Un dashboard en Excel con estadísticas de jugadores de la NBA de 1950 a 2017: cómo usar imágenes y formatos condicionales para analizar datos de baloncesto."
 pubDate: "2023-06-03T20:36:14.000Z"
 category: "Herramientas"
 heroImage: "../../assets/blog/todoterreno-excel-aplicado-al-analisis-de-datos-en-el-baloncesto/dallc2b7e-2024-06-19-19.29.32-create-two-distinct-images-suitable-for-decorating-a-webpage-with-a-dark-grey-theme-focusing-on-basketball-analytics.-the-first-image-should-depict-a.png"
-heroAlt: "Explorando el poder de Excel en el Análisis de Datos de Baloncesto"
+heroAlt: "Dos composiciones abstractas en blanco y negro: un balón con jugadores en movimiento y un balón rodeado de gráficos de barras y circulares"
 originalSlug: "todoterreno-excel-aplicado-al-analisis-de-datos-en-el-baloncesto"
 ---
 

@@ -1,10 +1,10 @@
 ---
 title: "Análisis del Impacto Social y su Relación con el Rendimiento Deportivo en la NBA"
-description: "Desde hace ya tiempo, las redes sociales se han convertido en una parte integral de nuestra vida cotidiana, y los jugadores profesionales de baloncesto no…"
+description: "¿Influye el rendimiento de un jugador de la NBA en su impacto en redes? Regresiones sobre Twitter y Wikipedia con PIE y RPM: la relación lineal es débil."
 pubDate: "2024-08-14T18:16:22.000Z"
 category: "Jugadores"
 heroImage: "../../assets/blog/analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba/1000_f_581067734_4maz5al30son4pyeafviciyqwtvmrjf7-transformed.jpeg"
-heroAlt: "Análisis del Impacto Social y su Relación con el Rendimiento Deportivo en la NBA"
+heroAlt: "Cancha de baloncesto vacía iluminada con líneas de neón azules y rosas"
 originalSlug: "analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba"
 ---
 
@@ -22,7 +22,7 @@ Las tres variables muestran distribuciones sesgadas hacia la derecha, con la may
 
 Estos valores atípicos se ilustran en la siguiente imagen, que muestra el Top 10 de jugadores en las dos métricas de Twitter (las visitas en Wikipedia serán tratadas por separado en otra sección del artículo).
 
-![](../../assets/blog/analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba/twitterdata.png)
+![Top 10 de jugadores de la NBA con más «me gustas» y retweets recibidos en Twitter durante la temporada](../../assets/blog/analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba/twitterdata.png)
 
 No es sorprendente ver a las grandes estrellas de la liga en los primeros puestos, siendo los más influyentes y con mayor presencia en redes sociales. Los valores son considerablemente altos, y al compararlos con la mediana, se observa una diferencia abismal que destaca cómo estos pocos jugadores registran valores muy superiores, aumentando la media y generando el sesgo mencionado.
 
@@ -40,19 +40,19 @@ A continuación, se presentan las imágenes de las regresiones lineales realizad
 
 **NÚMERO DE VISITAS RECIBIDAS EN WIKIPEDIA:**
 
-![](../../assets/blog/analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba/image.png)
+![Regresión lineal entre el rendimiento deportivo (PIE y RPM) y las visitas a Wikipedia de los jugadores, con R² de 0,20](../../assets/blog/analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba/image.png)
 
 *R2: 0.20*
 
 **NÚMERO DE 'ME GUSTAS' RECIBIDOS EN TWITTER:**
 
-![](../../assets/blog/analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba/image-1.png)
+![Regresión lineal entre el rendimiento deportivo (PIE y RPM) y los «me gustas» recibidos en Twitter, con R² de 0,08](../../assets/blog/analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba/image-1.png)
 
 *R2: 0.08*
 
 **NÚMERO DE 'RETWEETS' RECIBIDOS EN TWITTER:**
 
-![](../../assets/blog/analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba/image-2.png)
+![Regresión lineal entre el rendimiento deportivo (PIE y RPM) y los retweets recibidos en Twitter, con R² de 0,10](../../assets/blog/analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba/image-2.png)
 
 *R2: 0.10*
 
@@ -68,19 +68,19 @@ A diferencia del análisis anterior, aquí se adjunta una imagen que muestra las
 
 **NÚMERO DE VISITAS RECIBIDAS EN WIKIPEDIA:**
 
-![](../../assets/blog/analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba/image-3.png)
+![Variables significativas por p-valor en la regresión múltiple de las visitas a Wikipedia, con R² de 0,31](../../assets/blog/analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba/image-3.png)
 
 *R2: 0.31*
 
 **NÚMERO DE 'RETWEETS' RECIBIDOS EN TWITTER:**
 
-![](../../assets/blog/analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba/image-4.png)
+![Variables significativas por p-valor en la regresión múltiple de los retweets en Twitter, con R² de 0,23](../../assets/blog/analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba/image-4.png)
 
 *R2: 0.23*
 
 **NÚMERO DE 'ME GUSTAS' RECIBIDOS EN TWITTER:**
 
-![](../../assets/blog/analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba/image-5.png)
+![Variables significativas por p-valor en la regresión múltiple de los «me gustas» en Twitter, con R² de 0,24](../../assets/blog/analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba/image-5.png)
 
 *R2: 0.24*
 
@@ -96,7 +96,7 @@ En respuesta a la segunda pregunta, aunque los valores de R² todavía indican u
 
 Una de las métricas clave durante nuestro análisis ha sido el número de búsquedas en Wikipedia. Pero, ¿qué eventos o sucesos generan estas búsquedas? Para responder a esta pregunta, exploramos tanto los jugadores más buscados en Wikipedia durante la temporada como los picos de búsquedas diarias más altos. A continuación, se presenta un top-10 de los jugadores más buscados en Wikipedia y un top-5 de los días con mayor número de búsquedas recibidas por un jugador.
 
-![](../../assets/blog/analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba/wikipediadata.png)
+![Top 5 de jugadores con más búsquedas en Wikipedia durante la temporada y picos diarios de visitas](../../assets/blog/analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba/wikipediadata.png)
 
 Al analizar el top-5 de búsquedas en un solo día, observamos que los tres primeros jugadores (LeBron James, Stephen Curry y Kyrie Irving) alcanzaron su pico de búsquedas el mismo día: el 20 de junio de 2016. Este día coincidió con el séptimo y definitivo partido de las Finales de la NBA, donde los Cleveland Cavaliers de LeBron y Kyrie se enfrentaron a los Golden State Warriors de Stephen Curry. Los Cavaliers ganaron ese partido, culminando una remontada histórica que quedó registrada en los anales de la mejor liga de baloncesto del mundo.
 

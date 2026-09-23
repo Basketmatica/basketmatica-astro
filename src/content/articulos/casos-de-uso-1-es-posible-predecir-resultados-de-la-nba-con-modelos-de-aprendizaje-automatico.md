@@ -1,10 +1,10 @@
 ---
 title: "Casos de Uso #1: ¿Es posible predecir resultados de la NBA con modelos de aprendizaje automático?"
-description: "Bienvenidos a \"Casos de Uso\", una nueva sección en la que exploraré proyectos personales aplicados dentro del Basketball Analytics. En lugar de análisis p…"
+description: "Un modelo Random Forest entrenado con seis temporadas de la NBA (2018-2024) predice el ganador de cada partido. Con dashboard interactivo y código en GitHub."
 pubDate: "2025-02-23T14:16:09.000Z"
 category: "Casos de Uso"
 heroImage: "../../assets/blog/casos-de-uso-1-es-posible-predecir-resultados-de-la-nba-con-modelos-de-aprendizaje-automatico/b287dd9b-e449-46d7-bb16-4fb5a3cee6a5.webp"
-heroAlt: "Casos de Uso #1: ¿Es posible predecir resultados de la NBA con modelos de aprendizaje automático?"
+heroAlt: "Ilustración futurista de un panel de predicción de baloncesto con IA: gráfico circular de probabilidades de victoria y estadísticas de equipos"
 originalSlug: "casos-de-uso-1-es-posible-predecir-resultados-de-la-nba-con-modelos-de-aprendizaje-automatico"
 ---
 
@@ -40,7 +40,7 @@ Para esta tarea, probamos tres modelos distintos: Random Forest, XGBoost y Gradi
 
 Sin necesidad de ser expertos en Machine Learning ni en cada una de estas métricas, podemos notar que Random Forest obtiene los mejores resultados en casi todos los apartados, seguido muy de cerca por XGBoost. Por esta razón, optaremos por usar Random Forest para ponerlo a prueba en nuestras predicciones.
 
-![](../../assets/blog/casos-de-uso-1-es-posible-predecir-resultados-de-la-nba-con-modelos-de-aprendizaje-automatico/image.png)
+![Gráfica con las métricas de evaluación del modelo Random Forest para predecir ganadores de partidos de la NBA](../../assets/blog/casos-de-uso-1-es-posible-predecir-resultados-de-la-nba-con-modelos-de-aprendizaje-automatico/image.png)
 
 *Gráfica con las métricas para el mejor modelo (Random Forest).*
 
@@ -50,11 +50,11 @@ Para evaluar el modelo, he desarrollado una interfaz gráfica interactiva (Dashb
 
 A continuación, se muestra un ejemplo del Dashboard prediciendo el ganador entre Milwaukee Bucks (local) y los Detroit Pistons (visitante):
 
-![](../../assets/blog/casos-de-uso-1-es-posible-predecir-resultados-de-la-nba-con-modelos-de-aprendizaje-automatico/image-1.png)
+![Dashboard de predicción: probabilidad de victoria de Milwaukee Bucks (local) frente a Detroit Pistons (visitante) en un gráfico circular](../../assets/blog/casos-de-uso-1-es-posible-predecir-resultados-de-la-nba-con-modelos-de-aprendizaje-automatico/image-1.png)
 
 Y a continuación, el mismo enfrentamiento, pero con los equipos invertidos: los Pistons jugando como locales y los Bucks como visitantes:
 
-![](../../assets/blog/casos-de-uso-1-es-posible-predecir-resultados-de-la-nba-con-modelos-de-aprendizaje-automatico/image-2.png)
+![Dashboard de predicción con los equipos invertidos: Detroit Pistons (local) frente a Milwaukee Bucks (visitante)](../../assets/blog/casos-de-uso-1-es-posible-predecir-resultados-de-la-nba-con-modelos-de-aprendizaje-automatico/image-2.png)
 
 Como se puede observar, el modelo tiene en cuenta el factor cancha, aunque en este caso concreto resulta llamativo que la probabilidad de victoria de los Pistons disminuya al jugar como locales. Sin embargo, este comportamiento tiene sentido, ya que hemos elegido un enfrentamiento entre dos equipos con un rendimiento muy desigual en las últimas seis temporadas. Seguramente, si seleccionamos dos equipos de nivel más parejo, el factor local influirá de manera más evidente en la predicción.
 

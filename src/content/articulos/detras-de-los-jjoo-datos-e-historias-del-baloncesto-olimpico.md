@@ -1,10 +1,10 @@
 ---
 title: "Detrás de los JJOO: Datos e Historias del Baloncesto Olímpico"
-description: "A 10 días del inicio oficial de los Juegos Olímpicos de París 2024, ya se conocen los grupos que disputarán la primera fase en la lucha por el ansiado oro…"
+description: "Datos e historia del baloncesto olímpico antes de París 2024: medallas por selección, finales por el oro y el bronce y anfitriones que ganaron medalla."
 pubDate: "2024-07-16T16:33:07.000Z"
 category: "Eventos"
 heroImage: "../../assets/blog/detras-de-los-jjoo-datos-e-historias-del-baloncesto-olimpico/gsnciw7weaa6h4e.png"
-heroAlt: "Detrás de los JJOO: Datos e Historias del Baloncesto Olímpico"
+heroAlt: "Pabellón de baloncesto vacío, con el parqué iluminado y las gradas naranjas"
 originalSlug: "detras-de-los-jjoo-datos-e-historias-del-baloncesto-olimpico"
 ---
 
@@ -16,7 +16,7 @@ A 10 días del inicio oficial de los Juegos Olímpicos de París 2024, ya se con
 
 En los siguientes gráficos de barras se puede observar una comparativa de las medallas de cada color obtenidas por las distintas selecciones:
 
-![](../../assets/blog/detras-de-los-jjoo-datos-e-historias-del-baloncesto-olimpico/dashboard-recuento-medallas.png)
+![Gráficos de barras con las medallas de oro, plata y bronce de cada selección en el baloncesto olímpico](../../assets/blog/detras-de-los-jjoo-datos-e-historias-del-baloncesto-olimpico/dashboard-recuento-medallas.png)
 
 Para sorpresa de nadie, Estados Unidos demuestra su gran dominancia con 16 de las 19 medallas de oro posibles. Además, es la única selección que ha ganado medalla en todas sus participaciones (excepto en Moscú 1980, donde no participó como protesta contra la invasión de la Unión Soviética a Afganistán).
 
@@ -28,7 +28,7 @@ A partir de ahí, se observa una mayor igualdad entre las selecciones, destacand
 
 A continuación, se muestra un dashboard informativo con datos sobre los partidos en los que las medallas estaban en juego (tanto la final como el tercer y cuarto puesto):
 
-![](../../assets/blog/detras-de-los-jjoo-datos-e-historias-del-baloncesto-olimpico/dashboard-puntos-finales.png)
+![Dashboard con la media de puntos en las finales y los partidos por el bronce, y la evolución de los puntos totales en los partidos por medalla](../../assets/blog/detras-de-los-jjoo-datos-e-historias-del-baloncesto-olimpico/dashboard-puntos-finales.png)
 
 En el primer gráfico, se aprecia una comparativa de la media de puntos anotados por cada equipo en los partidos por el oro y el bronce respectivamente. Aunque los ganadores de los encuentros (oro y bronce) anotan una cantidad similar de puntos, la final tiende a ser menos igualada que la lucha por el bronce. La principal causa de esta disparidad en la final tiene un nombre: Estados Unidos. Con una selección llena de superestrellas presente en prácticamente todas las finales disputadas, no es de extrañar que la media de diferencia de puntos se dispare. Desde los primeros Juegos Olímpicos celebrados en Berlín en 1936, la selección de América del Norte ha demostrado su superioridad y dominio en el juego y en el apartado físico.
 
@@ -42,7 +42,7 @@ Antes de continuar, déjame comprobar si eres un verdadero friki del baloncesto:
 
 Tanto si conoces la respuesta como si no, aquí te dejo un mapa que muestra la localización y el año de los Juegos Olímpicos en los que el anfitrión logró alzarse con una medalla.
 
-![](../../assets/blog/detras-de-los-jjoo-datos-e-historias-del-baloncesto-olimpico/dashboard-anfitriones.png)
+![Mapa con las sedes y los años de los Juegos Olímpicos en los que el anfitrión ganó medalla en baloncesto](../../assets/blog/detras-de-los-jjoo-datos-e-historias-del-baloncesto-olimpico/dashboard-anfitriones.png)
 
 Las únicas selecciones que han logrado medalla en su país son Estados Unidos (oro en dos ocasiones) y la Unión Soviética. La Unión Soviética ganó el bronce en los JJOO de Moscú 1980, en los que Estados Unidos no participó como protesta. El tercer y cuarto puesto se saldó con una victoria de la URSS sobre España por 117-94, mientras que el oro lo logró Yugoslavia (su primera y única medalla de oro), imponiéndose a Italia por 86-77.
 

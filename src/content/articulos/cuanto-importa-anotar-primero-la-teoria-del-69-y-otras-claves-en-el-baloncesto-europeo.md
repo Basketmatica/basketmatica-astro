@@ -1,20 +1,20 @@
 ---
 title: "¿Cuánto Importa Anotar Primero? La Teoría del 69 y Otras Claves en el Baloncesto Europeo"
-description: "En uno de mis últimos hilos publicados en mi cuenta de X, recibí un comentario que despertó mi curiosidad. Octavio escribió lo siguiente:"
+description: "Analizamos la Teoría del 69 y otras tres con datos de Euroliga y Eurocup (2007-2025): el equipo que llega primero a 69 puntos gana el 83 % de los partidos."
 pubDate: "2024-12-05T17:10:18.000Z"
 category: "Análisis"
 heroImage: "../../assets/blog/cuanto-importa-anotar-primero-la-teoria-del-69-y-otras-claves-en-el-baloncesto-europeo/dallc2b7e-2024-12-04-19.49.44-a-dynamic-and-engaging-digital-illustration-showing-a-basketball-game-in-progress-in-a-professional-arena.-the-focus-is-on-the-scoreboard-displaying-t.webp"
-heroAlt: "¿Cuánto Importa Anotar Primero? La Teoría del 69 y Otras Claves en el Baloncesto Europeo"
+heroAlt: "Ilustración de un partido de baloncesto con el número 69 en el marcador central del pabellón"
 originalSlug: "cuanto-importa-anotar-primero-la-teoria-del-69-y-otras-claves-en-el-baloncesto-europeo"
 ---
 
 En uno de mis últimos hilos publicados en mi [cuenta de X](https://x.com/basketmatica), recibí un comentario que despertó mi curiosidad. Octavio escribió lo siguiente:
 
-![](../../assets/blog/cuanto-importa-anotar-primero-la-teoria-del-69-y-otras-claves-en-el-baloncesto-europeo/image-2.png)
+![Comentario en X de Octavio Pernas: en su comparación, el punto 69 pronostica la victoria mucho mejor que el 2-0 inicial](../../assets/blog/cuanto-importa-anotar-primero-la-teoria-del-69-y-otras-claves-en-el-baloncesto-europeo/image-2.png)
 
 Mientras todavía procesaba la sorpresa de este dato, Guillermo añadió otra observación interesante:
 
-![](../../assets/blog/cuanto-importa-anotar-primero-la-teoria-del-69-y-otras-claves-en-el-baloncesto-europeo/image-1.png)
+![Comentario en X de Guillermo Lázaro: en la Liga Femenina desde 1997, el equipo con más jugadoras que llegan a 10 puntos gana en torno al 80 % de los partidos](../../assets/blog/cuanto-importa-anotar-primero-la-teoria-del-69-y-otras-claves-en-el-baloncesto-europeo/image-1.png)
 
 Ambas aportaciones me parecieron fascinantes, y decidí realizar un análisis más profundo para responder a algunas preguntas clave:
 
@@ -53,7 +53,7 @@ Este dato es contundente, aunque razonable: los 69 puntos suelen alcanzarse en l
 
 Aunque su correlación es menor que la de la Teoría del 69, el 61,94% de los equipos que alcanzan primero los 10 puntos terminan ganando. Esto tiene sentido, ya que los 10 puntos se alcanzan en los primeros compases del partido, donde el equipo rival tiene más tiempo para remontar. Sin embargo, también refleja que un buen inicio puede marcar el ritmo y generar una ventaja psicológica.
 
-![](../../assets/blog/cuanto-importa-anotar-primero-la-teoria-del-69-y-otras-claves-en-el-baloncesto-europeo/dashboard-1.png)
+![Gráficos de barras de la Teoría del 69 (cumplida en más del 80 % de los partidos) y de la Teoría de Dobles Dígitos primero (4 363 partidos cumplen frente a 2 682 que no)](../../assets/blog/cuanto-importa-anotar-primero-la-teoria-del-69-y-otras-claves-en-el-baloncesto-europeo/dashboard-1.png)
 
 ## 4\. Teoría del 2-0 Inicial
 

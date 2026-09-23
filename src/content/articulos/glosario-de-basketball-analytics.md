@@ -4,7 +4,7 @@ description: "Definiciones y fórmulas de las métricas y conceptos clave del an
 pubDate: "2024-09-08T13:02:59.000Z"
 category: "Herramientas"
 heroImage: "../../assets/blog/glosario-de-basketball-analytics/glosario-basketball-analytics.png"
-heroAlt: "Glosario de Basketball Analytics"
+heroAlt: "Balón de baloncesto rodeado de gráficos y métricas como eFG %, TS %, USG %, PER y ORTG/DRTG"
 originalSlug: "glosario-de-basketball-analytics"
 ---
 

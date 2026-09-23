@@ -12,7 +12,7 @@ const { Content, headings } = await render(entry);
 const toc = headings.filter((h) => h.depth === 4);
 const { title, description, heroImage, heroAlt } = entry.data;
 ---
-<BaseLayout title={title} description={description} image={heroImage?.src}>
+<BaseLayout title={title} description={description} image={heroImage} imageAlt={heroAlt || undefined}>
   <article class="glosario">
     <p class="post-meta"><a href="/articulos/">Artículos</a></p>
 

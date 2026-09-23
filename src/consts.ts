@@ -1,4 +1,6 @@
 export const SITE_TITLE = 'Basketmática';
+export const SITE_TAGLINE = 'Análisis de datos aplicado al baloncesto';
+export const TWITTER_HANDLE = '@basketmatica';
 export const SITE_DESCRIPTION = 'Análisis de datos aplicado al baloncesto.';
 export const SITE_URL = 'https://basketmatica.com';
 export const CONTACT_EMAIL = 'info@basketmatica.com';

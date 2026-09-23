@@ -9,7 +9,7 @@ if (!page) throw new Error('Falta src/content/pages/sobre-mi.md');
 const { Content } = await render(page);
 const { title, description, heroImage, heroAlt } = page.data;
 ---
-<BaseLayout title={title} description={description} image={heroImage?.src}>
+<BaseLayout title={title} description={description} image={heroImage} imageAlt={heroAlt || undefined}>
   <article>
     <h1>{title}</h1>
     {heroImage && (

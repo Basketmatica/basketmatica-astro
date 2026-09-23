@@ -1,10 +1,10 @@
 ---
 title: "Revolucionando las Posiciones del Baloncesto: Clúster para la Clasificación de Jugadores según sus Habilidades"
-description: "El baloncesto moderno está repleto de jugadores versátiles y completos. Los interiores ya no solo dominan la pintura, sino que deben ser una amenaza desde…"
+description: "Clustering con PCA y K-Means para clasificar a los jugadores de la NBA por sus habilidades reales y no por su posición: tres perfiles distintos en cada puesto."
 pubDate: "2025-04-06T13:18:45.000Z"
 category: "Jugadores"
 heroImage: "../../assets/blog/revolucionando-las-posiciones-del-baloncesto-cluster-para-la-clasificacion-de-jugadores-segun-sus-habilidades/image-5.png"
-heroAlt: "Revolucionando las Posiciones del Baloncesto: Clúster para la Clasificación de Jugadores según sus Habilidades"
+heroAlt: "Collage de jugadores de baloncesto en acción rodeados de paneles con estadísticas"
 originalSlug: "revolucionando-las-posiciones-del-baloncesto-cluster-para-la-clasificacion-de-jugadores-segun-sus-habilidades"
 ---
 
@@ -73,7 +73,7 @@ Para cada posición, se mostrará un gráfico con todos los jugadores clasificad
 
 A continuación, se muestran los gráficos de clústeres y PCAs de los bases:
 
-![](../../assets/blog/revolucionando-las-posiciones-del-baloncesto-cluster-para-la-clasificacion-de-jugadores-segun-sus-habilidades/image.png)
+![Gráfico de dispersión de los bases (PG) por los dos primeros componentes principales y coloreados por clúster, junto a un mapa de calor con el promedio de cada componente en cada clúster](../../assets/blog/revolucionando-las-posiciones-del-baloncesto-cluster-para-la-clasificacion-de-jugadores-segun-sus-habilidades/image.png)
 
 -   **Arquitectos del Triple** (Clúster 0). Bases con buena visión de juego y volumen exterior. No son primeras espadas ofensivas, pero aportan organización y espacio. Ejemplos: Cameron Payne, Payton Prichard, Kyle Lowry.
 -   **Generadores Ofensivos de Élite** (Clúster 1). Jugadores con una carga ofensiva altísima: anotan, asisten y generan ventajas de forma constante. Ejemplos: Stephen Curry, Luka Doncic, James Harden.
@@ -83,7 +83,7 @@ A continuación, se muestran los gráficos de clústeres y PCAs de los bases:
 
 A continuación, se muestran los gráficos de clústeres y PCAs de los escoltas:
 
-![](../../assets/blog/revolucionando-las-posiciones-del-baloncesto-cluster-para-la-clasificacion-de-jugadores-segun-sus-habilidades/image-1.png)
+![Gráfico de dispersión de los escoltas (SG) por componentes principales y clúster, junto a su mapa de calor de promedios por clúster](../../assets/blog/revolucionando-las-posiciones-del-baloncesto-cluster-para-la-clasificacion-de-jugadores-segun-sus-habilidades/image-1.png)
 
 -   **Especialistas en Tiro Exterior** (Clúster 0). Jugadores que viven en el perímetro: volumen y eficiencia en el triple como principal aporte. Ejemplos: Kevin Huerter, Malik Beasley, Luke Kennard.
 -   **Anotadores Versátiles** (Clúster 1). Escoltas con gran capacidad de crear su propio tiro, anotar en volumen y asumir protagonismo ofensivo. Ejemplos: Donovan Mitchell, Anthony Edwards, Kyrie Irving.
@@ -93,7 +93,7 @@ A continuación, se muestran los gráficos de clústeres y PCAs de los escoltas:
 
 A continuación, se muestran los gráficos de clústeres y PCAs de los aleros:
 
-![](../../assets/blog/revolucionando-las-posiciones-del-baloncesto-cluster-para-la-clasificacion-de-jugadores-segun-sus-habilidades/image-2.png)
+![Gráfico de dispersión de los aleros (SF) por componentes principales y clúster, junto a su mapa de calor de promedios por clúster](../../assets/blog/revolucionando-las-posiciones-del-baloncesto-cluster-para-la-clasificacion-de-jugadores-segun-sus-habilidades/image-2.png)
 
 -   **Perimetrales Defensivos con Triple** (Clúster 0). Aleros con fuerte perfil defensivo que complementan con amenaza exterior. Ejemplos: Cam Reddish, Matisse Thybulle, Naji Marshall.
 -   **Aleros Ofensivos de Alto Impacto** (Clúster 1). Jugadores con capacidad para generar puntos, postear, jugar aclarados y asumir responsabilidad ofensiva. Ejemplos: Jaylen Brown, DeMar DeRozan, Kawhi Leonard.
@@ -104,7 +104,7 @@ El tercer clúster fue descartado por su baja representatividad.
 
 A continuación, se muestran los gráficos de clústeres y PCAs de los ala-pívots:
 
-![](../../assets/blog/revolucionando-las-posiciones-del-baloncesto-cluster-para-la-clasificacion-de-jugadores-segun-sus-habilidades/image-3.png)
+![Gráfico de dispersión de los ala-pívots (PF) por componentes principales y clúster, junto a su mapa de calor de promedios por clúster](../../assets/blog/revolucionando-las-posiciones-del-baloncesto-cluster-para-la-clasificacion-de-jugadores-segun-sus-habilidades/image-3.png)
 
 -   **Especialistas Defensivos** (Clúster 0). Jugadores con gran presencia defensiva y lectura del juego sin necesidad de volumen ofensivo. Ejemplos: Ivan Mobley, Draymond Green, Daniel Gafford.
 -   **Stretch 4** (Clúster 1). Ala-pívots con rol espaciador y capacidad para abrir la pista gracias al tiro exterior. Ejemplos: PJ Tucker, Bojan Bogdanovic, Christian Wood.
@@ -114,7 +114,7 @@ A continuación, se muestran los gráficos de clústeres y PCAs de los ala-pívo
 
 A continuación, se muestran los gráficos de clústeres y PCAs de los pívots:
 
-![](../../assets/blog/revolucionando-las-posiciones-del-baloncesto-cluster-para-la-clasificacion-de-jugadores-segun-sus-habilidades/image-4.png)
+![Gráfico de dispersión de los pívots (C) por componentes principales y clúster, junto a su mapa de calor de promedios por clúster](../../assets/blog/revolucionando-las-posiciones-del-baloncesto-cluster-para-la-clasificacion-de-jugadores-segun-sus-habilidades/image-4.png)
 
 -   **Interiores Polivalentes** (Clúster 0). Pívots equilibrados, capaces de producir en ataque sin renunicar a proteger la pintura. Ejemplos: Deandre Ayton, Chet Holmgren, Nikola Vucevic.
 -   **Protectores del Aro** (Clúster 1). Especialistas defensivos con foco en la intimidación, rebote y contención en la pintura. Ejemplos: Maxi Kleber, Bismack Biyombo, James Wiseman.

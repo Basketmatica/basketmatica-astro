@@ -1,6 +1,6 @@
 ---
 title: "Archivo Basketmática"
-description: "Bienvenido al archivo de publicaciones de Basketmática. Aquí encontrarás una recopilación de todos los hilos que he publicado en X, organizados con una fr…"
+description: "Archivo de los hilos de Basketmática en X: análisis de datos de baloncesto de la NBA y la ACB, filtrables por tema y por tipo."
 originalSlug: "archivo-basketmatica"
 heroImage: "../../assets/pages/archivo-basketmatica/chatgpt-image-27-jul-2025-20_43_21.png"
 heroAlt: "Archivo Basketmática"

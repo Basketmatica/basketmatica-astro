@@ -18,7 +18,7 @@ const { title, description, appUrl, heroImg, heroAlt, exampleReport } = Astro.pr
 // embed_options   → fuerza tema claro y oculta la barra de estado "Running…"
 const EMBED_URL = `${appUrl}/?embed=true&embed_options=light_theme&embed_options=hide_loading_screen`;
 ---
-<BaseLayout title={title} description={description} image={heroImg?.src}>
+<BaseLayout title={title} description={description} image={heroImg} imageAlt={heroAlt}>
   <article class="generador">
     <p class="post-meta"><a href="/herramientas/">Herramientas</a> / {title}</p>
 

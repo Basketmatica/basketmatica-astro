@@ -18,6 +18,8 @@ const articulos = defineCollection({
       title: z.string(),
       description: z.string().default(''),
       pubDate: z.coerce.date(),
+      // Fecha de la última revisión importante (alimenta dateModified en el JSON-LD).
+      updatedDate: z.coerce.date().optional(),
       category: z.enum(CATEGORIES),
       heroImage: image().optional(),
       heroAlt: z.string().default(''),
