@@ -2,11 +2,14 @@
 import { getEntry, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import 'katex/dist/katex.min.css';
 
 const entry = await getEntry('articulos', 'glosario-de-basketball-analytics');
 if (!entry) throw new Error('Entrada del glosario no encontrada');
 
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
+// Índice generado a partir de los encabezados de métrica (h4): no puede desincronizarse.
+const toc = headings.filter((h) => h.depth === 4);
 const { title, description, heroImage, heroAlt } = entry.data;
 ---
 <BaseLayout title={title} description={description} image={heroImage?.src}>
@@ -24,6 +27,15 @@ const { title, description, heroImage, heroAlt } = entry.data;
     )}
 
     <h1>{title}</h1>
+
+    <details class="toc">
+      <summary>ÍNDICE DEL GLOSARIO</summary>
+      <ol>
+        {toc.map((h) => (
+          <li><a href={`#${h.slug}`}>{h.text}</a></li>
+        ))}
+      </ol>
+    </details>
 
     <div class="prose">
       <Content />
@@ -43,6 +55,12 @@ const { title, description, heroImage, heroAlt } = entry.data;
     padding-top: 1.4rem;
     border-top: 1px solid var(--line);
   }
-  /* Fórmulas: el blanco se funde con el fondo crema (mismo truco que el logo). */
-  .glosario :global(.prose img) { mix-blend-mode: multiply; }
+  .toc {
+    margin: 1.2rem 0;
+    border: 1px solid var(--line); border-radius: var(--radius);
+    padding: .8rem 1rem; background: var(--surface);
+  }
+  .toc summary { cursor: pointer; font-weight: 600; font-family: var(--font-display); }
+  .toc[open] summary { margin-bottom: .6rem; }
+  .toc ol { columns: 2 260px; column-gap: 2rem; padding-left: 1.4rem; }
 </style>

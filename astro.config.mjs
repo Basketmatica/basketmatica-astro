@@ -2,6 +2,19 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+
+const SIGLAS = [
+  'FGA', 'FGM', 'FTA', 'FTM', 'ORB', 'DRB', 'REB', 'AST', 'STL', 'BLK', 'BLKA',
+  'TOV', 'PTS', 'PF', 'FD', 'MP', 'POS', 'DFGM', 'DFGA',
+];
+const KATEX_MACROS = {
+  ...Object.fromEntries(SIGLAS.map((s) => [`\\${s}`, `\\mathrm{${s}}`])),
+  '\\twoPA': '\\mathrm{2PA}',
+  '\\threePA': '\\mathrm{3PA}',
+  '\\threePM': '\\mathrm{3PM}',
+};
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,5 +36,9 @@ export default defineConfig({
   integrations: [mdx(), sitemap()],
   markdown: {
     shikiConfig: { theme: 'github-light', wrap: true },
+    // Fórmulas $$…$$ renderizadas en build (KaTeX), sin JS en cliente.
+    remarkPlugins: [remarkMath],
+    // Notación única de siglas (leyenda en el glosario). Las fórmulas usan \FGA, \MP…
+    rehypePlugins: [[rehypeKatex, { macros: KATEX_MACROS }]],
   },
 });
