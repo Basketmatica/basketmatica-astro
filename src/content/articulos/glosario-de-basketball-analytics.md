@@ -3,7 +3,7 @@ title: "Glosario de Basketball Analytics"
 description: "Definiciones y fórmulas de las métricas y conceptos clave del análisis moderno del baloncesto, con enlaces a los hilos donde se aplican."
 pubDate: "2024-09-08T13:02:59.000Z"
 category: "Herramientas"
-heroImage: "../../assets/blog/glosario-de-basketball-analytics/6f3215e5-ed90-4811-ad72-8e49f2d313c5.webp"
+heroImage: "../../assets/blog/glosario-de-basketball-analytics/glosario-basketball-analytics.png"
 heroAlt: "Glosario de Basketball Analytics"
 originalSlug: "glosario-de-basketball-analytics"
 ---
