@@ -68,7 +68,7 @@ h3 { font-size: 1.25rem; margin: 1.8rem 0 .6rem; }
 .badge:hover { border-color: var(--accent); }
 
 .hero-img { width: 100%; border-radius: var(--radius); margin: 1.5rem 0; aspect-ratio: 16/9; object-fit: cover; }
-.portrait-img { display: block; width: 100%; max-width: 300px; border-radius: var(--radius); margin: 1.5rem auto; aspect-ratio: 3/4; object-fit: cover; }
+.hero-img--face { object-position: center 20%; }
 
 /* ---------- article body ---------- */
 .prose { font-size: 1.06rem; }
