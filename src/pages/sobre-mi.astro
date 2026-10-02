@@ -8,12 +8,13 @@ const page = await getEntry('pages', 'sobre-mi');
 if (!page) throw new Error('Falta src/content/pages/sobre-mi.md');
 const { Content } = await render(page);
 const { title, description, heroImage, heroAlt } = page.data;
+// El retrato es vertical: no se pasa como imagen social (1200×630 lo recortaría); queda el logo por defecto.
 ---
-<BaseLayout title={title} description={description} image={heroImage} imageAlt={heroAlt || undefined}>
+<BaseLayout title={title} description={description}>
   <article>
     <h1>{title}</h1>
     {heroImage && (
-      <Image class="hero-img" src={heroImage} alt={heroAlt || title} widths={[480, 760, 1080]} sizes="(max-width: 760px) 100vw, 760px" />
+      <Image class="portrait-img" src={heroImage} alt={heroAlt || title} widths={[300, 600]} sizes="(max-width: 340px) 100vw, 300px" loading="eager" />
     )}
     <div class="prose"><Content /></div>
     <SocialLinks />
