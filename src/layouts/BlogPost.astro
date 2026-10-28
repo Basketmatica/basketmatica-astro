@@ -5,7 +5,7 @@ import 'katex/dist/katex.min.css';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
-import { formatDate, categorySlug, postPath } from '../lib/urls';
+import { formatDate, categorySlug, isPublished, postPath } from '../lib/urls';
 import { SITE_URL } from '../consts';
 
 interface Props {
@@ -17,7 +17,7 @@ const articleUrl = SITE_URL + postPath(post);
 const catUrl = `${SITE_URL}/articulos/${categorySlug(category)}/`;
 
 // Relacionados: primero la misma categoría, luego el resto, del más reciente al más antiguo.
-const all = (await getCollection('articulos', ({ data }) => !data.draft))
+const all = (await getCollection('articulos', isPublished))
   .filter((p) => p.id !== post.id)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const related = [

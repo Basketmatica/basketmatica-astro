@@ -3,10 +3,10 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
 import { CATEGORIES } from '../../content.config';
-import { categorySlug, categoryFromSlug } from '../../lib/urls';
+import { categorySlug, categoryFromSlug, isPublished } from '../../lib/urls';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('articulos', ({ data }) => !data.draft);
+  const posts = await getCollection('articulos', isPublished);
   const categories = [...new Set(posts.map((p) => p.data.category))];
   return categories.map((category) => ({
     params: { categoria: categorySlug(category) },

@@ -29,6 +29,12 @@ export function postPath(entry: CollectionEntry<'articulos'>): string {
   return `/${y}/${m}/${day}/${entry.data.originalSlug}/`;
 }
 
+// Visible en el build: no es borrador y su fecha ya ha llegado. Un artículo con fecha futura
+// aparece solo en el primer build posterior (cron diario de deploy.yml).
+export function isPublished({ data }: CollectionEntry<'articulos'>): boolean {
+  return !data.draft && data.pubDate <= new Date();
+}
+
 // Partes para getStaticPaths del catch-all [...path].astro (sin barras inicial/final).
 export function postPathParam(entry: CollectionEntry<'articulos'>): string {
   return postPath(entry).replace(/^\/|\/$/g, '');

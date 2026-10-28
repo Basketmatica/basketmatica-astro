@@ -7,8 +7,9 @@ import NewsletterCTA from '../components/NewsletterCTA.astro';
 import HexDivider from '../components/HexDivider.astro';
 import { metricasSemana } from '../data/metricas-semana';
 import { SITE_DESCRIPTION } from '../consts';
+import { isPublished } from '../lib/urls';
 
-const posts = (await getCollection('articulos', ({ data }) => !data.draft))
+const posts = (await getCollection('articulos', isPublished))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 
