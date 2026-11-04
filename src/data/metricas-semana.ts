@@ -124,4 +124,17 @@ export const metricasSemana: MetricaSemana[] = [
     acronym: '2PR',
     definition: 'Mide la proporción de tiros de dos respecto al total de tiros intentados por un jugador o equipo.',
   },
+  {
+    name: 'Offensive Load',
+    definition: 'Estima en qué parte de las posesiones de su equipo interviene un jugador, sumando a lo que mide el USG% lo que crea para sus compañeros.',
+  },
+  {
+    name: 'Box Creation',
+    definition: 'Estima cuántos tiros abiertos genera un jugador para sus compañeros por cada 100 posesiones, dé o no el último pase.',
+  },
+  {
+    name: 'Creation-Adjusted Turnover Percentage',
+    acronym: 'cTOV%',
+    definition: 'Divide las pérdidas de un jugador entre su Offensive Load, para no castigar a quien crea mucho pero tira poco.',
+  },
 ];

@@ -82,7 +82,7 @@ $$
 \mathrm{AST\%} = 100 \times \frac{\AST}{\left(\dfrac{\MP}{\MP_{eq}/5}\right) \times \FGM_{eq} - \FGM}
 $$
 
-**Es útil para:** Evaluar la capacidad de un jugador para crear oportunidades de anotación para sus compañeros, reflejando su rol en la distribución del juego. En un equipo, la fórmula se simplifica a AST/FGM del equipo, que coincide con el FGM %AST.
+**Es útil para:** Evaluar la capacidad de un jugador para crear oportunidades de anotación para sus compañeros, reflejando su rol en la distribución del juego. En un equipo, la fórmula se simplifica a AST/FGM del equipo, que coincide con el FGM %AST. Tiene dos límites: depende de que el compañero enceste y deja fuera a quien atrae ayudas sin dar el último pase (lo que intenta cubrir el Box Creation).
 
 [**Ampliación/Aplicación**](https://x.com/basketmatica/status/1818345462295908558)
 
@@ -107,6 +107,30 @@ $$
 **Es útil para:** Analizar el rendimiento individual de un jugador de manera aislada, sin considerar el contexto del equipo.
 
 [**Ampliación/Aplicación**](https://x.com/basketmatica/status/1816082554312609954)
+
+#### Box Creation
+
+**Definición:** Métrica desarrollada por Ben Taylor (Thinking Basketball) que estima cuántos tiros abiertos genera un jugador para sus compañeros por cada 100 posesiones. Es una estimación basada en el boxscore: a partir de las asistencias, el volumen anotador y la amenaza en el tiro exterior, una regresión aproxima la creación que el jugador produce, dé o no el último pase.
+
+**Es útil para:** Cubrir los dos puntos ciegos del AST%: no depende de que el compañero enceste y reconoce al jugador que atrae ayudas aunque no dé la asistencia. Es la pieza que convierte el USG% en Offensive Load. Al ser una estimación, conviene leerla como orden de magnitud y no como un recuento exacto.
+
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/2014770253348110381)
+
+#### Creation-Adjusted Turnover Percentage (cTOV%)
+
+**Definición:** Reformulación del TOV% que divide las pérdidas entre el Offensive Load en lugar de entre las posesiones que el jugador finaliza. Así, las pérdidas se reparten sobre todo lo que el jugador hace en ataque, incluida la creación para otros.
+
+**Fórmula:**
+
+$$
+\mathrm{cTOV\%} = 100 \times \frac{\TOV}{\text{Offensive Load}}
+$$
+
+con las pérdidas expresadas, como el Offensive Load, por cada 100 posesiones.
+
+**Es útil para:** Comparar la seguridad con el balón de creadores y anotadores sin castigar a quien crea mucho y tira poco. En 2004-05, Steve Nash tuvo un TOV% del 20,3%, frente al 8,9%-12,7% de Carmelo Anthony en su mejor etapa; con el cTOV%, los dos quedan parecidos.
+
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/2117949325255102509)
 
 #### Defensive Field Goal Percentage (DFG%)
 
@@ -269,6 +293,22 @@ $$
 **Definición:** Métrica desarrollada por Daniel Myers y publicada por Basketball Reference que estima la contribución ofensiva de un jugador por cada 100 posesiones del equipo, respecto a un jugador promedio de la liga (0 = promedio). Es una métrica basada en el boxscore: convierte estadísticas individuales (puntos, asistencias, pérdidas, etc.) en una estimación del impacto, mediante una regresión calibrada contra métricas de impacto en pista, y la ajusta por el contexto del equipo y el ritmo de juego.
 
 **Es útil para:** Cuantificar el impacto ofensivo de un jugador de forma más completa que las estadísticas tradicionales. Permite comparar el valor ofensivo de jugadores con diferentes roles y minutos, identificando a aquellos que realmente elevan el rendimiento del equipo cuando están en pista.
+
+#### Offensive Load
+
+**Definición:** Métrica desarrollada por Ben Taylor (Thinking Basketball) que estima en qué parte de las posesiones de su equipo interviene directamente un jugador, ya sea terminándolas o creando para otros. Parte de lo que mide el USG% (tiros de campo, tiros libres y pérdidas) y le suma el Box Creation y las asistencias que no son creación. A diferencia del USG%, no suma 100% por equipo: en una misma posesión pueden implicarse quien crea y quien tira.
+
+**Fórmula:**
+
+$$
+\text{Offensive Load} = 0{,}75 \times (\AST - 0{,}38 \times \mathrm{BC}) + \FGA + 0{,}44 \times \FTA + \mathrm{BC} + \TOV
+$$
+
+donde BC es el Box Creation y todas las cantidades se expresan por cada 100 posesiones. El término 0,38 × BC descuenta la parte de las asistencias que ya recoge el Box Creation, para no contarla dos veces, y el resto de asistencias se pondera a 0,75.
+
+**Es útil para:** Medir la carga ofensiva real de los creadores, que el USG% infravalora porque no ve el pase. En 2004-05, Steve Nash era el tercero de los titulares de Phoenix en USG% y el primero con diferencia en Offensive Load. La mediana histórica de la NBA desde 1978 es del 27,1%.
+
+[**Ampliación/Aplicación**](https://x.com/basketmatica/status/2117949325255102509)
 
 #### Offensive Rating (OffRtg)
 
@@ -440,7 +480,7 @@ $$
 \mathrm{TOV\%} = 100 \times \frac{\TOV}{\FGA + 0{,}44 \times \FTA + \TOV}
 $$
 
-**Es útil para:** Evaluar la seguridad con la que un jugador o equipo maneja el balón y cómo influye en la eficiencia de las posesiones de su equipo.
+**Es útil para:** Evaluar la seguridad con la que un jugador o equipo maneja el balón y cómo influye en la eficiencia de las posesiones de su equipo. En jugadores, castiga a quien crea mucho pero tira poco, porque sus pérdidas se dividen entre pocas posesiones finalizadas; para ellos es mejor el cTOV%.
 
 [**Ampliación/Aplicación**](https://x.com/basketmatica/status/1809359548433723871)
 
@@ -460,7 +500,7 @@ $$
 
 donde JF son las jugadas finalizadas (tiros de campo, tiros libres y pérdidas), del jugador o, con el subíndice *eq*, del equipo.
 
-**Es útil para:** Ver la cantidad de posesiones en la que un jugador es el "foco" y detectar qué jugadores tienen más protagonismo en términos de finalización de jugadas ofensivas.
+**Es útil para:** Ver la cantidad de posesiones en la que un jugador es el "foco" y detectar qué jugadores tienen más protagonismo en términos de finalización de jugadas ofensivas. No recoge lo que el jugador crea para otros: para eso está el Offensive Load.
 
 [**Ampliación/Aplicación**](https://x.com/basketmatica/status/1838153083026592179)
 
