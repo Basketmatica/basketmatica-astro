@@ -138,7 +138,7 @@ export const metricasSemana: MetricaSemana[] = [
     definition: 'Divide las pérdidas de un jugador entre su Offensive Load, para no castigar a quien crea mucho pero tira poco.',
   },
   {
-    name: 'Victorias esperadas',
-    definition: 'Estima cuántas victorias merece un equipo según los puntos que anota y encaja, mediante la expectativa pitagórica.',
+    name: 'Expected Wins',
+    definition: 'Estima cuántas victorias merece un equipo según los puntos que anota y encaja, sin mirar cómo se repartieron entre partidos.',
   },
 ];

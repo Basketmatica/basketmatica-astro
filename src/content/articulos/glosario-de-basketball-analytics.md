@@ -225,6 +225,26 @@ $$
 
 [**Ampliación/Aplicación**](https://x.com/basketmatica/status/1809359563503857952)
 
+#### Expected Wins
+
+**Definición:** Estima cuántas victorias merece un equipo según los puntos que anota y encaja, sin mirar cómo se repartieron entre partidos. Parte de una idea de Bill James en el béisbol, que Daryl Morey llevó al baloncesto. La diferencia entre las victorias reales y las esperadas es el desvío.
+
+**Fórmula:**
+
+$$
+\%\mathrm{V}_{esp} = \frac{\PTS^{k}}{\PTS^{k} + \PTS_{riv}^{k}}
+$$
+
+$$
+\mathrm{V}_{esp} = \mathrm{PJ} \times \%\mathrm{V}_{esp}
+$$
+
+donde PTS y PTS<sub>riv</sub> son los puntos a favor y en contra en la temporada, PJ los partidos jugados y k un exponente que depende de la competición. En béisbol ronda 2 y en la NBA se suele usar 14. Calibrado con ocho temporadas de la ACB, el valor que mejor ajusta es 10,7: cada partido tiene muchas posesiones y una ventaja pequeña de puntos se traduce en muchas victorias.
+
+**Es útil para:** Separar el nivel de un equipo de la suerte en los partidos igualados. En la ACB, el desvío no se repite de una temporada a la siguiente (r = 0,05 en 99 pares de temporadas), así que un equipo que gana muy por encima de sus puntos tiende a acercarse a ellos el año siguiente.
+
+[**Ampliación/Aplicación**](/2026/10/29/expectativa-pitagorica-acb/)
+
 #### FGM %AST
 
 **Definición:** Mide la proporción de los tiros de campo anotados que provienen de una asistencia.
@@ -523,26 +543,6 @@ $$
 **Es útil para:** Proporcionar una visión rápida y comprensible del rendimiento total de un jugador en un partido, aunque no ajusta para el contexto o la calidad de la competición.
 
 [**Ampliación/Aplicación**](https://x.com/basketmatica/status/1804495718205247706)
-
-#### Victorias esperadas (expectativa pitagórica)
-
-**Definición:** Estima cuántas victorias merece un equipo según los puntos que anota y encaja, sin mirar cómo se repartieron entre partidos. Parte de la expectativa pitagórica de Bill James en el béisbol, que Daryl Morey llevó al baloncesto. La diferencia entre las victorias reales y las esperadas es el desvío.
-
-**Fórmula:**
-
-$$
-\%\mathrm{V}_{esp} = \frac{\PTS^{k}}{\PTS^{k} + \PTS_{riv}^{k}}
-$$
-
-$$
-\mathrm{V}_{esp} = \mathrm{PJ} \times \%\mathrm{V}_{esp}
-$$
-
-donde PTS y PTS<sub>riv</sub> son los puntos a favor y en contra en la temporada, PJ los partidos jugados y k un exponente que depende de la competición. En béisbol ronda 2 y en la NBA se suele usar 14. Calibrado con ocho temporadas de la ACB, el valor que mejor ajusta es 10,7: cada partido tiene muchas posesiones y una ventaja pequeña de puntos se traduce en muchas victorias.
-
-**Es útil para:** Separar el nivel de un equipo de la suerte en los partidos igualados. En la ACB, el desvío no se repite de una temporada a la siguiente (r = 0,05 en 99 pares de temporadas), así que un equipo que gana muy por encima de sus puntos tiende a acercarse a ellos el año siguiente.
-
-[**Ampliación/Aplicación**](/2026/10/29/expectativa-pitagorica-acb/)
 
 #### Win Shares (WS)
 
