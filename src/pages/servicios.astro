@@ -1,33 +1,49 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon, { type IconName } from '../components/Icon.astro';
+import { getArticles } from '../lib/articles';
+import { postPath } from '../lib/urls';
 import { CONTACT_EMAIL, SOCIAL } from '../consts';
 
 const title = 'Servicios de análisis de datos';
 const description = 'Ayudo a clubes y entidades deportivas a tomar decisiones objetivas basadas en datos: modelos predictivos, scouting automatizado y análisis de eficiencia.';
 
-const services = [
+const services: { icon: IconName; title: string; desc: string }[] = [
   {
-    icon: '🤖',
+    icon: 'cpu',
     title: 'Modelos predictivos a medida',
     desc: 'Predicción de rendimiento, proyección de jugadores y simulación de escenarios. Modelos entrenados sobre los datos reales de tu equipo, diseñados como Ingeniero de IA.',
   },
   {
-    icon: '📋',
+    icon: 'clipboardcheck',
     title: 'Reportes automatizados de scouting',
     desc: 'Scripts en Python que generan informes de rival o de jugador en segundos. Ahorra horas de trabajo a tu staff técnico con datos actualizados y listos para usar.',
   },
   {
-    icon: '📊',
+    icon: 'chart',
     title: 'Análisis de eficiencia y rotaciones',
     desc: 'Lineup analysis, métricas de impacto real y evaluación de combinaciones de quintetos. Decisiones de rotación respaldadas por evidencia estadística.',
   },
 ];
 
-const forWho = [
-  { icon: '🏀', label: 'Clubes de baloncesto (ACB, LF, EBA, divisiones regionales)' },
-  { icon: '🎽', label: 'Cuerpos técnicos que quieren ir más allá del box score' },
-  { icon: '🏢', label: 'Organizaciones y federaciones deportivas' },
-  { icon: '📰', label: 'Medios y periodistas que necesitan datos rigurosos' },
+const articles = await getArticles();
+const work = [
+  { icon: 'ball' as IconName, title: 'Generador de Reportes ACB', text: 'Scouting report en PDF para cualquier jugador de la Liga Endesa: datos de acb.com y redacción asistida por IA bajo reglas.', href: '/herramientas/generador-reportes-acb/', cta: 'Probar la herramienta' },
+  { icon: 'clipboardcheck' as IconName, title: 'Informe de ejemplo', text: 'Así queda un informe real, el de Facundo Campazzo: perfil, ratios, avanzadas oficiales, trayectoria y récords.', href: '/files/campazzo-report-acb-1.pdf', cta: 'Descargar el PDF', download: true },
+  { icon: 'chart' as IconName, title: 'Expectativa pitagórica en la ACB', text: 'Ocho temporadas, un exponente propio para la liga y 99 pares de temporadas para separar suerte de habilidad.', href: postPath(articles.find((a) => a.id === 'expectativa-pitagorica-acb')!), cta: 'Leer el análisis' },
+];
+
+const steps = [
+  { n: '1', title: 'Conversación', text: 'Entendemos la decisión que quieres tomar y qué datos tienes. Sin coste.' },
+  { n: '2', title: 'Propuesta', text: 'Alcance, entregables y plazo por escrito, antes de empezar.' },
+  { n: '3', title: 'Entrega', text: 'Informes, modelos o scripts documentados, listos para usar por tu staff.' },
+];
+
+const forWho: { icon: IconName; label: string }[] = [
+  { icon: 'ball', label: 'Clubes de baloncesto (ACB, LF, EBA, divisiones regionales)' },
+  { icon: 'users', label: 'Cuerpos técnicos que quieren ir más allá del box score' },
+  { icon: 'building', label: 'Organizaciones y federaciones deportivas' },
+  { icon: 'newspaper', label: 'Medios y periodistas que necesitan datos rigurosos' },
 ];
 ---
 <BaseLayout title={title} description={description}>
@@ -50,7 +66,7 @@ const forWho = [
       <div class="srv-grid">
         {services.map((s) => (
           <div class="srv-card">
-            <span class="srv-icon" aria-hidden="true">{s.icon}</span>
+            <span class="srv-icon" aria-hidden="true"><Icon name={s.icon} size={30} /></span>
             <h3 class="srv-title">{s.title}</h3>
             <p class="srv-desc">{s.desc}</p>
           </div>
@@ -63,9 +79,34 @@ const forWho = [
       <h2>¿Para quién?</h2>
       <ul class="srv-for-list">
         {forWho.map(({ icon, label }) => (
-          <li><span aria-hidden="true">{icon}</span> {label}</li>
+          <li><Icon name={icon} size={22} /> {label}</li>
         ))}
       </ul>
+    </section>
+
+    <!-- Trabajo reciente -->
+    <section class="srv-work">
+      <h2>Trabajo reciente</h2>
+      <div class="srv-grid">
+        {work.map((w) => (
+          <a class="srv-card srv-card-link" href={w.href} {...(w.download ? { download: true } : {})}>
+            <span class="srv-icon" aria-hidden="true"><Icon name={w.icon} size={28} /></span>
+            <h3 class="srv-title">{w.title}</h3>
+            <p class="srv-desc">{w.text}</p>
+            <span class="srv-more">{w.cta} <Icon name="arrow" size={15} /></span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Cómo trabajo -->
+    <section class="srv-process">
+      <h2>Cómo trabajo</h2>
+      <ol class="srv-steps">
+        {steps.map((p) => (
+          <li><span class="step-n">{p.n}</span><div><h3 class="srv-title">{p.title}</h3><p class="srv-desc">{p.text}</p></div></li>
+        ))}
+      </ol>
     </section>
 
     <!-- CTA -->
@@ -75,10 +116,28 @@ const forWho = [
         Si tienes un reto analítico concreto o simplemente quieres explorar qué es posible con
         los datos de tu equipo, escríbeme. La primera conversación no tiene coste.
       </p>
-      <div class="srv-cta-actions">
-        <a href={`mailto:${CONTACT_EMAIL}`} class="btn-primary">Escribirme un email</a>
-        <a href={SOCIAL.x} class="btn-outline" target="_blank" rel="noopener">Contactar en X</a>
-      </div>
+      <form id="contact-form" class="srv-form" action={`mailto:${CONTACT_EMAIL}`} method="get">
+        <div class="srv-form-row">
+          <label>Nombre<input name="nombre" required autocomplete="name" /></label>
+          <label>Club u organización<input name="organizacion" autocomplete="organization" /></label>
+        </div>
+        <label>¿Qué necesitas?
+          <select name="tipo">
+            <option>Modelos predictivos</option>
+            <option>Reportes de scouting</option>
+            <option>Análisis de eficiencia y rotaciones</option>
+            <option>Datos para un medio o proyecto</option>
+            <option>Otra cosa</option>
+          </select>
+        </label>
+        <label>Cuéntame el reto<textarea name="body" rows="4" required></textarea></label>
+        <input type="hidden" name="subject" value="Consulta desde basketmatica.com" />
+        <div class="srv-cta-actions">
+          <button type="submit" class="btn-primary">Preparar el correo</button>
+          <a href={SOCIAL.x} class="btn-outline" target="_blank" rel="noopener">Contactar en X</a>
+        </div>
+        <p class="srv-form-note">Se abrirá tu programa de correo con el mensaje listo para enviar a {CONTACT_EMAIL}. No se guarda nada en esta web.</p>
+      </form>
       <p class="srv-cta-note">También puedes ver mi trabajo y metodología en <a href="/articulos/">los artículos del blog</a>.</p>
     </section>
 
@@ -115,9 +174,33 @@ const forWho = [
     padding: 1.5rem 1.25rem;
     box-shadow: var(--shadow);
   }
-  .srv-icon { font-size: 2rem; display: block; margin-bottom: .8rem; line-height: 1; }
+  .srv-icon { display: block; margin-bottom: .8rem; line-height: 0; color: var(--accent-600); }
   .srv-title { font-size: 1.05rem; margin: 0 0 .5rem; color: var(--brand); }
   .srv-desc { font-size: .93rem; color: var(--ink-soft); line-height: 1.6; margin: 0; }
+
+  .srv-work, .srv-process { margin-bottom: 3rem; }
+  .srv-card-link { display: block; text-decoration: none; transition: border-color .2s, box-shadow .2s; }
+  .srv-card-link:hover { border-color: var(--brand); box-shadow: var(--shadow-hover); }
+  .srv-more { display: inline-flex; align-items: center; gap: .3rem; margin-top: .8rem; font-family: var(--font-display); font-size: .88rem; font-weight: 600; color: var(--accent-600); }
+  .srv-steps { list-style: none; padding: 0; margin: 1.2rem 0 0; display: grid; gap: 1rem; }
+  .srv-steps li { display: flex; gap: 1rem; align-items: flex-start; }
+  .step-n {
+    flex-shrink: 0; width: 2.2rem; height: 2.2rem; border-radius: 50%; display: grid; place-items: center;
+    background: var(--brand); color: var(--on-brand); font-family: var(--font-mono); font-weight: 600;
+  }
+  .srv-steps .srv-title { margin: 0 0 .15rem; }
+
+  /* Formulario (sobre fondo oscuro "court") */
+  .srv-form { display: grid; gap: 1rem; margin-bottom: 1.2rem; }
+  .srv-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .srv-form label { display: grid; gap: .35rem; font-family: var(--font-display); font-size: .85rem; font-weight: 600; color: var(--court-ink); }
+  .srv-form input:not([type="hidden"]), .srv-form select, .srv-form textarea {
+    font: inherit; font-size: 1rem; padding: .6rem .8rem; border-radius: 8px;
+    border: 1px solid #5a4a36; background: #1b140d; color: var(--court-ink);
+  }
+  .srv-form input:focus-visible, .srv-form select:focus-visible, .srv-form textarea:focus-visible { outline: 2px solid var(--accent); border-color: var(--accent); }
+  .srv-form-note { font-size: .82rem; opacity: .7; margin: 0; }
+  @media (max-width: 560px) { .srv-form-row { grid-template-columns: 1fr; } }
 
   /* For whom */
   .srv-for { margin-bottom: 3rem; }
@@ -140,7 +223,7 @@ const forWho = [
     border: 1px solid var(--line);
     border-radius: 8px;
   }
-  .srv-for-list li span { font-size: 1.3rem; flex-shrink: 0; }
+  .srv-for-list li :global(.icon) { color: var(--accent-600); }
 
   /* CTA */
   .srv-cta {
@@ -154,34 +237,36 @@ const forWho = [
   .srv-cta-actions { display: flex; gap: .8rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
 
   .btn-primary {
-    display: inline-block;
     background: var(--accent);
-    color: #fff;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: .95rem;
-    padding: .7rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background .2s;
+    border-color: var(--accent);
+    color: var(--on-accent);
   }
-  .btn-primary:hover { background: var(--accent-600); color: #fff; }
+  .btn-primary:hover { background: var(--accent-600); border-color: var(--accent-600); color: var(--on-accent); }
 
-  .btn-outline {
-    display: inline-block;
-    border: 1.5px solid var(--court-ink);
-    color: var(--court-ink);
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: .95rem;
-    padding: .7rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background .2s, color .2s;
-  }
+  .btn-outline { border-color: var(--court-ink); color: var(--court-ink); }
   .btn-outline:hover { background: var(--court-ink); color: var(--court); }
 
   .srv-cta-note { font-size: .88rem; color: var(--court-ink); opacity: .7; margin: 0; }
   .srv-cta-note a { color: var(--accent); }
   .srv-cta-note a:hover { color: #fff; }
 </style>
+
+<script>
+  // Compone el mailto con todos los campos (nombre, organización, tipo y mensaje).
+  document.addEventListener('astro:page-load', () => {
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const f = new FormData(form);
+      const body = [
+        `Nombre: ${f.get('nombre')}`,
+        f.get('organizacion') ? `Organización: ${f.get('organizacion')}` : '',
+        `Interés: ${f.get('tipo')}`,
+        '',
+        String(f.get('body') ?? ''),
+      ].filter((l, i) => l !== '' || i === 3).join('\n');
+      const to = form.action.replace(/^mailto:/, '').split('?')[0];
+      location.href = `mailto:${to}?subject=${encodeURIComponent(String(f.get('subject')))}&body=${encodeURIComponent(body)}`;
+    });
+  });
+</script>

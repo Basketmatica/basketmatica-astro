@@ -2,20 +2,40 @@
 import { getEntry, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getGlossaryTerms } from '../lib/glosario';
+import { SITE_URL } from '../consts';
 import 'katex/dist/katex.min.css';
 
-const entry = await getEntry('articulos', 'glosario-de-basketball-analytics');
-if (!entry) throw new Error('Entrada del glosario no encontrada');
+const entry = await getEntry('pages', 'glosario');
+if (!entry) throw new Error('Falta src/content/pages/glosario.md');
 
-const { Content, headings } = await render(entry);
-// Índice generado a partir de los encabezados de métrica (h4): no puede desincronizarse.
-const toc = headings.filter((h) => h.depth === 4);
+const { Content } = await render(entry);
+// Índice y datos estructurados salen de los encabezados de métrica (h4): no pueden desincronizarse.
+const terms = await getGlossaryTerms();
 const { title, description, heroImage, heroAlt } = entry.data;
----
-<BaseLayout title={title} description={description} image={heroImage} imageAlt={heroAlt || undefined}>
-  <article class="glosario">
-    <p class="post-meta"><a href="/articulos/">Artículos</a></p>
 
+const jsonLd = [
+  {
+    '@type': 'DefinedTermSet',
+    '@id': `${SITE_URL}/glosario/#glosario`,
+    name: title,
+    description,
+    inLanguage: 'es',
+    url: `${SITE_URL}/glosario/`,
+    hasDefinedTerm: terms
+      .filter((t) => t.definition)
+      .map((t) => ({
+        '@type': 'DefinedTerm',
+        name: t.heading,
+        description: t.definition,
+        url: `${SITE_URL}/glosario/#${t.slug}`,
+        inDefinedTermSet: { '@id': `${SITE_URL}/glosario/#glosario` },
+      })),
+  },
+];
+---
+<BaseLayout title={title} description={description} image={heroImage} imageAlt={heroAlt || undefined} jsonLd={jsonLd}>
+  <article class="glosario">
     {heroImage && (
       <Image
         class="hero-img"
@@ -23,18 +43,25 @@ const { title, description, heroImage, heroAlt } = entry.data;
         alt={heroAlt || title}
         widths={[480, 760, 1080]}
         sizes="(max-width: 760px) 100vw, 760px"
+        loading="eager"
       />
     )}
 
     <h1>{title}</h1>
 
-    <details class="toc">
-      <summary>ÍNDICE DEL GLOSARIO</summary>
-      <ol>
-        {toc.map((h) => (
-          <li><a href={`#${h.slug}`}>{h.text}</a></li>
+    <label class="toc-search">
+      <span class="sr-only">Buscar métrica en el glosario</span>
+      <input id="glosario-search" type="search" placeholder="Buscar métrica o sigla…" autocomplete="off" />
+    </label>
+
+    <details class="toc" id="glosario-toc">
+      <summary>ÍNDICE DEL GLOSARIO ({terms.length} métricas)</summary>
+      <ol id="glosario-list">
+        {terms.map((t) => (
+          <li data-q={`${t.heading} ${t.definition}`.toLowerCase()}><a href={`#${t.slug}`}>{t.heading}</a></li>
         ))}
       </ol>
+      <p id="glosario-empty" class="toc-empty" hidden>Ninguna métrica coincide.</p>
     </details>
 
     <div class="prose">
@@ -63,4 +90,34 @@ const { title, description, heroImage, heroAlt } = entry.data;
   .toc summary { cursor: pointer; font-weight: 600; font-family: var(--font-display); }
   .toc[open] summary { margin-bottom: .6rem; }
   .toc ol { columns: 2 260px; column-gap: 2rem; padding-left: 1.4rem; }
+  .toc li[hidden] { display: none; }
+  .toc-search { display: block; margin: 1rem 0 0; }
+  .toc-search input {
+    width: 100%; padding: .5rem .8rem; font: inherit; font-size: .95rem;
+    border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink);
+  }
+  .toc-search input:focus-visible { outline: 2px solid var(--accent); border-color: var(--accent); }
+  .toc-empty { color: var(--ink-soft); font-size: .95rem; margin: .5rem 0 0; }
 </style>
+
+<script>
+  // Filtra el índice por nombre, sigla o definición. Se re-enlaza en cada navegación (ClientRouter).
+  document.addEventListener('astro:page-load', () => {
+    const input = document.getElementById('glosario-search') as HTMLInputElement | null;
+    const toc = document.getElementById('glosario-toc') as HTMLDetailsElement | null;
+    const items = document.querySelectorAll<HTMLLIElement>('#glosario-list li');
+    const empty = document.getElementById('glosario-empty');
+    if (!input || !toc) return;
+    input.addEventListener('input', () => {
+      const q = input.value.toLowerCase().trim();
+      let n = 0;
+      items.forEach((li) => {
+        const show = !q || (li.dataset.q ?? '').includes(q);
+        li.hidden = !show;
+        if (show) n++;
+      });
+      if (q) toc.open = true;
+      if (empty) empty.hidden = n > 0;
+    });
+  });
+</script>

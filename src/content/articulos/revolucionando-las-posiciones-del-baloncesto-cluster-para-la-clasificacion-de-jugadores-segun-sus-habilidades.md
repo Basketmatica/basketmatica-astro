@@ -3,7 +3,7 @@ title: "Revolucionando las Posiciones del Baloncesto: Clúster para la Clasifica
 description: "Clustering con PCA y K-Means para clasificar a los jugadores de la NBA por sus habilidades reales y no por su posición: tres perfiles distintos en cada puesto."
 pubDate: "2025-04-06T13:18:45.000Z"
 category: "Jugadores"
-heroImage: "../../assets/blog/revolucionando-las-posiciones-del-baloncesto-cluster-para-la-clasificacion-de-jugadores-segun-sus-habilidades/image-5.png"
+heroImage: "../../assets/blog/revolucionando-las-posiciones-del-baloncesto-cluster-para-la-clasificacion-de-jugadores-segun-sus-habilidades/image-5.webp"
 heroAlt: "Collage de jugadores de baloncesto en acción rodeados de paneles con estadísticas"
 ---
 

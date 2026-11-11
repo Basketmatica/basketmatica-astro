@@ -1,16 +1,19 @@
 ---
-import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import MetricOfWeek from '../components/MetricOfWeek.astro';
 import NewsletterCTA from '../components/NewsletterCTA.astro';
 import HexDivider from '../components/HexDivider.astro';
+import Icon, { type IconName } from '../components/Icon.astro';
+import reportImg from '../assets/blog/generador-reportes-acb/02-informe-campazzo.jpg';
 import { metricasSemana } from '../data/metricas-semana';
-import { isPublished } from '../lib/urls';
+import { getArticles } from '../lib/articles';
+import { getGlossaryTerms, findTerm } from '../lib/glosario';
+import { threads } from '../data/hilos';
 
-const posts = (await getCollection('articulos', isPublished))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
+const posts = (await getArticles()).slice(0, 3);
+const terms = await getGlossaryTerms();
 
 // Métrica de la semana: rota una por semana según la fecha del build.
 // ANCHOR es el lunes en el que el índice 0 (Free Throw Rate) está activo.
@@ -19,6 +22,15 @@ const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
 const semanas = Math.floor((Date.now() - ANCHOR) / WEEK_MS);
 const indiceMetrica = ((semanas % metricasSemana.length) + metricasSemana.length) % metricasSemana.length;
 const metrica = metricasSemana[indiceMetrica];
+// La métrica de la semana debe tener ficha en el glosario: si no, el build avisa.
+const ficha = await findTerm(metrica.name, metrica.acronym);
+if (!ficha) throw new Error(`La métrica «${metrica.name}» no existe en el glosario (src/content/pages/glosario.md)`);
+
+const explore: { href: string; icon: IconName; title: string; text: string }[] = [
+  { href: '/glosario/', icon: 'book', title: 'Glosario', text: `${terms.length} métricas explicadas en español, con su fórmula y un hilo donde se aplican.` },
+  { href: '/archivo-basketmatica/', icon: 'archive', title: 'Archivo de hilos', text: `${threads.length} hilos de X filtrables por tema, de los fundamentos a los casos prácticos.` },
+  { href: '/datos/', icon: 'database', title: 'Datos y código', text: 'Repositorios abiertos y datasets de cada análisis, para reproducirlo tú mismo.' },
+];
 
 const heroDesc = 'Estadística avanzada, modelos predictivos y análisis de IA aplicados al baloncesto que te gusta. Código y números detrás del juego.';
 ---
@@ -30,7 +42,7 @@ const heroDesc = 'Estadística avanzada, modelos predictivos y análisis de IA a
       <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="hero-hex-p" width="42" height="48" patternUnits="userSpaceOnUse" patternTransform="rotate(8)">
-            <path d="M21 2.5 L40 13 L40 35 L21 45.5 L2 35 L2 13 Z" fill="none" stroke="#583C14" stroke-width="1"/>
+            <path d="M21 2.5 L40 13 L40 35 L21 45.5 L2 35 L2 13 Z" fill="none" stroke="currentColor" stroke-width="1"/>
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#hero-hex-p)"/>
@@ -47,21 +59,21 @@ const heroDesc = 'Estadística avanzada, modelos predictivos y análisis de IA a
     </div>
   </section>
 
-  <!-- ===== Cadencia editorial ===== -->
-  <section class="cadence" aria-label="Cadencia de publicación">
+  <!-- ===== Qué publico ===== -->
+  <section class="cadence" aria-label="Qué publico">
     <div class="cadence-item">
-      <span class="cadence-freq">Cada semana</span>
-      <span class="cadence-what">Resumen de la jornada en X</span>
+      <span class="cadence-freq">Hilos en X</span>
+      <span class="cadence-what">La jornada y las métricas, en datos</span>
     </div>
     <span class="cadence-sep" aria-hidden="true">·</span>
     <div class="cadence-item">
-      <span class="cadence-freq">Cada mes</span>
-      <span class="cadence-what">Artículo de análisis</span>
+      <span class="cadence-freq">Artículos</span>
+      <span class="cadence-what">Análisis a fondo, con código abierto</span>
     </div>
     <span class="cadence-sep" aria-hidden="true">·</span>
     <div class="cadence-item">
-      <span class="cadence-freq">Cada trimestre</span>
-      <span class="cadence-what">Herramienta gratuita</span>
+      <span class="cadence-freq">Herramientas</span>
+      <span class="cadence-what">Gratuitas y que puedes usar hoy</span>
     </div>
   </section>
 
@@ -78,9 +90,11 @@ const heroDesc = 'Estadística avanzada, modelos predictivos y análisis de IA a
           con estadísticas avanzadas, análisis FODA y comparativa con jugadores similares —
           en menos de un minuto.
         </p>
-        <a href="/herramientas/generador-reportes-acb/" class="btn-primary">Generar reporte gratis →</a>
+        <a href="/herramientas/generador-reportes-acb/" class="btn-primary">Generar reporte gratis <Icon name="arrow" size={18} /></a>
       </div>
-      <div class="tool-spotlight-icon" aria-hidden="true">🏀</div>
+      <a class="tool-spotlight-shot" href="/herramientas/generador-reportes-acb/" tabindex="-1" aria-hidden="true">
+        <Image src={reportImg} alt="" widths={[360, 560]} sizes="(max-width: 580px) 100vw, 280px" />
+      </a>
     </div>
   </section>
 
@@ -102,7 +116,22 @@ const heroDesc = 'Estadística avanzada, modelos predictivos y análisis de IA a
     name={metrica.name}
     acronym={metrica.acronym}
     definition={metrica.definition}
+    href={`/glosario/#${ficha.slug}`}
   />
+
+  <!-- ===== Explora ===== -->
+  <section class="explore" aria-label="Explora">
+    <p class="eyebrow">Explora</p>
+    <div class="explore-grid">
+      {explore.map((e) => (
+        <a class="explore-card" href={e.href}>
+          <span class="explore-icon"><Icon name={e.icon} size={26} /></span>
+          <h2 class="explore-title">{e.title}</h2>
+          <p>{e.text}</p>
+        </a>
+      ))}
+    </div>
+  </section>
 
   <!-- ===== Newsletter ===== -->
   <NewsletterCTA />
@@ -119,6 +148,7 @@ const heroDesc = 'Estadística avanzada, modelos predictivos y análisis de IA a
   }
 
   .hero-hex {
+    color: var(--brand);
     position: absolute;
     inset: 0;
     opacity: .07;
@@ -142,35 +172,6 @@ const heroDesc = 'Estadística avanzada, modelos predictivos y análisis de IA a
   }
 
   .hero-actions { display: flex; gap: .8rem; flex-wrap: wrap; }
-
-  /* ---- Buttons ---- */
-  .btn-primary {
-    display: inline-block;
-    background: var(--brand);
-    color: #fff;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: .95rem;
-    padding: .7rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background .2s, transform .15s;
-  }
-  .btn-primary:hover { background: var(--brand-600); transform: translateY(-1px); color: #fff; }
-
-  .btn-outline {
-    display: inline-block;
-    border: 1.5px solid var(--brand);
-    color: var(--brand);
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: .95rem;
-    padding: .7rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background .2s, color .2s;
-  }
-  .btn-outline:hover { background: var(--brand); color: #fff; }
 
   /* ---- Cadence strip ---- */
   .cadence {
@@ -223,7 +224,28 @@ const heroDesc = 'Estadística avanzada, modelos predictivos y análisis de IA a
   .tool-spotlight-text { flex: 1; }
   .tool-title { margin: 0 0 .7rem; font-size: 1.45rem; }
   .tool-spotlight-text p { color: var(--ink-soft); margin: 0 0 1.3rem; font-size: 1rem; line-height: 1.6; }
-  .tool-spotlight-icon { font-size: 3.5rem; line-height: 1; flex-shrink: 0; }
+  .tool-spotlight-shot {
+    flex-shrink: 0; width: 280px; aspect-ratio: 4 / 3; overflow: hidden;
+    border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow);
+  }
+  .tool-spotlight-shot :global(img) {
+    width: 100%; height: 100%; object-fit: cover; object-position: left top;
+    transition: transform .3s;
+  }
+  .tool-spotlight-shot:hover :global(img) { transform: scale(1.03); }
+
+  /* ---- Explora ---- */
+  .explore { margin-bottom: 2rem; }
+  .explore-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .explore-card {
+    display: flex; flex-direction: column; gap: .5rem; padding: 1.4rem;
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    text-decoration: none; box-shadow: var(--shadow); transition: border-color .2s, box-shadow .2s;
+  }
+  .explore-card:hover { border-color: var(--brand); box-shadow: var(--shadow-hover); }
+  .explore-icon { color: var(--accent-600); line-height: 0; }
+  .explore-title { margin: 0; font-size: 1.15rem; }
+  .explore-card p { margin: 0; color: var(--ink-soft); font-size: .93rem; line-height: 1.55; }
 
   /* ---- Latest articles ---- */
   .latest-articles { margin-bottom: 0; }
@@ -253,6 +275,8 @@ const heroDesc = 'Estadística avanzada, modelos predictivos y análisis de IA a
 
   /* ---- Responsive ---- */
   @media (max-width: 820px) {
+    .explore-grid { grid-template-columns: 1fr; }
+    .tool-spotlight { flex-wrap: wrap; }
     .articles-grid { grid-template-columns: 1fr 1fr; }
     .articles-grid > :last-child { display: none; }
   }
@@ -262,7 +286,8 @@ const heroDesc = 'Estadística avanzada, modelos predictivos y análisis de IA a
     .articles-grid { grid-template-columns: 1fr; }
     .articles-grid > :last-child { display: revert; }
     .tool-spotlight { flex-direction: column; gap: 1rem; }
-    .tool-spotlight-icon { display: none; }
+    .tool-spotlight-shot { width: 100%; }
+    .explore-grid { grid-template-columns: 1fr; }
     .cadence-sep { display: none; }
     .cadence { gap: .8rem; padding: 1.2rem 1.25rem; }
   }

@@ -1,0 +1,55 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  url: string;
+  title: string;
+}
+const { url, title } = Astro.props;
+const enc = encodeURIComponent;
+---
+<div class="share" data-share-url={url} data-share-title={title}>
+  <span class="share-label"><Icon name="share" size={16} /> Compartir</span>
+  <a href={`https://x.com/intent/post?text=${enc(title)}&url=${enc(url)}`} target="_blank" rel="noopener">X</a>
+  <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}`} target="_blank" rel="noopener">LinkedIn</a>
+  <a href={`https://wa.me/?text=${enc(title + ' ' + url)}`} target="_blank" rel="noopener">WhatsApp</a>
+  <button type="button" data-copy-link><Icon name="link" size={15} /> <span data-copy-text>Copiar enlace</span></button>
+</div>
+
+<style>
+  .share {
+    display: flex; flex-wrap: wrap; align-items: center; gap: .5rem;
+    margin: 2.5rem 0 1rem; padding-top: 1.2rem; border-top: 1px solid var(--line);
+  }
+  .share-label {
+    display: inline-flex; align-items: center; gap: .35rem; margin-right: .3rem;
+    font-family: var(--font-display); font-size: .78rem; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft);
+  }
+  .share a, .share button {
+    display: inline-flex; align-items: center; gap: .35rem;
+    padding: .3rem .85rem; border: 1px solid var(--line); border-radius: 999px;
+    background: var(--surface); color: var(--ink-soft); cursor: pointer; text-decoration: none;
+    font-family: var(--font-display); font-size: .85rem; font-weight: 500;
+    transition: border-color .15s, color .15s;
+  }
+  .share a:hover, .share button:hover { border-color: var(--brand); color: var(--brand); }
+</style>
+
+<script>
+  // Delegado en document: funciona tras cualquier navegación de ClientRouter.
+  document.addEventListener('click', async (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-copy-link]');
+    if (!btn) return;
+    const box = btn.closest<HTMLElement>('[data-share-url]');
+    const url = box?.dataset.shareUrl ?? location.href;
+    const label = btn.querySelector('[data-copy-text]');
+    try {
+      await navigator.clipboard.writeText(url);
+      if (label) label.textContent = '¡Enlace copiado!';
+    } catch {
+      window.prompt('Copia el enlace:', url);
+    }
+    setTimeout(() => { if (label) label.textContent = 'Copiar enlace'; }, 2000);
+  });
+</script>

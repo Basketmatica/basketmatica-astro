@@ -3,15 +3,18 @@ interface Props {
   name: string;
   acronym?: string;
   definition: string;
+  /** Ficha del glosario. */
+  href?: string;
 }
 
-const { name, acronym, definition } = Astro.props;
+const { name, acronym, definition, href } = Astro.props;
 ---
 <section class="metric-week">
   <p class="metric-eyebrow">Métrica de la semana</p>
   <p class="metric-name">{name}</p>
   {acronym && <p class="metric-acronym">{acronym}</p>}
   <p class="metric-context">{definition}</p>
+  {href && <a class="metric-link" href={href}>Ver en el glosario →</a>}
 </section>
 
 <style>
@@ -51,6 +54,13 @@ const { name, acronym, definition } = Astro.props;
     color: var(--accent);
     margin: 0 0 1.2rem;
   }
+
+  .metric-link {
+    display: inline-block; margin-top: 1.4rem;
+    font-family: var(--font-display); font-weight: 600; font-size: .92rem;
+    color: #7FE0C6; text-decoration: none;
+  }
+  .metric-link:hover { color: #fff; text-decoration: underline; }
 
   .metric-context {
     color: var(--court-ink);

@@ -1,6 +1,10 @@
 /* Design tokens — identidad Basketmática (híbrido editorial-data).
-   Base clara y cálida; marrón espresso estructural; superficies "court" oscuras. */
+   Base clara y cálida; marrón espresso estructural; superficies "court" oscuras.
+   El tema oscuro sigue la preferencia del sistema y se puede forzar con
+   <html data-theme="light|dark"> (selector de tema del menú). */
 :root {
+  color-scheme: light;
+
   /* Neutros cálidos (base clara) */
   --bg:          #F4EFE5;  /* fondo papel/crema */
   --surface:     #FBF8F0;  /* tarjetas y superficies elevadas */
@@ -10,7 +14,8 @@
 
   /* Marca */
   --brand:       #583C14;  /* espresso del logo: identidad, titulares */
-  --brand-600:   #6F4F22;  /* variante clara: hover sobre marrón */
+  --brand-600:   #6F4F22;  /* variante: hover sobre relleno de marca */
+  --on-brand:    #FFFFFF;  /* texto sobre relleno de marca */
 
   /* Superficies oscuras "court" (paneles data) */
   --court:       #1B140D;  /* fondo oscuro principal */
@@ -20,9 +25,20 @@
   /* Acento (datos, CTAs, enlaces) */
   --accent:      #1F8A74;  /* teal: rellenos de botón, highlights de datos */
   --accent-600:  #176B5A;  /* texto-enlace y hover (cumple AA sobre crema) */
+  --on-accent:   #FFFFFF;
 
   /* Spot — uso MUY puntual: "nuevo", "en directo", energía */
   --spot:        #E8772E;  /* naranja balón */
+
+  /* Estados (etiquetas) */
+  --ok-bg:       #D4F0E8;  --ok-ink:   #176B5A;
+  --warn-bg:     #FEF3C7;  --warn-ink: #92400E;
+
+  /* Cabecera translúcida, logo y sombras */
+  --header-bg:    rgba(244, 239, 229, .85);
+  --logo-filter:  none;
+  --logo-blend:   multiply;
+  --img-filter:   none;
 
   /* Tipografía */
   --font-display: 'Space Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
@@ -34,6 +50,59 @@
   --max-wide:    1080px;
 
   /* Radios y sombra */
-  --radius:      10px;
-  --shadow:      0 1px 2px rgba(34,26,16,.06), 0 6px 24px rgba(34,26,16,.08);
+  --radius:       10px;
+  --shadow:       0 1px 2px rgba(34,26,16,.06), 0 6px 24px rgba(34,26,16,.08);
+  --shadow-hover: 0 4px 20px rgba(88,60,20,.14);
+}
+
+/* Tema oscuro: mismos nombres, valores cálidos (nunca negro puro ni azulado). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg:          #16110B;
+    --surface:     #201912;
+    --line:        #3A2F22;
+    --ink:         #EFE8DA;
+    --ink-soft:    #B9AA90;
+    --brand:       #E6C48C;
+    --brand-600:   #F2D7A8;
+    --on-brand:    #1B140D;
+    --court:       #0E0A06;
+    --court-soft:  #1B140D;
+    --accent:      #2FB59A;
+    --accent-600:  #4FCFB3;
+    --on-accent:   #06211B;
+    --ok-bg:       #12372E;  --ok-ink:   #7FE0C6;
+    --warn-bg:     #3A2C0C;  --warn-ink: #F2C96B;
+    --header-bg:   rgba(22, 17, 11, .85);
+    --logo-filter: brightness(0) invert(.88) sepia(.25);
+    --logo-blend:  normal;
+    --img-filter:  brightness(.92) contrast(1.02);
+    --shadow:       0 1px 2px rgba(0,0,0,.4), 0 6px 24px rgba(0,0,0,.35);
+    --shadow-hover: 0 4px 22px rgba(0,0,0,.55);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg:          #16110B;
+  --surface:     #201912;
+  --line:        #3A2F22;
+  --ink:         #EFE8DA;
+  --ink-soft:    #B9AA90;
+  --brand:       #E6C48C;
+  --brand-600:   #F2D7A8;
+  --on-brand:    #1B140D;
+  --court:       #0E0A06;
+  --court-soft:  #1B140D;
+  --accent:      #2FB59A;
+  --accent-600:  #4FCFB3;
+  --on-accent:   #06211B;
+  --ok-bg:       #12372E;  --ok-ink:   #7FE0C6;
+  --warn-bg:     #3A2C0C;  --warn-ink: #F2C96B;
+  --header-bg:   rgba(22, 17, 11, .85);
+  --logo-filter: brightness(0) invert(.88) sepia(.25);
+  --logo-blend:  normal;
+  --img-filter:  brightness(.92) contrast(1.02);
+  --shadow:       0 1px 2px rgba(0,0,0,.4), 0 6px 24px rgba(0,0,0,.35);
+  --shadow-hover: 0 4px 22px rgba(0,0,0,.55);
 }

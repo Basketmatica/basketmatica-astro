@@ -1,0 +1,126 @@
+---
+import { readFileSync, statSync } from 'node:fs';
+import { join } from 'node:path';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import IntervalChart, { type IntervalRow } from '../components/IntervalChart.astro';
+import Icon from '../components/Icon.astro';
+import { getArticles } from '../lib/articles';
+import { postPath } from '../lib/urls';
+import { NEWSLETTER_URL } from '../consts';
+
+const title = 'Datos y código';
+const description =
+  'Repositorios abiertos, descargables y gráficos de los análisis de Basketmática: reproduce cada estudio con sus datos y su código.';
+
+// --- Gráfico: ACB 2025-26 (victorias reales frente a esperadas por puntos) ---
+const csv = readFileSync(join(process.cwd(), 'public/files/victorias-esperadas-acb-2017-2026.csv'), 'utf8')
+  .trim().split('\n').slice(1).map((l) => l.split(','));
+const rows: IntervalRow[] = csv
+  .filter((c) => c[0] === '2025_26')
+  .map((c) => ({ label: c[1], actual: +c[2], expected: +c[4], low: +c[6], high: +c[7] }))
+  .sort((a, b) => (b.actual - b.expected) - (a.actual - a.expected));
+
+// --- Repositorios: cada uno enlaza con el artículo donde se explica ---
+const REPOS: { repo: string; article: string }[] = [
+  { repo: 'basketmatica-expectativa-pitagorica', article: 'expectativa-pitagorica-acb' },
+  { repo: 'basketmatica-clustering', article: 'revolucionando-las-posiciones-del-baloncesto-cluster-para-la-clasificacion-de-jugadores-segun-sus-habilidades' },
+  { repo: 'basketmatica-modelopredictivo', article: 'casos-de-uso-1-es-posible-predecir-resultados-de-la-nba-con-modelos-de-aprendizaje-automatico' },
+  { repo: 'basketmatica-teoria69', article: 'cuanto-importa-anotar-primero-la-teoria-del-69-y-otras-claves-en-el-baloncesto-europeo' },
+  { repo: 'basketmatica-picksncaa', article: 'en-busca-de-la-fabrica-de-talento-analisis-de-los-picks-del-draft-de-distintas-universidades-de-la-ncaa' },
+  { repo: 'basketmatica-impactosocial', article: 'analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba' },
+  { repo: 'basketmatica-lebron', article: 'como-se-corono-lebron-james-como-maximo-anotador-de-la-historia' },
+  { repo: 'basketmatica-jjoo', article: 'detras-de-los-jjoo-datos-e-historias-del-baloncesto-olimpico' },
+];
+const articles = await getArticles();
+const repos = REPOS.map((r) => {
+  const a = articles.find((x) => x.id === r.article);
+  if (!a) throw new Error(`datos.astro: no existe el artículo «${r.article}»`);
+  return { ...r, url: `https://github.com/Basketmatica/${r.repo}`, title: a.data.title, href: postPath(a) };
+});
+
+// --- Descargas: ficheros de public/files (el tamaño se calcula en el build) ---
+const size = (f: string) => {
+  const mb = statSync(join(process.cwd(), 'public/files', f)).size / 1024 / 1024;
+  return mb >= 1 ? `${mb.toFixed(0)} MB` : `${Math.max(1, Math.round(mb * 1024))} KB`;
+};
+const downloads = [
+  { file: 'final-project-nba-2.xlsx', label: 'Dashboard de Excel con estadísticas de la NBA (1950-2017)', kind: 'XLSX' },
+  { file: 'campazzo-report-acb-1.pdf', label: 'Informe de ejemplo: Facundo Campazzo (ACB)', kind: 'PDF' },
+  { file: 'pau-gasol-report-1.pdf', label: 'Informe de ejemplo: Pau Gasol (NBA)', kind: 'PDF' },
+].map((d) => ({ ...d, size: size(d.file) }));
+---
+<BaseLayout title={title} description={description}>
+  <article class="datos">
+    <p class="eyebrow">Transparencia</p>
+    <h1>{title}</h1>
+    <p class="intro">
+      Todo lo que se cuenta en Basketmática se puede comprobar. Aquí está el código de cada análisis,
+      los ficheros descargables y un gráfico con datos reales de la ACB.
+    </p>
+
+    <section>
+      <h2>¿Suerte o habilidad? La ACB 2025-26</h2>
+      <p>
+        Cada equipo ganó más o menos partidos de los que sus puntos anotados y recibidos merecían. Ninguno
+        sale de su banda del azar. Es el resultado central del artículo
+        <a href={postPath(articles.find((a) => a.id === 'expectativa-pitagorica-acb')!)}>«Cuántas victorias merece cada equipo de la ACB»</a>.
+      </p>
+      <IntervalChart rows={rows} caption="Victorias reales, victorias esperadas por puntos y banda del azar de cada equipo de la ACB en la temporada 2025-26" />
+      <p class="note-line">
+        <Icon name="database" size={16} /> La tabla completa de las ocho temporadas (145 equipos-temporada) se envía por correo a las personas
+        suscritas a la <a href={NEWSLETTER_URL} target="_blank" rel="noopener">newsletter</a>.
+      </p>
+    </section>
+
+    <section>
+      <h2>Repositorios abiertos</h2>
+      <p>Cada estudio tiene su repositorio en GitHub con los datos y el código para reproducirlo.</p>
+      <ul class="repo-list">
+        {repos.map((r) => (
+          <li>
+            <a class="repo-link" href={r.url} target="_blank" rel="noopener">
+              <Icon name="code" size={18} /> {r.repo}
+            </a>
+            <a class="repo-article" href={r.href}>{r.title}</a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h2>Descargas</h2>
+      <ul class="dl-list">
+        {downloads.map((d) => (
+          <li>
+            <a href={`/files/${d.file}`} download>
+              <Icon name="download" size={18} /> {d.label}
+            </a>
+            <span class="dl-meta">{d.kind} · {d.size}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .datos { padding-block: 1.5rem 3rem; }
+  .datos section { margin-top: 2.5rem; }
+  .note-line { color: var(--ink-soft); font-size: .93rem; }
+  .note-line :global(.icon) { margin-right: .35rem; }
+  .repo-list, .dl-list { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: .7rem; }
+  .repo-list li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: .3rem 1.5rem; align-items: baseline; }
+  .dl-list li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .3rem 1rem; align-items: baseline; }
+  .repo-list li, .dl-list li {
+    padding: .8rem 1rem; background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+  }
+  .repo-link, .dl-list a {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-family: var(--font-mono); font-size: .9rem; font-weight: 500; text-decoration: none;
+  }
+  .dl-list a { font-family: var(--font-display); font-size: .98rem; }
+  .repo-link:hover, .dl-list a:hover { text-decoration: underline; }
+  .repo-article { font-size: .9rem; color: var(--ink-soft); }
+  @media (max-width: 620px) { .repo-list li { grid-template-columns: 1fr; } }
+  .dl-meta { font-family: var(--font-mono); font-size: .8rem; color: var(--ink-soft); }
+</style>

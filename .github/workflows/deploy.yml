@@ -3,6 +3,8 @@ name: Deploy a GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
   # Reconstruye cada día a las 08:00 UTC: publica los artículos programados (pubDate futura,
   # ver isPublished) y rota la "Métrica de la semana". Los cron de GitHub Actions van en UTC y
@@ -26,12 +28,34 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Build con Astro
-        uses: withastro/action@v3
+
+      - name: Node
+        uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Comprobar tipos (astro check)
+        run: npm run check
+
+      - name: Build
+        run: npm run build
+
+      - name: Comprobar enlaces internos
+        run: npm run check:links
+
+      - name: Subir artefacto de Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
 
   deploy:
+    # Los pull requests solo validan (tipos, build y enlaces); no despliegan.
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:

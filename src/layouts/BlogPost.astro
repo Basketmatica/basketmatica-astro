@@ -1,28 +1,38 @@
 ---
 import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
 import 'katex/dist/katex.min.css';
-import type { CollectionEntry } from 'astro:content';
+import type { MarkdownHeading } from 'astro';
 import BaseLayout from './BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
-import { formatDate, categorySlug, isPublished, postPath } from '../lib/urls';
+import ShareLinks from '../components/ShareLinks.astro';
+import NewsletterCTA from '../components/NewsletterCTA.astro';
+import Icon from '../components/Icon.astro';
+import { getArticles, readingMinutes, neighbors, type Article } from '../lib/articles';
+import { formatDate, categorySlug, postPath } from '../lib/urls';
 import { SITE_URL } from '../consts';
 
 interface Props {
-  post: CollectionEntry<'articulos'>;
+  post: Article;
+  headings?: MarkdownHeading[];
 }
-const { post } = Astro.props;
+const { post, headings = [] } = Astro.props;
 const { title, description, pubDate, updatedDate, category, heroImage, heroAlt } = post.data;
 const articleUrl = SITE_URL + postPath(post);
 const catUrl = `${SITE_URL}/articulos/${categorySlug(category)}/`;
+const minutes = readingMinutes(post);
+
+// Índice solo en artículos largos con suficientes secciones.
+const sections = headings.filter((h) => h.depth === 2);
+const showToc = sections.length >= 4 && minutes >= 6;
+
+const all = await getArticles();
+const others = all.filter((p) => p.id !== post.id);
+const { prev, next } = neighbors(all, post);
 
 // Relacionados: primero la misma categoría, luego el resto, del más reciente al más antiguo.
-const all = (await getCollection('articulos', isPublished))
-  .filter((p) => p.id !== post.id)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const related = [
-  ...all.filter((p) => p.data.category === category),
-  ...all.filter((p) => p.data.category !== category),
+  ...others.filter((p) => p.data.category === category),
+  ...others.filter((p) => p.data.category !== category),
 ].slice(0, 3);
 
 const jsonLd = [
@@ -37,6 +47,7 @@ const jsonLd = [
     "mainEntityOfPage": { "@type": "WebPage", "@id": articleUrl },
     "inLanguage": "es",
     "articleSection": category,
+    "timeRequired": `PT${minutes}M`,
     "author": { "@id": `${SITE_URL}/#person` },
     "publisher": { "@id": `${SITE_URL}/#organization` },
     "isPartOf": { "@id": `${SITE_URL}/#website` },
@@ -67,16 +78,56 @@ const jsonLd = [
       <p class="post-meta">
         <a class="badge" href={`/articulos/${categorySlug(category)}/`}>{category}</a>
         <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+        <span class="meta-sep" aria-hidden="true">·</span>
+        <span class="read-time"><Icon name="clock" size={15} /> {minutes} min de lectura</span>
+        {updatedDate && (
+          <>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span>Actualizado el <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate)}</time></span>
+          </>
+        )}
       </p>
       <h1>{title}</h1>
     </header>
     {heroImage && (
       <Image class="hero-img" src={heroImage} alt={heroAlt || title} widths={[480, 760, 1080]} sizes="(max-width: 760px) 100vw, 760px" loading="eager" fetchpriority="high" />
     )}
+
+    {showToc && (
+      <details class="post-toc">
+        <summary>En este artículo</summary>
+        <ol>
+          {sections.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}
+        </ol>
+      </details>
+    )}
+
     <div class="prose">
       <slot />
     </div>
+
+    <ShareLinks url={articleUrl} title={title} />
   </article>
+
+  <NewsletterCTA />
+
+  {(prev || next) && (
+    <nav class="post-nav" aria-label="Artículos anterior y siguiente">
+      {prev ? (
+        <a class="post-nav-item" href={postPath(prev)} rel="prev">
+          <span class="post-nav-dir">← Anterior</span>
+          <span class="post-nav-title">{prev.data.title}</span>
+        </a>
+      ) : <span />}
+      {next ? (
+        <a class="post-nav-item post-nav-next" href={postPath(next)} rel="next">
+          <span class="post-nav-dir">Siguiente →</span>
+          <span class="post-nav-title">{next.data.title}</span>
+        </a>
+      ) : <span />}
+    </nav>
+  )}
+
   {related.length > 0 && (
     <aside class="related" aria-labelledby="related-title">
       <h2 id="related-title">Sigue leyendo</h2>
@@ -86,3 +137,32 @@ const jsonLd = [
     </aside>
   )}
 </BaseLayout>
+
+<style>
+  .meta-sep { color: var(--line); }
+  .read-time { display: inline-flex; align-items: center; gap: .3rem; }
+
+  .post-toc {
+    margin: 1.2rem 0 1.6rem;
+    border: 1px solid var(--line); border-radius: var(--radius);
+    padding: .8rem 1rem; background: var(--surface);
+  }
+  .post-toc summary { cursor: pointer; font-weight: 600; font-family: var(--font-display); color: var(--brand); }
+  .post-toc[open] summary { margin-bottom: .5rem; }
+  .post-toc ol { margin: 0; padding-left: 1.3rem; font-size: .95rem; line-height: 1.7; }
+
+  .post-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0 0 2rem; }
+  .post-nav-item {
+    display: flex; flex-direction: column; gap: .25rem; padding: 1rem 1.2rem;
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    text-decoration: none; transition: border-color .15s;
+  }
+  .post-nav-item:hover { border-color: var(--brand); }
+  .post-nav-next { text-align: right; grid-column: 2; }
+  .post-nav-dir { font-family: var(--font-display); font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-600); }
+  .post-nav-title { font-family: var(--font-display); font-weight: 600; color: var(--brand); line-height: 1.3; }
+  @media (max-width: 620px) {
+    .post-nav { grid-template-columns: 1fr; }
+    .post-nav-next { grid-column: 1; text-align: left; }
+  }
+</style>

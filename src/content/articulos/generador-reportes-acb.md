@@ -3,7 +3,7 @@ title: "Generador de Reportes ACB: el dato por un carril, el relato por otro"
 description: "Escribe un nombre y descarga un scouting report en PDF. Los datos, de acb.com; la IA solo redacta, y bajo reglas. Así funciona la nueva herramienta de Basketmática."
 pubDate: "2026-09-16T10:00:00.000Z"
 category: "Herramientas"
-heroImage: "../../assets/blog/generador-reportes-acb/generador-reportes-acb-hero.png"
+heroImage: "../../assets/blog/generador-reportes-acb/generador-reportes-acb-hero.webp"
 heroAlt: "Ilustración del Generador de Reportes ACB: el logo de la Liga Endesa rodeado de gráficos estadísticos, escudos de clubes, jugadores en acción y una pista de baloncesto."
 draft: false
 ---

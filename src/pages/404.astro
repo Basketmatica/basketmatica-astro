@@ -1,10 +1,37 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+
+const links = [
+  { href: '/articulos/', label: 'Artículos' },
+  { href: '/glosario/', label: 'Glosario de métricas' },
+  { href: '/herramientas/', label: 'Herramientas' },
+  { href: '/archivo-basketmatica/', label: 'Archivo de hilos' },
+];
 ---
 <BaseLayout title="Página no encontrada" noindex>
-  <section style="padding-block: 4rem; text-align: center;">
-    <h1>404</h1>
-    <p class="intro">Esta página no existe o se ha movido.</p>
-    <p><a href="/">← Volver al inicio</a></p>
+  <section class="nf">
+    <p class="nf-code">404</p>
+    <h1>Esta página no existe o se ha movido</h1>
+    <p class="intro">Prueba a buscar lo que necesitas o elige un camino:</p>
+    <form class="nf-form" role="search" action="/buscar/" method="get">
+      <label class="sr-only" for="q404">Buscar</label>
+      <input id="q404" name="q" type="search" placeholder="Buscar en Basketmática…" />
+      <button type="submit" class="btn-primary"><Icon name="search" size={18} /> Buscar</button>
+    </form>
+    <ul class="nf-links">
+      {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+    </ul>
   </section>
 </BaseLayout>
+
+<style>
+  .nf { padding-block: 4rem; text-align: center; }
+  .nf-code { font-family: var(--font-mono); font-size: 1rem; color: var(--accent-600); letter-spacing: .2em; margin: 0 0 .5rem; }
+  .nf-form { display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; margin: 1.5rem 0; }
+  .nf-form input {
+    min-width: 260px; padding: .7rem 1rem; font: inherit; border: 1px solid var(--line);
+    border-radius: 8px; background: var(--surface); color: var(--ink);
+  }
+  .nf-links { list-style: none; padding: 0; margin: 1.5rem 0 0; display: flex; gap: .6rem 1.4rem; justify-content: center; flex-wrap: wrap; }
+</style>

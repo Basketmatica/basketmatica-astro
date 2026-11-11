@@ -1,27 +1,42 @@
 ---
 import { Image } from 'astro:assets';
 import logoImg from '../assets/brand/logo_basketmatica-sin-fondo.png';
+import Icon from './Icon.astro';
 
 const { pathname } = Astro.url;
 
+// El logo lleva a la portada, así que no hay enlace "Inicio".
 const links = [
-  { href: '/',                      label: 'Inicio' },
   { href: '/articulos/',            label: 'Artículos' },
   { href: '/herramientas/',         label: 'Herramientas' },
   { href: '/glosario/',             label: 'Glosario' },
   { href: '/archivo-basketmatica/', label: 'Archivo' },
+  { href: '/datos/',                label: 'Datos' },
+  { href: '/servicios/',            label: 'Servicios' },
   { href: '/sobre-mi/',             label: 'Sobre mí' },
 ];
 
+// Los artículos viven en /AAAA/MM/DD/slug/: también activan "Artículos".
+const isArticle = /^\/\d{4}\/\d{2}\/\d{2}\//.test(pathname);
 const isActive = (href: string) =>
-  href === '/' ? pathname === '/' : pathname.startsWith(href);
+  href === '/articulos/' ? isArticle || pathname.startsWith(href) : pathname.startsWith(href);
 ---
 
 <header class="site-header">
   <div class="container container-wide inner">
     <a class="brand" href="/" aria-label="Basketmática — Inicio">
-      <Image src={logoImg} alt="Basketmática" width={40} height={40} densities={[1.5, 2]} loading="eager" />
+      <Image src={logoImg} alt="Basketmática" width={48} height={48} densities={[1.5, 2]} loading="eager" />
     </a>
+
+    <div class="header-actions">
+      <a class="icon-btn" href="/buscar/" aria-label="Buscar" title="Buscar" aria-current={pathname.startsWith('/buscar/') ? 'page' : undefined}>
+        <Icon name="search" />
+      </a>
+      <button class="icon-btn theme-toggle" type="button" aria-label="Cambiar tema claro/oscuro" title="Cambiar tema">
+        <Icon name="moon" class="i-moon" />
+        <Icon name="sun" class="i-sun" />
+      </button>
+    </div>
 
     <button
       class="nav-toggle"
@@ -43,29 +58,63 @@ const isActive = (href: string) =>
 </header>
 
 <script>
-  const btn = document.querySelector<HTMLButtonElement>('.nav-toggle');
-  const menu = document.getElementById('nav-menu');
-
-  btn?.addEventListener('click', () => {
-    const open = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!open));
-    btn.setAttribute('aria-label', open ? 'Abrir menú' : 'Cerrar menú');
-    menu?.classList.toggle('open');
+  // Selector de tema. El tema inicial lo fija el script inline de BaseLayout (sin parpadeo);
+  // aquí solo se alterna y se recuerda. Delegado en document: sobrevive a ClientRouter.
+  document.addEventListener('click', (e) => {
+    if (!(e.target as HTMLElement).closest('.theme-toggle')) return;
+    const root = document.documentElement;
+    const current = root.dataset.theme ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try { localStorage.setItem('theme', next); } catch {}
   });
+</script>
 
-  // Cierra el menú al navegar (click en un enlace)
-  menu?.querySelectorAll('a').forEach((a) =>
-    a.addEventListener('click', () => {
-      btn?.setAttribute('aria-expanded', 'false');
-      btn?.setAttribute('aria-label', 'Abrir menú');
-      menu.classList.remove('open');
-    })
-  );
+<script>
+  // Menú móvil por delegación en document: el <header> se vuelve a pintar en cada navegación
+  // (ClientRouter), así que enlazar el botón una sola vez dejaría de funcionar tras navegar.
+  function setMenu(open: boolean) {
+    const btn = document.querySelector<HTMLButtonElement>('.nav-toggle');
+    const menu = document.getElementById('nav-menu');
+    btn?.setAttribute('aria-expanded', String(open));
+    btn?.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    menu?.classList.toggle('open', open);
+  }
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.closest('.nav-toggle')) {
+      const open = document.querySelector('.nav-toggle')?.getAttribute('aria-expanded') === 'true';
+      setMenu(!open);
+    } else if (target.closest('#nav-menu a')) {
+      setMenu(false);
+    }
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
 </script>
 
 <style>
+  /* Orden visual en escritorio: logo · menú · acciones (el botón hamburguesa va oculto). */
+  .nav { margin-left: auto; order: 1; }
+  .header-actions { display: flex; align-items: center; gap: .15rem; order: 2; }
+  .icon-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2.2rem; height: 2.2rem; border-radius: var(--radius);
+    background: none; border: none; cursor: pointer; color: var(--ink-soft);
+    transition: color .15s, background .15s;
+  }
+  .icon-btn:hover, .icon-btn[aria-current="page"] { color: var(--brand); background: var(--surface); }
+  /* Luna en claro (pasar a oscuro); sol en oscuro (pasar a claro) */
+  .theme-toggle :global(.i-sun) { display: none; }
+  :global(:root[data-theme="dark"]) .theme-toggle :global(.i-moon) { display: none; }
+  :global(:root[data-theme="dark"]) .theme-toggle :global(.i-sun) { display: inline-block; }
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme="light"])) .theme-toggle :global(.i-moon) { display: none; }
+    :global(:root:not([data-theme="light"])) .theme-toggle :global(.i-sun) { display: inline-block; }
+  }
+
   /* Hamburger button — oculto en desktop */
   .nav-toggle {
+    order: 3;
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -93,6 +142,8 @@ const isActive = (href: string) =>
 
   @media (max-width: 767px) {
     .nav-toggle { display: flex; }
+    .nav { margin-left: 0; }
+    .header-actions { margin-left: auto; }
 
     .nav {
       display: none;

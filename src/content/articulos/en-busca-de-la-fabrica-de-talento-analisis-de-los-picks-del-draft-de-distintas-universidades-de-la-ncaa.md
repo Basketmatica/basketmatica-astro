@@ -3,7 +3,7 @@ title: "En busca de la fábrica de talento: análisis de los picks del Draft de 
 description: "¿Qué universidad forma más talento para la NBA? Nueve programas de la NCAA compiten en seis rondas según los picks del Draft: minutos, valoración, TS % y más."
 pubDate: "2024-06-27T13:17:01.000Z"
 category: "Equipos"
-heroImage: "../../assets/blog/en-busca-de-la-fabrica-de-talento-analisis-de-los-picks-del-draft-de-distintas-universidades-de-la-ncaa/imagengacho.png"
+heroImage: "../../assets/blog/en-busca-de-la-fabrica-de-talento-analisis-de-los-picks-del-draft-de-distintas-universidades-de-la-ncaa/imagengacho.webp"
 heroAlt: "Ilustración de analistas con portátiles y jugadores universitarios junto a paneles de gráficos con el texto «Draft Analysis»"
 ---
 

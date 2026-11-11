@@ -11,8 +11,8 @@ import Footer from '../components/Footer.astro';
 import { ClientRouter } from 'astro:transitions';
 import { getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-import defaultOg from '../assets/brand/logo_basketmatica-sin-fondo.png';
-import { SITE_TITLE, SITE_TAGLINE, SITE_DESCRIPTION, SITE_URL, TWITTER_HANDLE, SOCIAL } from '../consts';
+import defaultOg from '../assets/brand/og-default.jpg';
+import { SITE_TITLE, SITE_TAGLINE, SITE_DESCRIPTION, SITE_URL, TWITTER_HANDLE, SOCIAL, GOATCOUNTER_CODE } from '../consts';
 
 interface Props {
   title?: string;
@@ -46,14 +46,12 @@ const pageTitle = title ? `${title} · ${SITE_TITLE}` : `${SITE_TITLE} · ${SITE
 const canonical = new URL(Astro.url.pathname, Astro.site);
 
 // Imagen social: JPEG 1200×630 (formato estándar de tarjeta), no el original de varios MB.
-// Sin imagen propia se usa el logo sobre fondo blanco (el fuente es 350 px: no se amplía).
-const ogSource = image ?? defaultOg;
+// Sin imagen propia se usa la tarjeta de marca (src/assets/brand/og-default.jpg).
 const og = await getImage({
-  src: ogSource,
+  src: image ?? defaultOg,
   width: 1200,
   height: 630,
-  fit: image ? 'cover' : 'contain',
-  background: '#ffffff',
+  fit: 'cover',
   format: 'jpeg',
   quality: 80,
 });
@@ -70,6 +68,11 @@ const graph = [
     "description": SITE_DESCRIPTION,
     "inLanguage": "es",
     "publisher": { "@id": `${SITE_URL}/#organization` },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": { "@type": "EntryPoint", "urlTemplate": `${SITE_URL}/buscar/?q={search_term_string}` },
+      "query-input": "required name=search_term_string",
+    },
   },
   {
     "@type": "Organization",
@@ -99,7 +102,19 @@ const graph = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#583C14" />
+    <meta name="theme-color" content="#F4EFE5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#16110B" media="(prefers-color-scheme: dark)" />
+    <script is:inline>
+      // Tema antes del primer pintado (evita el parpadeo). La preferencia guardada manda;
+      // sin ella se sigue la del sistema (CSS). ClientRouter reemplaza <html> en cada navegación,
+      // así que se reaplica en astro:before-swap.
+      (function () {
+        var get = function () { try { return localStorage.getItem('theme'); } catch (e) { return null; } };
+        var apply = function (root) { var t = get(); if (t === 'light' || t === 'dark') root.dataset.theme = t; };
+        apply(document.documentElement);
+        document.addEventListener('astro:before-swap', function (e) { apply(e.newDocument.documentElement); });
+      })();
+    </script>
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -112,13 +127,13 @@ const graph = [
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
-    {image && <meta property="og:image:width" content="1200" />}
-    {image && <meta property="og:image:height" content="630" />}
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={ogAlt} />
     {publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
     {modifiedTime && <meta property="article:modified_time" content={modifiedTime.toISOString()} />}
     {section && <meta property="article:section" content={section} />}
-    <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content={TWITTER_HANDLE} />
     <meta name="twitter:title" content={title ?? SITE_TITLE} />
     <meta name="twitter:description" content={description} />
@@ -129,11 +144,20 @@ const graph = [
     <script type="application/ld+json" set:html={JSON.stringify({ "@context": "https://schema.org", "@graph": graph })} />
   </head>
   <body>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
     <Nav />
-    <main class={wide ? 'container container-wide' : 'container'}>
+    <main id="main" class={wide ? 'container container-wide' : 'container'}>
       <slot />
     </main>
     <Footer />
+    {GOATCOUNTER_CODE && (
+      <script
+        is:inline
+        async
+        src="https://gc.zgo.at/count.js"
+        data-goatcounter={`https://${GOATCOUNTER_CODE}.goatcounter.com/count`}
+      ></script>
+    )}
     <script>
       // Inyecta el form de Beehiiv en cada carga de página. astro:page-load dispara en la
       // carga inicial y tras cada navegación SPA (ClientRouter), y el listener vive en
@@ -153,6 +177,15 @@ const graph = [
         embed.appendChild(attribution);
       }
       document.addEventListener('astro:page-load', loadBeehiiv);
+
+      // Analítica (solo si hay GoatCounter configurado): el script de GoatCounter cuenta la carga
+      // inicial; las navegaciones posteriores de ClientRouter se cuentan aquí.
+      let firstLoad = true;
+      document.addEventListener('astro:page-load', () => {
+        if (firstLoad) { firstLoad = false; return; }
+        const gc = (window as any).goatcounter;
+        if (gc?.count) gc.count({ path: location.pathname + location.search });
+      });
     </script>
   </body>
 </html>

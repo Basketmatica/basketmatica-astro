@@ -3,7 +3,7 @@ title: "Hezonja, MVP: la métrica de una curva, no de un estallido"
 description: "La valoración de Hezonja en cuatro temporadas (10,6 → 11,2 → 14,1 → 18,8) y su perfil de tiro a tres niveles explican el MVP de la Liga Endesa 2025-26 mejor que cualquier noche aislada."
 pubDate: "2026-06-14T10:00:00.000Z"
 category: "Jugadores"
-heroImage: "../../assets/blog/hezonja-mvp-2025-26/hezonja_mvp.png"
+heroImage: "../../assets/blog/hezonja-mvp-2025-26/hezonja_mvp.webp"
 heroAlt: "Mario Hezonja, MVP de la Liga Endesa 2025-26"
 draft: false
 ---

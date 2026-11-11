@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+---
+<BaseLayout
+  title="Buscar"
+  description="Busca en los artículos, el glosario, las herramientas y los hilos de Basketmática."
+  noindex
+>
+  <section class="search-page">
+    <h1>Buscar</h1>
+    <form class="search-form" role="search" action="/buscar/" method="get">
+      <label class="sr-only" for="q">Buscar en Basketmática</label>
+      <input id="q" name="q" type="search" placeholder="Una métrica, un jugador, un artículo…" autocomplete="off" autofocus />
+      <button type="submit" class="btn-primary"><Icon name="search" size={18} /> Buscar</button>
+    </form>
+
+    <p id="search-status" class="search-status" aria-live="polite"></p>
+    <ul id="search-results" class="search-results"></ul>
+    <noscript><p class="search-status">La búsqueda necesita JavaScript. Mientras tanto, explora los <a href="/articulos/">artículos</a> o el <a href="/glosario/">glosario</a>.</p></noscript>
+  </section>
+</BaseLayout>
+
+<style>
+  .search-page { padding-block: 2rem 3rem; }
+  .search-form { display: flex; gap: .6rem; flex-wrap: wrap; margin: 1rem 0 1.2rem; }
+  .search-form input {
+    flex: 1; min-width: 220px; padding: .7rem 1rem; font: inherit; font-size: 1.05rem;
+    border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink);
+  }
+  .search-form input:focus-visible { outline: 2px solid var(--accent); border-color: var(--accent); }
+  .search-status { color: var(--ink-soft); font-size: .95rem; margin: 0 0 1rem; }
+  .search-results { list-style: none; padding: 0; margin: 0; display: grid; gap: .9rem; }
+  .search-results :global(li) {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 1rem 1.2rem;
+  }
+  .search-results :global(a.res-title) {
+    font-family: var(--font-display); font-weight: 600; font-size: 1.08rem; color: var(--brand); text-decoration: none;
+  }
+  .search-results :global(a.res-title:hover) { color: var(--accent-600); text-decoration: underline; }
+  .search-results :global(.res-kind) {
+    display: inline-block; margin-right: .5rem; padding: .1rem .55rem; border-radius: 999px;
+    border: 1px solid var(--line); color: var(--accent-600); font-family: var(--font-display);
+    font-size: .72rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+  }
+  .search-results :global(.res-desc) { margin: .35rem 0 0; color: var(--ink-soft); font-size: .95rem; line-height: 1.5; }
+</style>
+
+<script>
+  interface Entry { t: string; d: string; u: string; k: string; f: string; s: string; e?: boolean }
+
+  const fold = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+
+  let indexPromise: Promise<Entry[]> | undefined;
+  const loadIndex = (): Promise<Entry[]> =>
+    (indexPromise ??= fetch('/search-index.json').then((r) => r.json() as Promise<Entry[]>));
+
+  function score(e: Entry, tokens: string[]): number {
+    let total = 0;
+    for (const tok of tokens) {
+      if (!e.s.includes(tok)) return 0;           // todas las palabras deben aparecer
+      if (e.f.includes(tok)) total += 10;
+      if (e.f.startsWith(tok) || e.f.includes(' ' + tok)) total += 5;
+      total += Math.min(3, e.s.split(tok).length - 1);
+    }
+    if (e.k === 'Artículo') total += 1;
+    return total;
+  }
+
+  async function run(query: string) {
+    const status = document.getElementById('search-status');
+    const list = document.getElementById('search-results');
+    if (!status || !list) return;
+    const tokens = fold(query).split(/\s+/).filter(Boolean);
+    list.replaceChildren();
+    if (!tokens.length) { status.textContent = ''; return; }
+    status.textContent = 'Buscando…';
+    const index = await loadIndex();
+    const hits = index
+      .map((e) => ({ e, s: score(e, tokens) }))
+      .filter((x) => x.s > 0)
+      .sort((a, b) => b.s - a.s)
+      .slice(0, 40);
+    status.textContent = hits.length
+      ? `${hits.length === 40 ? 'Más de 40' : hits.length} resultado${hits.length === 1 ? '' : 's'} para «${query}»`
+      : `Sin resultados para «${query}». Prueba con otra palabra o con la sigla de la métrica.`;
+    for (const { e } of hits) {
+      const li = document.createElement('li');
+      const kind = document.createElement('span'); kind.className = 'res-kind'; kind.textContent = e.k;
+      const a = document.createElement('a'); a.className = 'res-title'; a.href = e.u; a.textContent = e.t;
+      if (e.e) { a.target = '_blank'; a.rel = 'noopener'; }
+      li.append(kind, a);
+      if (e.d) { const p = document.createElement('p'); p.className = 'res-desc'; p.textContent = e.d; li.append(p); }
+      list.append(li);
+    }
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    const input = document.getElementById('q') as HTMLInputElement | null;
+    if (!input) return;
+    const params = new URLSearchParams(location.search);
+    input.value = params.get('q') ?? '';
+    if (input.value) run(input.value);
+    input.addEventListener('input', () => {
+      const url = new URL(location.href);
+      input.value ? url.searchParams.set('q', input.value) : url.searchParams.delete('q');
+      history.replaceState(history.state, '', url);
+      run(input.value);
+    });
+    input.addEventListener('focus', () => { loadIndex(); }, { once: true });
+  });
+</script>

@@ -1,0 +1,90 @@
+---
+// Gráfico de puntos con banda, en SVG puro (sin JS ni librerías): para cada fila, el valor real
+// (punto), el esperado (marca) y su banda de confianza (barra). Reutilizable desde cualquier
+// página o artículo MDX. Cada fila lleva <title> (tooltip nativo) y hay tabla alternativa.
+export interface IntervalRow {
+  label: string;
+  actual: number;
+  expected: number;
+  low: number;
+  high: number;
+}
+interface Props {
+  rows: IntervalRow[];
+  caption: string;
+  unit?: string;
+}
+const { rows, caption, unit = 'victorias' } = Astro.props;
+
+const ROW_H = 26, LABEL_W = 96, PAD_R = 16, PLOT_W = 520, TOP = 28;
+const W = LABEL_W + PLOT_W + PAD_R;
+const H = TOP + rows.length * ROW_H + 12;
+const min = Math.floor(Math.min(...rows.map((r) => Math.min(r.low, r.actual, r.expected))) - 1);
+const max = Math.ceil(Math.max(...rows.map((r) => Math.max(r.high, r.actual, r.expected))) + 1);
+const x = (v: number) => LABEL_W + ((v - min) / (max - min)) * PLOT_W;
+const ticks: number[] = [];
+for (let v = Math.ceil(min / 2) * 2; v <= max; v += 2) ticks.push(v);
+const fmt = (n: number) => n.toLocaleString('es-ES', { maximumFractionDigits: 1 });
+---
+<figure class="interval-chart">
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={caption}>
+    {ticks.map((t) => (
+      <g>
+        <line class="grid" x1={x(t)} x2={x(t)} y1={TOP - 8} y2={H - 12} />
+        <text class="tick" x={x(t)} y={TOP - 14} text-anchor="middle">{t}</text>
+      </g>
+    ))}
+    {rows.map((r, i) => {
+      const y = TOP + i * ROW_H + ROW_H / 2;
+      return (
+        <g class="row">
+          <title>{`${r.label}: ${r.actual} ${unit} reales, ${fmt(r.expected)} esperadas (banda del azar ${r.low}–${r.high})`}</title>
+          <rect class="hit" x="0" y={y - ROW_H / 2} width={W} height={ROW_H} />
+          <text class="label" x={LABEL_W - 10} y={y + 4} text-anchor="end">{r.label}</text>
+          <line class="band" x1={x(r.low)} x2={x(r.high)} y1={y} y2={y} />
+          <line class="exp" x1={x(r.expected)} x2={x(r.expected)} y1={y - 7} y2={y + 7} />
+          <circle class="dot" cx={x(r.actual)} cy={y} r="5" />
+        </g>
+      );
+    })}
+  </svg>
+  <figcaption>
+    <span class="key"><i class="k-dot"></i> {unit} reales</span>
+    <span class="key"><i class="k-exp"></i> esperadas por puntos</span>
+    <span class="key"><i class="k-band"></i> banda del azar (90 %)</span>
+  </figcaption>
+  <details>
+    <summary>Ver los datos en tabla</summary>
+    <table>
+      <thead><tr><th>Equipo</th><th>Reales</th><th>Esperadas</th><th>Banda del azar</th></tr></thead>
+      <tbody>
+        {rows.map((r) => <tr><td>{r.label}</td><td>{r.actual}</td><td>{fmt(r.expected)}</td><td>{r.low} – {r.high}</td></tr>)}
+      </tbody>
+    </table>
+  </details>
+</figure>
+
+<style>
+  .interval-chart { margin: 1.2rem 0 2rem; }
+  svg { width: 100%; height: auto; display: block; font-family: var(--font-display); }
+  .grid { stroke: var(--line); stroke-width: 1; }
+  .tick { fill: var(--ink-soft); font-size: 10px; font-family: var(--font-mono); }
+  .label { fill: var(--ink); font-size: 12px; }
+  .band { stroke: var(--accent); stroke-opacity: .45; stroke-width: 7; stroke-linecap: round; }
+  .exp { stroke: var(--ink-soft); stroke-width: 2; }
+  .dot { fill: var(--brand); stroke: var(--surface); stroke-width: 1.5; }
+  .hit { fill: transparent; }
+  .row:hover .hit { fill: var(--surface); }
+  .row:hover .dot { r: 6.5; }
+  figcaption { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; margin-top: .6rem; font-size: .85rem; color: var(--ink-soft); }
+  .key { display: inline-flex; align-items: center; gap: .4rem; }
+  .k-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--brand); display: inline-block; }
+  .k-exp { width: 2px; height: 12px; background: var(--ink-soft); display: inline-block; }
+  .k-band { width: 18px; height: 6px; border-radius: 3px; background: var(--accent); opacity: .45; display: inline-block; }
+  details { margin-top: .8rem; font-size: .9rem; }
+  summary { cursor: pointer; font-family: var(--font-display); font-weight: 600; color: var(--brand); }
+  table { width: 100%; border-collapse: collapse; margin-top: .6rem; font-size: .88rem; }
+  th, td { border: 1px solid var(--line); padding: .35rem .6rem; text-align: left; }
+  td:not(:first-child), th:not(:first-child) { font-family: var(--font-mono); text-align: right; }
+  thead th { background: var(--surface); }
+</style>

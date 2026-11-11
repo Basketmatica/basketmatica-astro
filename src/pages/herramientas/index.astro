@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ToolCard from '../../components/ToolCard.astro';
+import { herramientas, toolHref } from '../../data/herramientas';
 ---
 <BaseLayout
   title="Herramientas"
@@ -15,20 +16,9 @@ import ToolCard from '../../components/ToolCard.astro';
   </section>
 
   <div class="tools-grid">
-    <ToolCard
-      title="Generador de Reportes ACB"
-      description="Introduce el nombre de cualquier jugador de la Liga Endesa y obtén un scouting report en PDF con estadísticas avanzadas y análisis de IA en menos de un minuto."
-      status="Disponible"
-      href="/herramientas/generador-reportes-acb/"
-      icon="🏀"
-    />
-    <ToolCard
-      title="Generador de Reportes NBA"
-      description="Introduce el nombre de cualquier jugador de la NBA y obtén un scouting report en PDF con estadísticas avanzadas y análisis de IA en menos de un minuto."
-      status="Disponible"
-      href="/herramientas/generador-reportes-nba/"
-      icon="📊"
-    />
+    {herramientas.map((h) => (
+      <ToolCard title={h.title} description={h.description} status={h.status} href={toolHref(h)} icon={h.icon} />
+    ))}
   </div>
 </BaseLayout>
 

@@ -1,4 +1,6 @@
 ---
+import Icon, { type IconName } from './Icon.astro';
+
 export type ToolStatus = 'Disponible' | 'Beta' | 'Próximamente';
 
 interface Props {
@@ -6,7 +8,7 @@ interface Props {
   description: string;
   status: ToolStatus;
   href: string;
-  icon?: string;
+  icon?: IconName;
 }
 
 const { title, description, status, href, icon } = Astro.props;
@@ -14,7 +16,7 @@ const available = status !== 'Próximamente';
 ---
 
 <article class="tool-card">
-  {icon && <div class="tool-icon" aria-hidden="true">{icon}</div>}
+  {icon && <div class="tool-icon" aria-hidden="true"><Icon name={icon} size={30} /></div>}
   <div class="tool-body">
     <header class="tool-header">
       <h2 class="tool-title">{title}</h2>
@@ -41,10 +43,10 @@ const available = status !== 'Próximamente';
     box-shadow: var(--shadow);
     transition: box-shadow .2s, border-color .2s;
   }
-  .tool-card:hover { border-color: var(--brand); box-shadow: 0 4px 20px rgba(88,60,20,.12); }
+  .tool-card:hover { border-color: var(--brand); box-shadow: var(--shadow-hover); }
 
   .tool-icon {
-    font-size: 2rem;
+    color: var(--accent-600);
     line-height: 1;
     flex-shrink: 0;
     margin-top: .15rem;
@@ -67,8 +69,8 @@ const available = status !== 'Próximamente';
     letter-spacing: .03em;
     text-transform: uppercase;
   }
-  .tool-badge--disponible { background: #d4f0e8; color: #176B5A; }
-  .tool-badge--beta       { background: #fef3c7; color: #92400e; }
+  .tool-badge--disponible { background: var(--ok-bg); color: var(--ok-ink); }
+  .tool-badge--beta       { background: var(--warn-bg); color: var(--warn-ink); }
   .tool-badge--soon       { background: var(--bg);  color: var(--ink-soft); border: 1px solid var(--line); }
 
   .tool-desc { margin: 0; color: var(--ink-soft); font-size: .97rem; line-height: 1.55; }
