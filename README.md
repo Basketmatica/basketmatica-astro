@@ -89,7 +89,9 @@ y poner el código del sitio en `GOATCOUNTER_CODE` de `src/consts.ts`. Cuenta ta
 ### Gráficos
 `src/components/IntervalChart.astro` dibuja en SVG (sin JS) un gráfico de puntos con banda; hay un
 ejemplo en `/datos/`. Para gráficos dentro de un artículo nuevo, usar un `.mdx` e importar el componente.
-(Los artículos existentes siguen en `.md`: las fórmulas `$$…$$` con llaves no se llevan bien con MDX.)
+Los artículos existentes siguen en `.md`. Se probó convertir los cuatro más cargados de fórmulas y HTML
+a `.mdx` y el resultado era idéntico, así que se puede hacer cuando haga falta; conviene convertir solo el
+artículo que vaya a incrustar un componente, porque en MDX un `{` o un `<` sueltos en el texto rompen la compilación.
 
 ## Despliegue
 
@@ -118,7 +120,10 @@ Graph / Twitter Card (imagen 1200×630 a partir del `heroImage`; sin él, `src/a
 5. Revisar cada semana *Rendimiento* y *Páginas*.
 
 ## Seguridad y dependencias
-Dependabot propone actualizaciones semanales (npm) y mensuales (Actions). `npm audit` señala avisos
-de Astro y sharp cuya corrección exige una versión mayor de Astro; no afectan a este sitio (estático,
-sin SSR, con imágenes propias), pero conviene aceptar esa actualización cuando Dependabot la proponga
-y el CI (tipos, build y enlaces) esté en verde.
+Dependabot propone actualizaciones semanales (npm) y mensuales (Actions); el CI (tipos, build y enlaces)
+debe estar en verde antes de aceptarlas. El proyecto está en Astro 7 (Node ≥ 22.23.4). `npm audit` solo
+muestra 4 avisos de severidad baja de KaTeX anidado en `rehype-katex` (afecta a la opción `trust` con
+contenido ajeno; aquí todo el contenido es propio). No usar `npm audit fix --force`: propone un downgrade.
+
+Con Astro 7 el Markdown usa por defecto otro procesador (Sätteri). Este sitio fija el clásico con
+`unified()` en `astro.config.mjs` porque las fórmulas dependen de `remark-math` y `rehype-katex`.
