@@ -17,10 +17,12 @@ permissions:
   pages: write
   id-token: write
 
-# Permite un único despliegue concurrente
+# Un único despliegue a la vez, y nunca se cancela uno en curso (lo recomendado para Pages).
+# Los pull requests (p. ej. los de Dependabot) tienen su propio grupo por rama: si compartieran el
+# de producción, sus validaciones cancelarían los despliegues.
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.ref) || 'pages' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
