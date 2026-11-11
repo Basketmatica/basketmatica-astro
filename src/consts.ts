@@ -10,7 +10,7 @@ export const NEWSLETTER_URL = 'https://basketmatica.beehiiv.com';
 
 // Analítica sin cookies (GoatCounter). Vacío = desactivada. Para activarla: crear una cuenta
 // gratuita en goatcounter.com y poner aquí el código del sitio (la parte antes de .goatcounter.com).
-export const GOATCOUNTER_CODE = '';
+export const GOATCOUNTER_CODE = 'basketmatica';
 
 // Redes oficiales. Fuente única para el pie, "Sobre mí" y los datos estructurados (JSON-LD).
 export const SOCIAL = {

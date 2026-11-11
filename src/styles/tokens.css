@@ -39,6 +39,8 @@
   --logo-filter:  none;
   --logo-blend:   multiply;
   --img-filter:   none;
+  --embed-bg:     transparent;   /* panel claro para el formulario de Beehiiv (iframe blanco) */
+  --embed-pad:    0;
 
   /* Tipografía */
   --font-display: 'Space Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
@@ -78,6 +80,8 @@
     --logo-filter: brightness(0) invert(.88) sepia(.25);
     --logo-blend:  normal;
     --img-filter:  brightness(.92) contrast(1.02);
+    --embed-bg:    #FFFFFF;
+    --embed-pad:   1.1rem;
     --shadow:       0 1px 2px rgba(0,0,0,.4), 0 6px 24px rgba(0,0,0,.35);
     --shadow-hover: 0 4px 22px rgba(0,0,0,.55);
   }
@@ -103,6 +107,8 @@
   --logo-filter: brightness(0) invert(.88) sepia(.25);
   --logo-blend:  normal;
   --img-filter:  brightness(.92) contrast(1.02);
+  --embed-bg:    #FFFFFF;
+  --embed-pad:   1.1rem;
   --shadow:       0 1px 2px rgba(0,0,0,.4), 0 6px 24px rgba(0,0,0,.35);
   --shadow-hover: 0 4px 22px rgba(0,0,0,.55);
 }
