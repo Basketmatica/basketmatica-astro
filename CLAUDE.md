@@ -36,7 +36,7 @@ desplegado en GitHub Pages. Buscador estático, tema claro/oscuro y comprobacion
 - Newsletter: formulario de Beehiiv embebido (`NewsletterCTA.astro` + script en `BaseLayout.astro`).
 
 ## Comandos
-Requiere Node ≥ 22.12 (`.nvmrc`).
+Requiere Node ≥ 22.23.4 (`.nvmrc`).
 - `npm run dev` — servidor local (http://localhost:4321)
 - `npm run build` — genera `dist/`; `npm run preview` — lo sirve
 - `npm run check` — `astro check` (tipos); `npm run check:links` — enlaces internos sobre `dist/`

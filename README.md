@@ -5,7 +5,7 @@ Sitio estático hecho con [Astro](https://astro.build/), desplegado en GitHub Pa
 
 ## Desarrollo
 
-Requiere Node ≥ 22.12 (`.nvmrc` fija la 22).
+Requiere Node ≥ 22.23.4 (`.nvmrc` fija la 22).
 
 ```bash
 npm install

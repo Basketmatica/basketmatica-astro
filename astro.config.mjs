@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import { unified } from '@astrojs/markdown-remark';
 
 const SIGLAS = [
   'FGA', 'FGM', 'FTA', 'FTM', 'ORB', 'DRB', 'REB', 'AST', 'STL', 'BLK', 'BLKA',
@@ -37,9 +38,12 @@ export default defineConfig({
   integrations: [mdx(), sitemap()],
   markdown: {
     shikiConfig: { theme: 'github-light', wrap: true },
-    // Fórmulas $$…$$ renderizadas en build (KaTeX), sin JS en cliente.
-    remarkPlugins: [remarkMath],
-    // Notación única de siglas (leyenda en el glosario). Las fórmulas usan \FGA, \MP…
-    rehypePlugins: [[rehypeKatex, { macros: KATEX_MACROS }]],
+    // Procesador remark/rehype clásico (Astro 7 usa Sätteri por defecto, sin estos plugins).
+    processor: unified({
+      // Fórmulas $$…$$ renderizadas en build (KaTeX), sin JS en cliente.
+      remarkPlugins: [remarkMath],
+      // Notación única de siglas (leyenda en el glosario). Las fórmulas usan \FGA, \MP…
+      rehypePlugins: [[rehypeKatex, { macros: KATEX_MACROS }]],
+    }),
   },
 });
