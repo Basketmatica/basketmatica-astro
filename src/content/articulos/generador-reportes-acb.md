@@ -5,7 +5,6 @@ pubDate: "2026-09-16T10:00:00.000Z"
 category: "Herramientas"
 heroImage: "../../assets/blog/generador-reportes-acb/generador-reportes-acb-hero.png"
 heroAlt: "Ilustración del Generador de Reportes ACB: el logo de la Liga Endesa rodeado de gráficos estadísticos, escudos de clubes, jugadores en acción y una pista de baloncesto."
-originalSlug: "generador-reportes-acb"
 draft: false
 ---
 

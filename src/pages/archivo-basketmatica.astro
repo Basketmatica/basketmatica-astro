@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
-import { getEntry } from 'astro:content';
+import heroImage from '../assets/pages/archivo-basketmatica/chatgpt-image-27-jul-2025-20_43_21.png';
 
-const page = await getEntry('pages', 'archivo-basketmatica');
-if (!page) throw new Error('Falta src/content/pages/archivo-basketmatica.md');
-const { title, description, heroImage, heroAlt } = page.data;
+const title = 'Archivo Basketmática';
+const description = 'Archivo de los hilos de Basketmática en X: análisis de datos de baloncesto de la NBA y la ACB, filtrables por tema y por tipo.';
+const heroAlt = 'Archivo Basketmática';
 
 const LEGEND = [
   { emoji: '🏀', label: 'Tiro y Ofensiva' },
@@ -75,19 +75,17 @@ const threads: Thread[] = [
   { fecha: 'Noviembre 2026',  tema: '🏀', tipo: 'concepto', titulo: 'Offensive Load: lo que el USG% no ve',                                 url: 'https://x.com/basketmatica/status/2117949325255102509' },
 ];
 ---
-<BaseLayout wide title={title} description={description} image={heroImage} imageAlt={heroAlt || undefined}>
+<BaseLayout wide title={title} description={description} image={heroImage} imageAlt={heroAlt}>
   <article class="archivo">
     <h1>{title}</h1>
 
-    {heroImage && (
-      <Image
-        class="hero-img"
-        src={heroImage}
-        alt={heroAlt || title}
-        widths={[480, 760, 1080]}
-        sizes="(max-width: 1080px) 100vw, 1080px"
-      />
-    )}
+    <Image
+      class="hero-img"
+      src={heroImage}
+      alt={heroAlt}
+      widths={[480, 760, 1080]}
+      sizes="(max-width: 1080px) 100vw, 1080px"
+    />
 
     <p class="intro">
       Recopilación de todos los hilos publicados en <a href="https://x.com/basketmatica">X&nbsp;(@basketmatica)</a>,

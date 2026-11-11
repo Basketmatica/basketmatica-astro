@@ -1,7 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-// Categorías a conservar (CLAUDE.md). Se aplanan: sin jerarquía.
+// Categorías vigentes del sitio. Sin jerarquía.
 export const CATEGORIES = [
   'Análisis',
   'Casos de Uso',
@@ -12,7 +12,7 @@ export const CATEGORIES = [
 ] as const;
 
 const articulos = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/articulos' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/articulos' }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -23,20 +23,17 @@ const articulos = defineCollection({
       category: z.enum(CATEGORIES),
       heroImage: image().optional(),
       heroAlt: z.string().default(''),
-      // Slug original de WordPress -> URL /AAAA/MM/DD/originalSlug/
-      originalSlug: z.string(),
       draft: z.boolean().default(false),
     }),
 });
 
-// Páginas estáticas (sobre-mi, archivo-basketmatica): conservan su ruta original.
+// Páginas estáticas con contenido en Markdown (sobre-mi).
 const pages = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
       description: z.string().default(''),
-      originalSlug: z.string(),
       heroImage: image().optional(),
       heroAlt: z.string().default(''),
     }),

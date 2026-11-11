@@ -2,10 +2,8 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
-import { CATEGORIES } from '../../content.config';
-import { categorySlug, isPublished } from '../../lib/urls';
-
-const { pathname } = Astro.url;
+import CategoryFilters from '../../components/CategoryFilters.astro';
+import { isPublished } from '../../lib/urls';
 
 const posts = (await getCollection('articulos', isPublished)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -15,12 +13,7 @@ const posts = (await getCollection('articulos', isPublished)).sort(
   <section class="articles-header">
     <h1>Artículos</h1>
     <p class="intro">{posts.length} entradas de análisis, datos y baloncesto.</p>
-    <nav class="cat-filters" aria-label="Filtrar por categoría">
-      <a href="/articulos/" aria-current={pathname === '/articulos/' ? 'page' : undefined}>Todos</a>
-      {CATEGORIES.map((cat) => (
-        <a href={`/articulos/${categorySlug(cat)}/`}>{cat}</a>
-      ))}
-    </nav>
+    <CategoryFilters />
   </section>
   <ul class="post-list">
     {posts.map((post) => <PostCard post={post} />)}
@@ -29,30 +22,4 @@ const posts = (await getCollection('articulos', isPublished)).sort(
 
 <style>
   .articles-header { padding-block: 2rem 1rem; }
-
-  .cat-filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .5rem;
-    margin-top: 1.2rem;
-  }
-  .cat-filters a {
-    display: inline-block;
-    padding: .3rem .85rem;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    font-family: var(--font-display);
-    font-size: .85rem;
-    font-weight: 500;
-    color: var(--ink-soft);
-    text-decoration: none;
-    background: var(--surface);
-    transition: border-color .15s, color .15s;
-  }
-  .cat-filters a:hover,
-  .cat-filters a[aria-current="page"] {
-    border-color: var(--brand);
-    color: var(--brand);
-    background: var(--bg);
-  }
 </style>

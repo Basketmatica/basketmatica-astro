@@ -5,12 +5,11 @@ pubDate: "2024-06-27T13:17:01.000Z"
 category: "Equipos"
 heroImage: "../../assets/blog/en-busca-de-la-fabrica-de-talento-analisis-de-los-picks-del-draft-de-distintas-universidades-de-la-ncaa/imagengacho.png"
 heroAlt: "Ilustración de analistas con portátiles y jugadores universitarios junto a paneles de gráficos con el texto «Draft Analysis»"
-originalSlug: "en-busca-de-la-fabrica-de-talento-analisis-de-los-picks-del-draft-de-distintas-universidades-de-la-ncaa"
 ---
 
 Esta noche se ha celebrado el Draft de la NBA, un evento en el que los equipos de la mejor liga de baloncesto del mundo pueden escoger a los jugadores universitarios y europeos más prometedores para incorporarlos a sus plantillas, con la esperanza de dar un salto de calidad que les acerque al preciado título de campeón. La NCAA, la competición universitaria más prestigiosa del planeta, alberga múltiples equipos de los que han salido verdaderas estrellas del baloncesto, como la Universidad de North Carolina, lugar donde se formó el mejor jugador de todos los tiempos: Michael Jordan. Pero, ¿cuál es la universidad de la que salen los mejores jugadores? Es una pregunta compleja, pero en este análisis, con la ayuda del poder de los datos, intentaremos aproximarnos a una respuesta. Además, lo haremos en un formato de competición, al más puro estilo NCAA.
 
-<details class="wp-block-details"><summary>Acerca del conjunto de datos</summary><p>El conjunto de datos utilizado para este análisis ha sido obtenido de la página web de Kaggle. Puedes acceder a él pinchando <a href="https://www.kaggle.com/datasets/bryanchungweather/draft-picks-from-each-university">aquí</a>. El conjunto de datos original incluía también la universidad de Arizona, pero tras detectar datos incorrectos (los jugadores en realidad pertenecían a la universidad de Washington, es decir, había dos archivos duplicados) se excluyó dicha universidad del análisis.</p></details>
+<details><summary>Acerca del conjunto de datos</summary><p>El conjunto de datos utilizado para este análisis ha sido obtenido de la página web de Kaggle. Puedes acceder a él pinchando <a href="https://www.kaggle.com/datasets/bryanchungweather/draft-picks-from-each-university">aquí</a>. El conjunto de datos original incluía también la universidad de Arizona, pero tras detectar datos incorrectos (los jugadores en realidad pertenecían a la universidad de Washington, es decir, había dos archivos duplicados) se excluyó dicha universidad del análisis.</p></details>
 
 ## **Formato de competición**
 

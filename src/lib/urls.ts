@@ -1,6 +1,6 @@
 import type { CollectionEntry } from 'astro:content';
 
-// Mapa nombre de categoría -> nicename (slug WordPress original).
+// Mapa nombre de categoría -> slug de URL (/articulos/<slug>/).
 const CATEGORY_SLUGS: Record<string, string> = {
   'Análisis': 'analisis',
   'Casos de Uso': 'casos-de-uso',
@@ -14,19 +14,16 @@ export function categorySlug(name: string): string {
   return CATEGORY_SLUGS[name] ?? name.toLowerCase();
 }
 
-export function categoryFromSlug(slug: string): string | undefined {
-  return Object.keys(CATEGORY_SLUGS).find((k) => CATEGORY_SLUGS[k] === slug);
-}
-
 const pad = (n: number) => String(n).padStart(2, '0');
 
-// Ruta de una entrada: /AAAA/MM/DD/slug/ (formato WordPress conservado).
+// Ruta de una entrada: /AAAA/MM/DD/slug/. El slug es el nombre del fichero .md (entry.id) y,
+// junto con la fecha, forma la URL pública: no cambiarlos una vez publicada la entrada.
 export function postPath(entry: CollectionEntry<'articulos'>): string {
   const d = entry.data.pubDate;
   const y = d.getUTCFullYear();
   const m = pad(d.getUTCMonth() + 1);
   const day = pad(d.getUTCDate());
-  return `/${y}/${m}/${day}/${entry.data.originalSlug}/`;
+  return `/${y}/${m}/${day}/${entry.id}/`;
 }
 
 // Visible en el build: no es borrador y su fecha ya ha llegado. Un artículo con fecha futura

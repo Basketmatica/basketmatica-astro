@@ -1,7 +1,6 @@
 ---
 title: "Quién Soy"
 description: "Aquí no hay opiniones de barra. Hay código, modelos y estadística avanzada aplicados al baloncesto que te gusta."
-originalSlug: "sobre-mi"
 heroImage: "../../assets/pages/sobre-mi/yago.png"
 heroAlt: "Retrato de Yago, creador de Basketmática"
 ---

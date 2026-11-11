@@ -5,7 +5,6 @@ pubDate: "2024-09-08T13:02:59.000Z"
 category: "Herramientas"
 heroImage: "../../assets/blog/glosario-de-basketball-analytics/glosario-basketball-analytics.png"
 heroAlt: "Balón de baloncesto rodeado de gráficos y métricas como eFG %, TS %, USG %, PER y ORTG/DRTG"
-originalSlug: "glosario-de-basketball-analytics"
 ---
 
 ¡Bienvenido al Glosario de Basketball Analytics! Este recurso está diseñado para ayudarte a descubrir y entender las métricas y conceptos clave que están transformando el análisis del baloncesto moderno. Aquí encontrarás definiciones claras y ejemplos prácticos de las estadísticas avanzadas más utilizadas por analistas, entrenadores y aficionados de todo el mundo.

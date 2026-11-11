@@ -5,7 +5,6 @@ pubDate: "2025-02-23T14:16:09.000Z"
 category: "Casos de Uso"
 heroImage: "../../assets/blog/casos-de-uso-1-es-posible-predecir-resultados-de-la-nba-con-modelos-de-aprendizaje-automatico/b287dd9b-e449-46d7-bb16-4fb5a3cee6a5.webp"
 heroAlt: "Ilustración futurista de un panel de predicción de baloncesto con IA: gráfico circular de probabilidades de victoria y estadísticas de equipos"
-originalSlug: "casos-de-uso-1-es-posible-predecir-resultados-de-la-nba-con-modelos-de-aprendizaje-automatico"
 ---
 
 Bienvenidos a "Casos de Uso", una nueva sección en la que exploraré proyectos personales aplicados dentro del Basketball Analytics. En lugar de análisis puramente explicativos, aquí mostraré cómo los datos pueden transformar nuestra forma de entender el baloncesto y abrir nuevas posibilidades.

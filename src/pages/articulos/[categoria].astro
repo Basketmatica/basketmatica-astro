@@ -2,8 +2,8 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
-import { CATEGORIES } from '../../content.config';
-import { categorySlug, categoryFromSlug, isPublished } from '../../lib/urls';
+import CategoryFilters from '../../components/CategoryFilters.astro';
+import { categorySlug, isPublished } from '../../lib/urls';
 
 export async function getStaticPaths() {
   const posts = await getCollection('articulos', isPublished);
@@ -19,7 +19,6 @@ export async function getStaticPaths() {
   }));
 }
 
-const { categoria } = Astro.params;
 const { category, posts } = Astro.props;
 ---
 <BaseLayout
@@ -31,15 +30,7 @@ const { category, posts } = Astro.props;
     <p class="post-meta"><a href="/articulos/">Artículos</a> / {category}</p>
     <h1>{category}</h1>
     <p class="intro">{posts.length} {posts.length === 1 ? 'entrada' : 'entradas'}.</p>
-    <nav class="cat-filters" aria-label="Filtrar por categoría">
-      <a href="/articulos/">Todos</a>
-      {CATEGORIES.map((cat) => (
-        <a
-          href={`/articulos/${categorySlug(cat)}/`}
-          aria-current={cat === category ? 'page' : undefined}
-        >{cat}</a>
-      ))}
-    </nav>
+    <CategoryFilters current={category} />
   </section>
   <ul class="post-list">
     {posts.map((post) => <PostCard post={post} />)}
@@ -48,30 +39,4 @@ const { category, posts } = Astro.props;
 
 <style>
   .articles-header { padding-block: 2rem 1rem; }
-
-  .cat-filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .5rem;
-    margin-top: 1.2rem;
-  }
-  .cat-filters a {
-    display: inline-block;
-    padding: .3rem .85rem;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    font-family: var(--font-display);
-    font-size: .85rem;
-    font-weight: 500;
-    color: var(--ink-soft);
-    text-decoration: none;
-    background: var(--surface);
-    transition: border-color .15s, color .15s;
-  }
-  .cat-filters a:hover,
-  .cat-filters a[aria-current="page"] {
-    border-color: var(--brand);
-    color: var(--brand);
-    background: var(--bg);
-  }
 </style>

@@ -18,9 +18,10 @@ const KATEX_MACROS = {
 
 // https://astro.build/config
 export default defineConfig({
-  // Restricción CLAUDE.md: estático, GitHub Pages, dominio apex, sin `base`.
+  // Estático, GitHub Pages, dominio apex, sin `base`.
   output: 'static',
   site: 'https://basketmatica.com',
+  // URLs heredadas (blog anterior): se mantienen para no romper enlaces entrantes ni posicionamiento.
   redirects: {
     '/categoria/analisis/':    '/articulos/analisis/',
     '/categoria/casos-de-uso/': '/articulos/casos-de-uso/',

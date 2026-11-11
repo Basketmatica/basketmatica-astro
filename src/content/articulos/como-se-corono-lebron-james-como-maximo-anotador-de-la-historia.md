@@ -5,12 +5,11 @@ pubDate: "2024-06-13T21:01:41.000Z"
 category: "Jugadores"
 heroImage: "../../assets/blog/como-se-corono-lebron-james-como-maximo-anotador-de-la-historia/imagenlebrongancho.jpg"
 heroAlt: "LeBron James con la camiseta de los Cavaliers y dos imágenes de sus mates, en un póster en blanco y negro con el texto «King»"
-originalSlug: "como-se-corono-lebron-james-como-maximo-anotador-de-la-historia"
 ---
 
 38 389 puntos en temporada regular. Y sumando. El 8 de febrero de 2023, LeBron James se convirtió en el máximo anotador de la historia de la NBA, superando al legendario Kareem Abdul-Jabbar y coronándose como el rey anotador de este deporte. Pero, ¿cómo fue el camino hacia el trono? ¿Dónde está el secreto detrás de una cifra tan abrumadora, que ya supera los 40 000 puntos y no para de crecer? A continuación, analizamos **el camino del Rey**.
 
-<details class="wp-block-details"><summary>Nota previa.</summary><p>Todo el análisis se realiza en base a <strong>tiros de campo</strong>, en ningún momento se toman en cuenta los tiros libres. Puedes acceder a la fuente de datos utilizada para este análisis pulsando <a href="https://www.kaggle.com/datasets/eduvadillo/lebron-james-career-shots?select=lebron_shot_data.csv">aquí</a>.</p></details>
+<details><summary>Nota previa.</summary><p>Todo el análisis se realiza en base a <strong>tiros de campo</strong>, en ningún momento se toman en cuenta los tiros libres. Puedes acceder a la fuente de datos utilizada para este análisis pulsando <a href="https://www.kaggle.com/datasets/eduvadillo/lebron-james-career-shots?select=lebron_shot_data.csv">aquí</a>.</p></details>
 
 ## 1\. Métricas clave
 
@@ -29,7 +28,7 @@ Ratios:
 
 LeBron se abre camino hacia el trono como mejor sabe: dominando la zona. Más del 75% de sus tiros de campo en toda su carrera vienen de dentro de la línea de tres, con más de un 55% de efectividad. Por debajo de la media de la liga en porcentaje desde más allá de la línea (desde su llegada a la NBA, la media de %T3 oscila en torno al [35-36%](https://www.basketball-reference.com/leagues/NBA_stats_per_game.html)), pero su paso destructivo por la zona y la media distancia le permiten estar por encima de la media de eFG% en una era donde el triple ha sacudido completamente esta estadística (subida de más del 5% en menos de 10 temporadas).
 
-<details class="wp-block-details"><summary>Leyenda de métricas.</summary><ul class="wp-block-list"><li>%TC: Porcentaje de acierto de tiros de campo. Divide los tiros totales anotados entre los tiros totales intentados.</li><li>%T2: Porcentaje de aciertos de tiros de 2 puntos. Divide los tiros de 2 anotados entre los tiros de 2 intentados.</li><li>%T3: Porcentaje de acierto de tiros de 3 puntos. Divide los tiros de 3 anotados entre los tiros de 3 intentados.</li><li>%eFG: Porcentaje efectivo de acierto de tiros de campo. Tiene en cuenta que un triple vale más que una canasta de dos, y se calcula igual que el %TC pero multiplicando los tiros de 3 anotados por 1.5.</li><li>2PR: Ratio de tiros de 2 puntos. Ratio entre tiros intentados de 2 puntos frente a los tiros intentados totales.</li><li>3PR: Ratio de tiros de 3 puntos. Ratio entre tiros intentados de 3 puntos frente a los tiros intentados totales.</li><li>PPA: Puntos Por Intento. Media de puntos por cada tiro de campo.</li></ul></details>
+<details><summary>Leyenda de métricas.</summary><ul><li>%TC: Porcentaje de acierto de tiros de campo. Divide los tiros totales anotados entre los tiros totales intentados.</li><li>%T2: Porcentaje de aciertos de tiros de 2 puntos. Divide los tiros de 2 anotados entre los tiros de 2 intentados.</li><li>%T3: Porcentaje de acierto de tiros de 3 puntos. Divide los tiros de 3 anotados entre los tiros de 3 intentados.</li><li>%eFG: Porcentaje efectivo de acierto de tiros de campo. Tiene en cuenta que un triple vale más que una canasta de dos, y se calcula igual que el %TC pero multiplicando los tiros de 3 anotados por 1.5.</li><li>2PR: Ratio de tiros de 2 puntos. Ratio entre tiros intentados de 2 puntos frente a los tiros intentados totales.</li><li>3PR: Ratio de tiros de 3 puntos. Ratio entre tiros intentados de 3 puntos frente a los tiros intentados totales.</li><li>PPA: Puntos Por Intento. Media de puntos por cada tiro de campo.</li></ul></details>
 
 ## 2\. Distribuciones
 

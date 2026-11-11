@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { CONTACT_EMAIL } from '../consts';
+import { CONTACT_EMAIL, SOCIAL } from '../consts';
 
 const title = 'Servicios de análisis de datos';
 const description = 'Ayudo a clubes y entidades deportivas a tomar decisiones objetivas basadas en datos: modelos predictivos, scouting automatizado y análisis de eficiencia.';
@@ -77,7 +77,7 @@ const forWho = [
       </p>
       <div class="srv-cta-actions">
         <a href={`mailto:${CONTACT_EMAIL}`} class="btn-primary">Escribirme un email</a>
-        <a href="https://x.com/basketmatica" class="btn-outline" target="_blank" rel="noopener">Contactar en X</a>
+        <a href={SOCIAL.x} class="btn-outline" target="_blank" rel="noopener">Contactar en X</a>
       </div>
       <p class="srv-cta-note">También puedes ver mi trabajo y metodología en <a href="/articulos/">los artículos del blog</a>.</p>
     </section>
@@ -90,15 +90,7 @@ const forWho = [
 
   /* Hero */
   .srv-hero { margin-bottom: 3rem; }
-  .eyebrow {
-    font-family: var(--font-display);
-    font-size: .76rem;
-    font-weight: 700;
-    letter-spacing: .13em;
-    text-transform: uppercase;
-    color: var(--accent-600);
-    margin: 0 0 .8rem;
-  }
+  .srv-hero .eyebrow { margin-bottom: .8rem; }
   .srv-hero h1 { margin: 0 0 .8rem; }
   .srv-sub {
     font-size: 1.1rem;

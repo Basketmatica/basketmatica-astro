@@ -5,7 +5,6 @@ pubDate: "2023-06-03T20:36:14.000Z"
 category: "Herramientas"
 heroImage: "../../assets/blog/todoterreno-excel-aplicado-al-analisis-de-datos-en-el-baloncesto/dallc2b7e-2024-06-19-19.29.32-create-two-distinct-images-suitable-for-decorating-a-webpage-with-a-dark-grey-theme-focusing-on-basketball-analytics.-the-first-image-should-depict-a.png"
 heroAlt: "Dos composiciones abstractas en blanco y negro: un balón con jugadores en movimiento y un balón rodeado de gráficos de barras y circulares"
-originalSlug: "todoterreno-excel-aplicado-al-analisis-de-datos-en-el-baloncesto"
 ---
 
 Microsoft Excel es una herramienta esencial en el ámbito del análisis de datos, conocida por su versatilidad en la visualización y procesamiento de información. Su accesibilidad y la amplia gama de funcionalidades que ofrece la convierten en una opción popular tanto para principiantes como para profesionales. Con la reciente integración de la Inteligencia Artificial de Microsoft a través de Copilot, las capacidades de Excel han alcanzado un nuevo nivel, prometiendo revolucionar la manera en que interactuamos con los datos.

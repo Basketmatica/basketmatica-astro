@@ -1,8 +1,8 @@
 // Lista ordenada de métricas para la sección "Métrica de la semana" de la home.
 //
 // Cómo funciona: index.astro calcula qué métrica toca según la fecha del build
-// (una por semana, rotación cíclica). El cron de los lunes en .github/workflows/deploy.yml
-// reconstruye el sitio para que aparezca la siguiente.
+// (una por semana, rotación cíclica). El cron diario de .github/workflows/deploy.yml
+// reconstruye el sitio, así que la nueva métrica aparece el lunes sin intervención.
 //
 // Para añadir métricas: pega un nuevo objeto al final del array. `acronym` es opcional
 // (omítelo en conceptos como "Four Factors"). Mantén `definition` en una sola frase.

@@ -5,7 +5,9 @@ export const SITE_DESCRIPTION = 'Análisis de datos aplicado al baloncesto.';
 export const SITE_URL = 'https://basketmatica.com';
 export const CONTACT_EMAIL = 'info@basketmatica.com';
 
-// Página de suscripción de Beehiiv. El sitio es estático (sin backend), así que el CTA de
-// newsletter es un botón que abre esta página en una pestaña nueva, no un form que envía
-// datos (eso requeriría exponer una clave de API en el cliente).
-export const NEWSLETTER_URL = 'https://basketmatica.beehiiv.com';
+// Redes oficiales. Fuente única para el pie, "Sobre mí" y los datos estructurados (JSON-LD).
+export const SOCIAL = {
+  x: 'https://x.com/basketmatica',
+  threads: 'https://www.threads.net/@basketmatica',
+  linkedin: 'https://www.linkedin.com/in/yago-riudavets-garc%C3%ADa-9b7b7b237/',
+} as const;

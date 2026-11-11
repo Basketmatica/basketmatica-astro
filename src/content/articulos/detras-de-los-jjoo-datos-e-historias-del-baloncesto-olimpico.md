@@ -5,12 +5,11 @@ pubDate: "2024-07-16T16:33:07.000Z"
 category: "Eventos"
 heroImage: "../../assets/blog/detras-de-los-jjoo-datos-e-historias-del-baloncesto-olimpico/gsnciw7weaa6h4e.png"
 heroAlt: "Pabellón de baloncesto vacío, con el parqué iluminado y las gradas naranjas"
-originalSlug: "detras-de-los-jjoo-datos-e-historias-del-baloncesto-olimpico"
 ---
 
 A 10 días del inicio oficial de los Juegos Olímpicos de París 2024, ya se conocen los grupos que disputarán la primera fase en la lucha por el ansiado oro. Además, el Preolímpico y los partidos amistosos nos han permitido captar sensaciones de cada país clasificado. Pero, ¿qué nos dice la historia? ¿Y los datos? En este artículo, desentrañaremos algunas estadísticas y curiosidades que nos prepararán para disfrutar de una de las citas más importantes del baloncesto internacional.
 
-<details class="wp-block-details"><summary>Acerca del conjunto de datos</summary><p>El conjunto de datos utilizado para este análisis ha sido obtenido de la página web de Kaggle. Puedes acceder a él pinchando <a href="https://www.kaggle.com/datasets/isaienkov/basketball-at-summer-olympic-games">aquí</a>. Como se puede observar, es un conjunto de datos muy sencillo y de no demasiada profundidad, centrado puramente en equipos y sin tener en cuenta datos individuales de los jugadores.</p></details>
+<details><summary>Acerca del conjunto de datos</summary><p>El conjunto de datos utilizado para este análisis ha sido obtenido de la página web de Kaggle. Puedes acceder a él pinchando <a href="https://www.kaggle.com/datasets/isaienkov/basketball-at-summer-olympic-games">aquí</a>. Como se puede observar, es un conjunto de datos muy sencillo y de no demasiada profundidad, centrado puramente en equipos y sin tener en cuenta datos individuales de los jugadores.</p></details>
 
 ## **1\. Recuento de medallas**
 

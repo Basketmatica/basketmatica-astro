@@ -33,11 +33,15 @@ h1 { font-size: 2.1rem; margin: 0 0 .5rem; }
 h2 { font-size: 1.55rem; margin: 2.2rem 0 .8rem; }
 h3 { font-size: 1.25rem; margin: 1.8rem 0 .6rem; }
 
-/* Cifras, métricas y código: TODO dato numérico va en mono. */
-.stat {
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum" 1;
+/* ---------- etiqueta de sección ---------- */
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--accent-600);
+  margin: 0 0 1rem;
 }
 
 /* ---------- header ---------- */

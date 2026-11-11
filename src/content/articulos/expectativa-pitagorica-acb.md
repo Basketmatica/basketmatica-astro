@@ -5,7 +5,6 @@ pubDate: "2026-10-29T08:00:00.000Z"
 category: "Análisis"
 heroImage: "../../assets/blog/expectativa-pitagorica-acb/hero.jpg"
 heroAlt: "Jugador en un mate rodeado de dados, fórmulas y gráficos de barras sobre una cancha, ilustrando la expectativa pitagórica en la ACB"
-originalSlug: "expectativa-pitagorica-acb"
 draft: false
 ---
 

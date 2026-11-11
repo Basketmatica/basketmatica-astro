@@ -12,7 +12,7 @@ import { ClientRouter } from 'astro:transitions';
 import { getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import defaultOg from '../assets/brand/logo_basketmatica-sin-fondo.png';
-import { SITE_TITLE, SITE_TAGLINE, SITE_DESCRIPTION, SITE_URL, TWITTER_HANDLE } from '../consts';
+import { SITE_TITLE, SITE_TAGLINE, SITE_DESCRIPTION, SITE_URL, TWITTER_HANDLE, SOCIAL } from '../consts';
 
 interface Props {
   title?: string;
@@ -78,21 +78,14 @@ const graph = [
     "url": SITE_URL,
     "logo": { "@type": "ImageObject", "url": `${SITE_URL}/apple-touch-icon.png` },
     "founder": { "@id": `${SITE_URL}/#person` },
-    "sameAs": [
-      "https://x.com/basketmatica",
-      "https://www.instagram.com/basketmatica/",
-    ],
+    "sameAs": [SOCIAL.x, SOCIAL.threads],
   },
   {
     "@type": "Person",
     "@id": `${SITE_URL}/#person`,
     "name": "Yago Riudavets",
     "url": `${SITE_URL}/sobre-mi/`,
-    "sameAs": [
-      "https://x.com/basketmatica",
-      "https://www.instagram.com/basketmatica/",
-      "https://www.linkedin.com/in/yago-riudavets-garc%C3%ADa-9b7b7b237/"
-    ],
+    "sameAs": [SOCIAL.x, SOCIAL.threads, SOCIAL.linkedin],
     "knowsAbout": ["Basketball Analytics", "Machine Learning", "Sports Data Science"],
     "worksFor": { "@id": `${SITE_URL}/#organization` },
   },

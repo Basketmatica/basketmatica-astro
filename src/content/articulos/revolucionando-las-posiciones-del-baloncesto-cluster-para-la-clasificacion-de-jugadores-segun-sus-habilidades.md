@@ -5,7 +5,6 @@ pubDate: "2025-04-06T13:18:45.000Z"
 category: "Jugadores"
 heroImage: "../../assets/blog/revolucionando-las-posiciones-del-baloncesto-cluster-para-la-clasificacion-de-jugadores-segun-sus-habilidades/image-5.png"
 heroAlt: "Collage de jugadores de baloncesto en acción rodeados de paneles con estadísticas"
-originalSlug: "revolucionando-las-posiciones-del-baloncesto-cluster-para-la-clasificacion-de-jugadores-segun-sus-habilidades"
 ---
 
 El baloncesto moderno está repleto de jugadores versátiles y completos. Los interiores ya no solo dominan la pintura, sino que deben ser una amenaza desde el triple. Y en casos extremos, como Víctor Wembanyama, el jugador más alto de la NBA, incluso pueden desempeñar funciones de base gracias a su asombrosa coordinación.
@@ -41,7 +40,7 @@ Para que el clustering tenga sentido, es fundamental elegir bien las estadístic
 
 Para más información sobre los datos, consultar el desplegable de abajo. Además, si se tiene alguna duda sobre las estadísticas a utilizar, todas pueden encontrarse en mi [Glosario de Basketball Analytics](/2024/09/08/glosario-de-basketball-analytics/).
 
-<details class="wp-block-details"><summary>Acerca del conjunto de datos</summary><p>El conjunto de datos utilizado para este análisis ha sido obtenido de la página web de Kaggle. Puedes acceder a él pinchando&nbsp;<a href="https://www.kaggle.com/datasets/sumitrodatta/nba-aba-baa-stats">aquí</a>. Hay una gran cantidad de archivos con datos desde el 1947. Para este análisis, se utilizarán los siguientes: <em>Advanced.csv</em> y <em>Player Per Game.csv</em></p></details>
+<details><summary>Acerca del conjunto de datos</summary><p>El conjunto de datos utilizado para este análisis ha sido obtenido de la página web de Kaggle. Puedes acceder a él pinchando&nbsp;<a href="https://www.kaggle.com/datasets/sumitrodatta/nba-aba-baa-stats">aquí</a>. Hay una gran cantidad de archivos con datos desde el 1947. Para este análisis, se utilizarán los siguientes: <em>Advanced.csv</em> y <em>Player Per Game.csv</em></p></details>
 
 ## 2\. Componentes Principales
 

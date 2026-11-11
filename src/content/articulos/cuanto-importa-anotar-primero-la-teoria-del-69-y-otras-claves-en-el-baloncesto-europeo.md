@@ -5,7 +5,6 @@ pubDate: "2024-12-05T17:10:18.000Z"
 category: "Análisis"
 heroImage: "../../assets/blog/cuanto-importa-anotar-primero-la-teoria-del-69-y-otras-claves-en-el-baloncesto-europeo/dallc2b7e-2024-12-04-19.49.44-a-dynamic-and-engaging-digital-illustration-showing-a-basketball-game-in-progress-in-a-professional-arena.-the-focus-is-on-the-scoreboard-displaying-t.webp"
 heroAlt: "Ilustración de un partido de baloncesto con el número 69 en el marcador central del pabellón"
-originalSlug: "cuanto-importa-anotar-primero-la-teoria-del-69-y-otras-claves-en-el-baloncesto-europeo"
 ---
 
 En uno de mis últimos hilos publicados en mi [cuenta de X](https://x.com/basketmatica), recibí un comentario que despertó mi curiosidad. Octavio escribió lo siguiente:
@@ -22,7 +21,7 @@ Ambas aportaciones me parecieron fascinantes, y decidí realizar un análisis m�
 
 Para responder a estas preguntas, utilicé datos de la Euroliga y la Eurocup, desde la temporada 2007/2008 hasta la presente (2024/2025). Este conjunto de datos representa una muestra amplia y confiable, ideal para extraer conclusiones robustas (Si aún no sabes qué es una muestra representativa ni cuántos datos se necesitan para un análisis fiable, puedes consultar [este hilo](https://x.com/basketmatica/status/1858125119010312523)).
 
-<details class="wp-block-details"><summary>Acerca del conjunto de datos</summary><p>El conjunto de datos utilizado para este análisis ha sido obtenido de la página web de Kaggle. Puedes acceder a él pinchando <a href="https://www.kaggle.com/datasets/babissamothrakis/euroleague-datasets">aquí</a>. Es una colección de conjuntos de datos de Euroliga y Eurocup desde la temporada 2007/2008, y se actualiza regularmente.</p></details>
+<details><summary>Acerca del conjunto de datos</summary><p>El conjunto de datos utilizado para este análisis ha sido obtenido de la página web de Kaggle. Puedes acceder a él pinchando <a href="https://www.kaggle.com/datasets/babissamothrakis/euroleague-datasets">aquí</a>. Es una colección de conjuntos de datos de Euroliga y Eurocup desde la temporada 2007/2008, y se actualiza regularmente.</p></details>
 
 ## 1\. Introducción a las teorías a analizar.
 

@@ -4,7 +4,8 @@ import BlogPost from '../layouts/BlogPost.astro';
 import { isPublished, postPathParam } from '../lib/urls';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('articulos', isPublished);
+  // El glosario se sirve en /glosario/ (glosario.astro); su URL antigua es una redirección.
+  const posts = await getCollection('articulos', (p) => isPublished(p) && p.id !== 'glosario-de-basketball-analytics');
   return posts.map((post) => ({
     params: { path: postPathParam(post) },
     props: { post },

@@ -5,7 +5,6 @@ pubDate: "2026-06-14T10:00:00.000Z"
 category: "Jugadores"
 heroImage: "../../assets/blog/hezonja-mvp-2025-26/hezonja_mvp.png"
 heroAlt: "Mario Hezonja, MVP de la Liga Endesa 2025-26"
-originalSlug: "hezonja-mvp-2025-26"
 draft: false
 ---
 

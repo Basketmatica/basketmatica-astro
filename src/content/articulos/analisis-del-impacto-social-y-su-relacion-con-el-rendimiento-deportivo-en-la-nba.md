@@ -5,12 +5,11 @@ pubDate: "2024-08-14T18:16:22.000Z"
 category: "Jugadores"
 heroImage: "../../assets/blog/analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba/1000_f_581067734_4maz5al30son4pyeafviciyqwtvmrjf7-transformed.jpeg"
 heroAlt: "Cancha de baloncesto vacía iluminada con líneas de neón azules y rosas"
-originalSlug: "analisis-del-impacto-social-y-su-relacion-con-el-rendimiento-deportivo-en-la-nba"
 ---
 
 Desde hace ya tiempo, las redes sociales se han convertido en una parte integral de nuestra vida cotidiana, y los jugadores profesionales de baloncesto no son una excepción. Aunque algunos jugadores optan por eliminarlas temporalmente para concentrarse en la competición, la mayoría las utiliza para diversos propósitos: desde anuncios personales y colaboraciones, hasta expresar opiniones sobre política y sociedad. Pero surge una pregunta interesante: ¿Existe una relación directa entre el poder mediático de un jugador y su rendimiento en la cancha? ¿Qué estadísticas podrían correlacionarse con sus interacciones en redes sociales? ¿Son los mejores jugadores necesariamente los más mediáticos? Para responder a estas preguntas, analizaremos datos de la temporada 2016/2017 de 236 jugadores, evaluando en qué medida las interacciones en Twitter y las búsquedas en Wikipedia pueden estar vinculadas con su desempeño en el parqué.
 
-<details class="wp-block-details"><summary>Acerca del conjunto de datos</summary><p>El conjunto de datos utilizado para este análisis ha sido obtenido de la página web de Kaggle. Puedes acceder a él pinchando&nbsp;<a href="https://www.kaggle.com/datasets/noahgift/social-power-nba/data">aquí</a>.&nbsp;Hay muchos archivos, algunos de ellos repetidos o con métricas adicionales. Por lo tanto, se hizo una selección de los archivos a utilizar y se acabaron usando 2: <em>nba_2017_player_wikipedia.csv</em> y <em>nba_2017_player_with_salary_wiki_twitter.csv</em></p></details>
+<details><summary>Acerca del conjunto de datos</summary><p>El conjunto de datos utilizado para este análisis ha sido obtenido de la página web de Kaggle. Puedes acceder a él pinchando&nbsp;<a href="https://www.kaggle.com/datasets/noahgift/social-power-nba/data">aquí</a>.&nbsp;Hay muchos archivos, algunos de ellos repetidos o con métricas adicionales. Por lo tanto, se hizo una selección de los archivos a utilizar y se acabaron usando 2: <em>nba_2017_player_wikipedia.csv</em> y <em>nba_2017_player_with_salary_wiki_twitter.csv</em></p></details>
 
 ## 1\. Análisis descriptivo del impacto social
 
